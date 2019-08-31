@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdminsRepository")
  */
-class Admins
+class Admins implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -60,15 +61,23 @@ class Admins
         return $this;
     }
 
-    public function getRoles(): ?array
-    {
-        return $this->roles;
-    }
-
-    public function setRoles(?array $roles): self
+    public function setRoles(array $roles)
     {
         $this->roles = $roles;
 
         return $this;
     }
+
+    public function getRoles()
+    {
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+ 
+
+    public function getSalt(){}
+    public function eraseCredentials(){}
+    
 }

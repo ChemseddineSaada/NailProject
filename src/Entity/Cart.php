@@ -19,7 +19,7 @@ class Cart
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\product")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Product")
      */
     private $products;
 
@@ -51,7 +51,7 @@ class Cart
         return $this->products;
     }
 
-    public function addProduct(product $product): self
+    public function addProduct(Product $product): self
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
@@ -60,7 +60,7 @@ class Cart
         return $this;
     }
 
-    public function removeProduct(product $product): self
+    public function removeProduct(Product $product): self
     {
         if ($this->products->contains($product)) {
             $this->products->removeElement($product);
