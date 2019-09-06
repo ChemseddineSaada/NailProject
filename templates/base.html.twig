@@ -12,7 +12,8 @@
 
 <body>
     <header class="mb-5">
-        {% block menu %}{% endblock %}
+            {% block menu %}{{render(controller('App\\Controller\\MenuController::mainMenu',{'routeName' : app.request.attributes.get('_route')}))}}{% endblock %}
+            <div class="container text-center">{% block headerText %}{% endblock %}</div>
     </header>
 
 
@@ -20,11 +21,14 @@
         {% block ariane %}{% endblock %}
         {% block info %}{% endblock %}
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{asset('web/js/anime.min.js')}}"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        {% endblock %}
     </div>
-    <footer class="mt-5">{% block footer %}
-        <p class="mt-5 mb-3 text-muted text-center">© Tous les droits réservés - 2019</p>
-    {% endblock %}</footer>
+    <footer class="container">
+        {% include "partials/footer.html.twig" %}
+    </footer>
 </body>
 
 </html>

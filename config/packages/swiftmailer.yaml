@@ -1,3 +1,12 @@
 swiftmailer:
     url: '%env(MAILER_URL)%'
     spool: { type: 'memory' }
+    username: null
+    password: null
+    logging: false
+    transport: smtp
+    delivery_address: "chemseddine.saada2@gmail.com"
+    host: 127.0.0.1
+    port: 1025
+
+

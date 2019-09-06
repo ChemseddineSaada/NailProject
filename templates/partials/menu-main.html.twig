@@ -1,0 +1,50 @@
+<nav class="row container-fluid">
+    <span class="menu-devise" hidden>EUR</span>
+    <a class="navbar-brand col-auto mr-auto menu-title" href="#">NailProject</a>
+    <ul class="navbar menu-list">
+        {% for element in menu  %}
+            <li class="nav-item menu-item">
+                <a class="nav-link {{ app.request.get('routeName') == element.route ? 'active' }}"
+                href="{{path(element.route)}}"
+                >{{element.label}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="row">
+        <a class="nav-link burger"><img class="burger-btn" src="{{asset('web/img/burger-opened.svg')}}"  alt="Boutton d'ouverture du menu"></a>
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a class="nav-link" href="{{path('app_logout')}}">
+                    <img src="{{ asset('web/img/user.svg') }}" alt="Espace membre">
+                </a>
+        {% else %}
+                <a class="nav-link" href="{{path('login_panel')}}"><img src="{{ asset('web/img/user.svg') }}" alt="Espace membre"></a>
+        {% endif %}
+        <a class="nav-link" href="#"><img src="{{ asset('web/img/cart.svg') }}" alt="Panier"></a>
+    </div>
+</nav>
+
+<style>
+    .menu-item{
+        list-style: none;
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{{asset('web/js/menu-burger.js')}}"></script>
+<script>
+        $('.burger').click(function(){
+
+            if($('.burger').hasClass('closed')){
+
+                $('.burger-btn').attr('src',"{{asset('web/img/burger-closed.svg')}}");
+
+            }
+            else{
+
+                $('.burger-btn').attr('src',"{{asset('web/img/burger-opened.svg')}}");
+
+            }
+        });
+    
+</script>

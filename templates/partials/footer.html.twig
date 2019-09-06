@@ -1,0 +1,42 @@
+<div class="row align-items-center">
+<div class=".col-12 .col-sm-12 .col-md-12 .col-lg-6 .col-xl-6">
+    <h2>Inscrivez-vous à notre NEWSLETTER</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+
+    {% for message in app.flashes('notice_success') %}
+        <p class="alert-link">{{ message }}</p>
+    {% endfor %}
+
+    {% for message in app.flashes('notice_fail') %}
+        <p class="alert-link">{{ message }}</p>
+    {% endfor %}
+
+    <form action="{{path('newsletter.subscribe')}}" method="post">
+        <input type="email" name="email" placeholder:"Votre email...">
+        <input type="text" name="last-route" value="{{app.request.attributes.get('_route')}}" hidden>
+        <button type="submit">S'inscrire</button>
+    </form>
+</div>
+<div class=".col-12 .col-sm-12 .col-md-12 .col-lg-6 .col-xl-6 justify-content-center">
+    <h3>NailProject</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+    <div class="row">
+        <div>
+            <p>info@nailproject.com</p>
+            <p>+33 000000000</p>
+        </div>
+        <div>
+            <p>204 Rue Saint Martin</p>
+            <p>75003 Paris, France</p>
+        </div>
+    </div>
+    <div class="row">
+        <img src="{{asset('web/img/fb.svg')}}" alt="Page Facebook de NailProject">
+        <img src="{{asset('web/img/instagram.svg')}}" alt="Profil Instagram de NailProject">
+        <img src="{{asset('web/img/feed.svg')}}" alt="Flux RSS">
+    </div>
+    <p>© 2019 NAILPROJECT. Mode by TECH5</p>
+</div>
+</div>
+
+<script src="{{asset('web/js/footer-anime.js')}}"></script>

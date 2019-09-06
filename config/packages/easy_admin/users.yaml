@@ -1,0 +1,20 @@
+# config/packages/easy_admin/users.yaml
+easy_admin:
+  entities:
+      Utilisateurs:
+        help: "Vous trouverez ici tous les utilisateurs inscrits dans votre base de donnée."
+        class: App\Entity\User
+        disabled_actions: ['edit','new']
+        list:
+          title: "Liste des utilisateurs"
+          fields:
+            - { property: 'id', label: '#ID' }
+            - { property: 'avatar', label: 'Avatar' , type: image, base_path: '%app.path.user_images%'}  
+            - { property: 'username', label: "Nom d'utilisateur" }
+            - { property: 'email', label: 'Adresse email' }
+            - { property: 'country', label: 'Pays', type: 'country' }
+          actions:
+            - { name: 'show', label: "Plus d'informations"}
+            - { name: 'delete', label: 'Bannir'}          
+            - { name: 'search', label: 'Rechercher'} 
+        

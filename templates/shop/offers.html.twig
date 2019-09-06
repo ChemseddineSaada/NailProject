@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+{% for pack_offer in pack_offers  %}
+    <li>{{pack_offer.name}}</li>
+    <li>{{pack_offer.Description}}</li>
+    <li>{{pack_offer.price}}</li>
+    <li>{{pack_offer.category}}</li>
+
+{% endfor %}
+
+{% for subscription in subscriptions  %}
+    <li>{{subscription.name}}</li>
+    <li>{{subscription.Description}}</li>
+    <li>{{subscription.price}}</li>
+    <li>{{subscription.category}}</li>
+
+{% endfor %}
+
+{% endblock %}

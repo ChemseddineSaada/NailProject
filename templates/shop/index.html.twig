@@ -1,7 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}NailProject - Accueil{% endblock %}
 
+{% block headerText %}
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, aut sint commodi</p>
+{% endblock %}
 {% block body %}
+<section> <!-- Our Products -->
+
+    <h2 class="title-right">Nos produits</h2>
+
+    {% for product in products %}
+
+        <a class="{{ loop.index0 % 2 == 0 ? 'left-display' : 'right-display'}}">
+            <img class=".element-image" src="{{asset('web/img/')}}" alt="{{product.description}}">
+            <h3 class=".element-title">{{product.name}}</h3>
+            <p class=".element-price">{{product.price}}</p>
+        </a>
+
+        {% set iteration = loop.index0  %}
+
+    {% endfor %}
+
+</section> <!-- Our Products -->
+
+<section> <!-- Our Packs -->
+    <h2 class="title-left">Nos offres</h2>
+    {% for offer in offers %}
+
+    <a class="{{ loop.index0 + iteration % 2 == 0 ? 'left-display' : 'right-display'}}">
+        <img class=".element-image" src="{{asset('web/img/')}}" alt="{{offer.description}}">
+        <h3 class=".element-title">{{offer.name}}</h3>
+        <p class=".element-price">{{offer.price}}</p>
+    </a>
+
+    {% endfor %}
+
+</section> <!-- Our Packs -->
+
+<section> <!-- Our Subscription -->
+
+    <h2 class="title-center">Notre abonnement</h2>
+    {% for subscription in subscriptions %}
+        <a class="home-subscription">
+            <img src="{{asset('web/img/')}}" alt="{{subscription.description}}">
+            <h3>{{subscription.name}}</h3>
+            <p class=".element-price">{{subscription.price}}</p>
+        </a>
+    {% endfor %}
+
+</section> <!-- Our Subscription -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{{asset('web/js/home-anime.js')}}"></script>
 
 {% endblock %}

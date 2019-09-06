@@ -1,0 +1,11 @@
+# config/packages/easy_admin/orders.yaml
+easy_admin:
+  entities:
+      Commandes:
+        help: "Vous trouverez ici toutes les commandes passées sur votre site web."
+        class: App\Entity\OrderedProducts       
+        disabled_actions: ['edit','new','delete']
+        list:
+          title: "Liste des commandes"
+          actions:                      
+            - { name: 'search', label: 'Rechercher'}

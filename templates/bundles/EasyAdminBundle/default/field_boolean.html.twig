@@ -1,0 +1,7 @@
+{% trans_default_domain 'EasyAdminBundle' %}
+
+{% if value == true %}
+    <span class="badge badge-success">{{ 'OUI'|trans }}</span>
+{% else %}
+    <span class="badge badge-danger">{{ 'NON'|trans }}</span>
+{% endif %}

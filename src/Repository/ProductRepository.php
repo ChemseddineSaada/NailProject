@@ -47,4 +47,32 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findPublished(){
+        return $this->createQueryBuilder('c')
+                    ->andWhere('c.state = :val')
+                    ->setParameter('val', 1)
+                    ->getQUery()
+                    ->getResult();
+    }
+
+    public function findById($id){
+        return $this->createQueryBuilder('c')
+                    ->andWhere('c.state = :val AND c.id = :id')
+                    ->setParameter('val', 1)
+                    ->setParameter('id', $id)
+                    ->getQUery()
+                    ->getResult();
+    }
+
+    public function findAllHomeView(){
+        return $this->createQueryBuilder('c')
+                    ->andWhere('c.state = :val AND c.home_view = :home')
+                    ->setParameter('val', 1)
+                    ->setParameter('home', 1)
+                    ->getQUery()
+                    ->getResult();
+    }
+
+
+
 }

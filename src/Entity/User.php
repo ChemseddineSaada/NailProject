@@ -7,9 +7,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @Vich\Uploadable
+ * @UniqueEntity("email")
+ * @UniqueEntity("username")
  */
 class User implements UserInterface
 {
@@ -17,6 +23,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * 
      */
     private $id;
 
@@ -56,9 +63,22 @@ class User implements UserInterface
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
+     * @var string
      */
     private $avatar;
+
+    /**
+     * @Vich\UploadableField(mapping="category_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\OrderedProducts", mappedBy="client")
@@ -80,10 +100,6 @@ class User implements UserInterface
      */
     private $deliveryAddresses;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Cart", mappedBy="user", cascade={"persist", "remove"})
-     */
-    private $cart;
 
     public function __construct()
     {
@@ -166,6 +182,20 @@ class User implements UserInterface
         $this->address = $address;
 
         return $this;
+    }
+
+    public function setImageFile(File $avatar = null)
+    {
+        $this->imageFile = $avatar;
+
+        if ($avatar) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 
     public function getAvatar(): ?string
@@ -292,7 +322,6 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        $roles = $this->roles;
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
@@ -301,5 +330,10 @@ class User implements UserInterface
 
     public function getSalt(){}
     public function eraseCredentials(){}
+
+    public function __toString(){
+    
+        return $this->username;
+    }
     
 }

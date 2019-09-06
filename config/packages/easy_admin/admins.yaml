@@ -1,0 +1,16 @@
+# config/packages/easy_admin/admins.yaml
+easy_admin:
+  entities:
+      Administrateurs:
+        help: "Vous trouverez ici tous les administrateurs inscrits dans votre base de donnée (Veillez à bien vérifier les permissions avant de valider !)."
+        class: App\Entity\Admins
+        list:
+          title: "Liste des administrateurs"
+          actions:
+            - { name: 'edit', label: 'Modifier les permissions'}
+            - { name: 'delete', label: 'Bannir  '}             
+            - { name: 'new', label: 'Ajouter un nouveau'}           
+            - { name: 'search', label: 'Rechercher'} 
+        edit:
+          help: "Vous allez modifier les informations liés au compte administrateur (ATTENTION ! Les modifictions apportées seront irréversibles)."
+          title: 'Modifier le profil administrateur'

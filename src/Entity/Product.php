@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -39,11 +42,6 @@ class Product
     private $price;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $state;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $published_at;
@@ -61,11 +59,6 @@ class Product
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $promo;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
     private $ref;
 
     /**
@@ -79,9 +72,41 @@ class Product
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $promo_rate;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $state;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $promo;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\PackOffer", mappedBy="products")
+     */
+    private $packOffers;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Subscription", mappedBy="product")
+     */
+    private $subscriptions;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $home_view;
+
     public function __construct()
     {
         $this->orderedProducts = new ArrayCollection();
+        $this->packOffers = new ArrayCollection();
+        $this->subscriptions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -137,18 +162,6 @@ class Product
         return $this;
     }
 
-    public function getState(): ?string
-    {
-        return $this->state;
-    }
-
-    public function setState(string $state): self
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
     public function getPublishedAt(): ?\DateTimeInterface
     {
         return $this->published_at;
@@ -156,7 +169,8 @@ class Product
 
     public function setPublishedAt(\DateTimeInterface $published_at): self
     {
-        $this->published_at = $published_at;
+        $date_now = new DateTime('now');
+        $this->published_at = $date_now;
 
         return $this;
     }
@@ -181,18 +195,6 @@ class Product
     public function setNote(?int $note): self
     {
         $this->note = $note;
-
-        return $this;
-    }
-
-    public function getPromo(): ?string
-    {
-        return $this->promo;
-    }
-
-    public function setPromo(?string $promo): self
-    {
-        $this->promo = $promo;
 
         return $this;
     }
@@ -248,6 +250,115 @@ class Product
     public function setCategory(?category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getPromoRate(): ?int
+    {
+        return $this->promo_rate;
+    }
+
+    public function setPromoRate(?int $promo_rate): self
+    {
+        $this->promo_rate = $promo_rate;
+
+        return $this;
+    }
+
+    public function __toString(){
+        
+        return $this->name;
+    }
+
+    public function getState(): ?bool
+    {
+        return $this->state;
+    }
+
+    public function setState(bool $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function getPromo(): ?bool
+    {
+        return $this->promo;
+    }
+
+    public function setPromo(bool $promo): self
+    {
+        $this->promo = $promo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PackOffer[]
+     */
+    public function getPackOffers(): Collection
+    {
+        return $this->packOffers;
+    }
+
+    public function addPackOffer(PackOffer $packOffer): self
+    {
+        if (!$this->packOffers->contains($packOffer)) {
+            $this->packOffers[] = $packOffer;
+            $packOffer->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removePackOffer(PackOffer $packOffer): self
+    {
+        if ($this->packOffers->contains($packOffer)) {
+            $this->packOffers->removeElement($packOffer);
+            $packOffer->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Subscription[]
+     */
+    public function getSubscriptions(): Collection
+    {
+        return $this->subscriptions;
+    }
+
+    public function addSubscription(Subscription $subscription): self
+    {
+        if (!$this->subscriptions->contains($subscription)) {
+            $this->subscriptions[] = $subscription;
+            $subscription->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubscription(Subscription $subscription): self
+    {
+        if ($this->subscriptions->contains($subscription)) {
+            $this->subscriptions->removeElement($subscription);
+            $subscription->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function getHomeView(): ?bool
+    {
+        return $this->home_view;
+    }
+
+    public function setHomeView(bool $home_view): self
+    {
+        $this->home_view = $home_view;
 
         return $this;
     }

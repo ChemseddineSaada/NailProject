@@ -1,0 +1,53 @@
+# config/packages/easy_admin/categories.yaml
+easy_admin:
+  entities:
+      Categories:
+        help: "Vous trouverez ici toutes les catégories inscrites dans votre base de donnée."
+        class: App\Entity\category    
+        list:
+          title: "Liste des catégories"
+          fields:
+            - { property: 'id', label: '#ID' }        
+            - { property: 'state', label: 'Publié', type: toggle }     
+            - { property: 'name', label: 'Nom de la catégorie' }           
+            - { property: 'image', label: 'Image' , type: image, base_path: '%app.path.category_images%'}            
+            - { property: 'products', label: 'Nombre de produits associés' }
+          actions:
+            - { name: 'edit', label: 'Modifier'}
+            - { name: 'delete', label: 'Supprimer'} 
+            - {name: 'new', label: 'Ajouter un nouveau'}          
+            - { name: 'search', label: 'Rechercher'}   
+        edit:
+          help: "Vous allez modifier les informations liés à la catégorie (ATTENTION ! Les modifictions apportées seront irréversibles)."
+          title: 'Modifier la catégorie'
+          fields:          
+            - { property: 'name', label: 'Nom de la catégorie' }                
+            - { property: 'description', label: 'Description' }         
+            - { property: 'imageFile', label: 'Image', type: 'vich_image', base_path: '%app.path.category_images%' }            
+            - { property: 'products', label: 'Produits associés' }
+            - { property: 'state', label: 'Publié ?' } 
+        new:
+          help: "Vous allez ajouter une nouvelle catégorie."
+          title: 'Ajouter une catégorie'
+          fields:          
+            - { property: 'name', label: 'Nom de la catégorie' }                
+            - { property: 'description', label: 'Description' }         
+            - { property: 'imageFile', label: 'Image' , type: 'vich_image', base_path: '%app.path.category_images%'}            
+            - { property: 'products', label: 'Produits associés' }
+            - { property: 'state', label: 'Publié ?' } 
+        
+        show:
+          help: "Ceci est une page de consultation."
+          title: 'Ajouter une catégorie'
+          actions:                              
+            - { name: 'delete', label: 'Supprimer'} 
+            - { name: 'edit', label: 'Modifier'}
+            - { name: 'list', label: 'Retour à la liste'} 
+          fields:          
+            - { property: 'name', label: 'Nom de la catégorie' }                
+            - { property: 'description', label: 'Description' }         
+            - { property: 'image', label: 'Image' , type: 'image', base_path: '%app.path.category_images%'}            
+            - { property: 'products', label: 'Produits associés' }
+            - { property: 'state', label: 'Publié ?' } 
+        
+        

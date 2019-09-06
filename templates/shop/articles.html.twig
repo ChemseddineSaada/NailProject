@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+{% for post in posts  %}
+    <li>{{post.name}}</li>
+    <li>{{post.content}}</li>
+    <li>{{post.published_at}}</li>
+
+{% endfor %}
+
+{% for event in events  %}
+    <li>{{event.title}}</li>
+    <li>{{event.content}}</li>
+    <li>{{event.event_date}}</li>
+    <li>{{event.category}}</li>
+
+{% endfor %}
+
+{% endblock %}

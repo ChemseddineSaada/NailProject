@@ -1,0 +1,50 @@
+# config/packages/easy_admin/products.yaml
+easy_admin:
+  entities:
+      Produits:
+        help: "Vous trouverez ici tous les produits inscrits dans votre base de donnée."
+        class: App\Entity\Product
+        list:
+          title: "Liste des produits" 
+          fields:
+            - { property: 'id', label: '#ID' }
+            - { property: 'name', label: 'Nom' }
+            - { property: 'price', label: 'Prix (€)' }
+            - { property: 'category', label: 'Catégorie' }  
+            - { property: 'published_at', label: 'Ajouté le' }
+            - { property: 'ref', label: 'Référence' }
+            - { property: 'state', label: 'Publié',type: toggle }
+          actions:          
+            - { name: 'search', label: 'Rechercher'} 
+            - { name: 'edit', label: 'Modifier'}
+            - { name: 'delete', label: 'Supprimer'}             
+            - {name: 'new', label: 'Ajouter un nouveau'} 
+     
+        edit:
+          help: "Vous allez modifier les informations liés au produit (ATTENTION ! Les modifictions apportées seront irréversibles)."
+          title: 'Modifier le produit'
+          fields:
+            - { property: 'name', label: 'Nom' }
+            - { property: 'category', label: 'Catégorie' }
+            - { property: 'description', label: 'Description' }
+            - { property: 'imageFile', label: 'Image', type: 'vich_image', base_path: '%app.path.product_images%' }   
+            - { property: 'price', label: 'Prix (€)' }
+            - { property: 'stock', label: 'Quantité en stock' }
+            - { property: 'promo', label: 'En promotion ?'}
+            - { property: 'promo_rate', label: 'Taux de réduction' }
+            - { property: 'ref', label: 'Référence' }
+            - { property: 'state', label: 'Publié' }
+        new:
+          help: "Vous allez ajouter un produit à votre base de donnée."
+          title: 'Ajouter un produit'
+          fields:
+            - { property: 'name', label: 'Nom' }
+            - { property: 'category', label: 'Catégorie' }
+            - { property: 'description', label: 'Description' }
+            - { property: 'imageFile', label: 'Image', type: 'vich_image', base_path: '%app.path.product_images%' }   
+            - { property: 'price', label: 'Prix (€)' }
+            - { property: 'stock', label: 'Quantité en stock' }
+            - { property: 'promo', label: 'En promotion ?'}
+            - { property: 'promo_rate', label: 'Taux de réduction' }
+            - { property: 'ref', label: 'Référence' }
+            - { property: 'state', label: 'Publié' }

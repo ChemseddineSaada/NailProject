@@ -23,6 +23,7 @@ security:
             form_login: 
                 login_path: login_panel 
                 check_path: login_panel
+                use_referer: true
 
             remember_me:
                 secret:   '%kernel.secret%'

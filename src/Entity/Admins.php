@@ -80,4 +80,8 @@ class Admins implements UserInterface
     public function getSalt(){}
     public function eraseCredentials(){}
     
+    public function __toString(){
+        
+        return $this->username;
+    }
 }
