@@ -1,0 +1,48 @@
+# config/packages/easy_admin/subscription.yaml
+easy_admin:
+  entities:
+      Abonnements:
+        help: "Vous trouverez ici tous les abonnements inscrits dans votre base de donnée."
+        class: App\Entity\Subscription
+        list:
+          title: "Liste des abonnements" 
+          fields:
+            - { property: 'id', label: '#ID' }
+            - { property: 'name', label: 'Nom' }                       
+            - { property: 'image1', label: 'Image' , type: image, base_path: '%app.path.subscription_images%'}
+            - { property: 'price', label: 'Prix (€)' }
+            - { property: 'category', label: 'Catégorie' }  
+            - { property: 'updatedAt', label: 'Ajouté le' }
+            - { property: 'ref', label: 'Référence' }
+            - { property: 'state', label: 'Publié',type: toggle }
+     
+        edit:
+          help: "Vous allez modifier les informations liés à l'abonnement (ATTENTION ! Les modifictions apportées seront irréversibles)."
+          title: "Modifier l'abonnement"
+          fields:
+            - { property: 'name', label: 'Nom' }
+            - { property: 'category', label: 'Catégorie' }
+            - { property: 'description', label: 'Description' }
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.subscription_images%' }   
+            - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.subscription_images%' }    
+            - { property: 'price', label: 'Prix (€)' }
+            - { property: 'stock', label: 'Quantité en stock' }
+            - { property: 'promo', label: 'En promotion ?'}
+            - { property: 'promo_rate', label: 'Taux de réduction' }
+            - { property: 'ref', label: 'Référence' }
+            - { property: 'state', label: 'Publié' }
+        new:
+          help: "Vous allez ajouter un abonnement à votre base de donnée."
+          title: 'Ajouter un abonnement'
+          fields:
+            - { property: 'name', label: 'Nom' }
+            - { property: 'category', label: 'Catégorie' }
+            - { property: 'description', label: 'Description' }
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.subscription_images%' }   
+            - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.subscription_images%' }    
+            - { property: 'price', label: 'Prix (€)' }
+            - { property: 'stock', label: 'Quantité en stock' }
+            - { property: 'promo', label: 'En promotion ?'}
+            - { property: 'promo_rate', label: 'Taux de réduction' }
+            - { property: 'ref', label: 'Référence' }
+            - { property: 'state', label: 'Publié' }

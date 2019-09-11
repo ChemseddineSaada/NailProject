@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #fff;
+        stroke-width: 1.25px;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3, .cls-5 {
+        stroke: none;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Groupe_1" data-name="Groupe 1" transform="translate(112 -438)">
+    <g id="Rectangle_1" data-name="Rectangle 1" class="cls-1" transform="translate(-107 438)">
+      <path class="cls-3" d="M2.673,0H4.327A2.673,2.673,0,0,1,7,2.673V6A0,0,0,0,1,7,6H0A0,0,0,0,1,0,6V2.673A2.673,2.673,0,0,1,2.673,0Z"/>
+      <path class="cls-4" d="M2.673.625H4.327A2.048,2.048,0,0,1,6.375,2.673V4.75a.625.625,0,0,1-.625.625H1.25A.625.625,0,0,1,.625,4.75V2.673A2.048,2.048,0,0,1,2.673.625Z"/>
+    </g>
+    <g id="Tracé_2" data-name="Tracé 2" class="cls-2">
+      <path class="cls-3" d="M-96,460h-16l1-17h14Z"/>
+      <path class="cls-5" d="M -97.32568359375 458.75 L -98.17862701416016 444.25 L -109.8213729858398 444.25 L -110.67431640625 458.75 L -97.32568359375 458.75 M -96 460 L -112 460 L -111 443 L -97 443 L -96 460 Z"/>
+    </g>
+  </g>
+</svg>

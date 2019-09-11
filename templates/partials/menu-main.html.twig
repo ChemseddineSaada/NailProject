@@ -1,4 +1,5 @@
 <nav class="row container-fluid">
+    <link rel="stylesheet" href="{{asset('web/css/mainMenu-style.css')}}">
     <span class="menu-devise" hidden>EUR</span>
     <a class="navbar-brand col-auto mr-auto menu-title" href="#">NailProject</a>
     <ul class="navbar menu-list">
@@ -11,16 +12,16 @@
         {% endfor %}
     </ul>
     <div class="row">
-        <a class="nav-link burger"><img class="burger-btn" src="{{asset('web/img/burger-opened.svg')}}"  alt="Boutton d'ouverture du menu"></a>
+        <a class="nav-link burger"><img class="burger-btn" src="{{asset('web/img/menu/burger-opened.svg')}}"  alt="Boutton d'ouverture du menu"></a>
 
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <a class="nav-link" href="{{path('app_logout')}}">
-                    <img src="{{ asset('web/img/user.svg') }}" alt="Espace membre">
+                    <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">
                 </a>
         {% else %}
-                <a class="nav-link" href="{{path('login_panel')}}"><img src="{{ asset('web/img/user.svg') }}" alt="Espace membre"></a>
+                <a class="nav-link" href="{{path('login_panel')}}"><img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre"></a>
         {% endif %}
-        <a class="nav-link" href="#"><img src="{{ asset('web/img/cart.svg') }}" alt="Panier"></a>
+        <a class="nav-link" href="#"><img src="{{ asset('web/img/menu/cart.svg') }}" alt="Panier"></a>
     </div>
 </nav>
 
@@ -37,12 +38,12 @@
 
             if($('.burger').hasClass('closed')){
 
-                $('.burger-btn').attr('src',"{{asset('web/img/burger-closed.svg')}}");
+                $('.burger-btn').attr('src',"{{asset('web/img/menu/burger-closed.svg')}}");
 
             }
             else{
 
-                $('.burger-btn').attr('src',"{{asset('web/img/burger-opened.svg')}}");
+                $('.burger-btn').attr('src',"{{asset('web/img/menu/burger-opened.svg')}}");
 
             }
         });

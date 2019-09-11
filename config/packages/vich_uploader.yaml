@@ -11,5 +11,17 @@ vich_uploader:
         user_images:
             uri_prefix:         '%app.path.user_images%'
             upload_destination: '%kernel.project_dir%/public%app.path.user_images%'
+        packOffer_images:
+            uri_prefix:         '%app.path.packOffer_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.packOffer_images%'
+        subscription_images:
+            uri_prefix:         '%app.path.subscription_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.subscription_images%'
+        event_images:
+            uri_prefix:         '%app.path.event_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.event_images%'
+        event_passed_images:
+            uri_prefix:         '%app.path.event_passed_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.event_passed_images%'
             
 

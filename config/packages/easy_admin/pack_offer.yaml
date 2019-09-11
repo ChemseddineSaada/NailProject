@@ -1,0 +1,54 @@
+# config/packages/easy_admin/pack_offer.yaml
+easy_admin:
+  entities:
+      Coffrets:
+        help: "Vous trouverez ici tous les coffrets inscrits dans votre base de donnée."
+        class: App\Entity\PackOffer
+        list:
+          title: "Liste des coffrets" 
+          fields:
+            - { property: 'id', label: '#ID' }
+            - { property: 'name', label: 'Nom' }                     
+            - { property: 'image1', label: 'Image' , type: image, base_path: '%app.path.packOffer_images%'}
+            - { property: 'products', label: 'Nombre de produits inclus' }
+            - { property: 'price', label: 'Prix (€)' }
+            - { property: 'category', label: 'Catégorie' }  
+            - { property: 'updatedAt', label: 'Ajouté le' }
+            - { property: 'ref', label: 'Référence' }
+            - { property: 'state', label: 'Publié sur le site',type: toggle }
+            - { property: 'home_view', label: "Afficher sur la page d'accueil",type: toggle }
+     
+        edit:
+          help: "Vous allez modifier les informations liés au coffret (ATTENTION ! Les modifictions apportées seront irréversibles)."
+          title: 'Modifier le coffret'
+          fields:
+            - { property: 'name', label: 'Nom' }
+            - { property: 'category', label: 'Catégorie' }            
+            - { property: 'products', label: 'Produits inclus' }
+            - { property: 'description', label: 'Description' } 
+            - { property: 'price', label: 'Prix (€)' }
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.packOffer_images%' }   
+            - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.packOffer_images%' }   
+            - { property: 'stock', label: 'Quantité en stock' }
+            - { property: 'promo', label: 'En promotion ?'}
+            - { property: 'promo_rate', label: 'Taux de réduction' }
+            - { property: 'ref', label: 'Référence' }
+            - { property: 'state', label: 'Publié sur le site' }
+            - { property: 'home_view', label: "Afficher sur page d'accueil"}
+        new:
+          help: "Vous allez ajouter un coffret à votre base de donnée."
+          title: 'Ajouter un coffret'
+          fields:
+            - { property: 'name', label: 'Nom' }
+            - { property: 'category', label: 'Catégorie' }            
+            - { property: 'products', label: 'Produits inclus' }
+            - { property: 'description', label: 'Description' } 
+            - { property: 'price', label: 'Prix (€)' }
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.packOffer_images%' }   
+            - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.packOffer_images%' }  
+            - { property: 'stock', label: 'Quantité en stock' }
+            - { property: 'promo', label: 'En promotion ?'}
+            - { property: 'promo_rate', label: 'Taux de réduction' }
+            - { property: 'ref', label: 'Référence' }
+            - { property: 'state', label: 'Publié sur le site' }              
+            - { property: 'home_view', label: "Publié sur la page d'accueil"}   

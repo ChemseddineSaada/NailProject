@@ -4,47 +4,56 @@ easy_admin:
       Produits:
         help: "Vous trouverez ici tous les produits inscrits dans votre base de donnée."
         class: App\Entity\Product
+
         list:
           title: "Liste des produits" 
           fields:
             - { property: 'id', label: '#ID' }
-            - { property: 'name', label: 'Nom' }
+            - { property: 'type', label: 'Type' }
+            - { property: 'name', label: 'Nom' }           
+            - { property: 'image1', label: 'Image' , type: image, base_path: '%app.path.product_images%'}  
             - { property: 'price', label: 'Prix (€)' }
-            - { property: 'category', label: 'Catégorie' }  
-            - { property: 'published_at', label: 'Ajouté le' }
+            - { property: 'category', label: 'Catégories'} 
+            - { property: 'updatedAt', label: 'Ajouté le' }
             - { property: 'ref', label: 'Référence' }
-            - { property: 'state', label: 'Publié',type: toggle }
-          actions:          
-            - { name: 'search', label: 'Rechercher'} 
-            - { name: 'edit', label: 'Modifier'}
-            - { name: 'delete', label: 'Supprimer'}             
-            - {name: 'new', label: 'Ajouter un nouveau'} 
-     
+            - { property: 'state', label: 'Publié sur le site',type: toggle }
+            - { property: 'top_product', label: "Produit à la une",type: toggle}
+
         edit:
           help: "Vous allez modifier les informations liés au produit (ATTENTION ! Les modifictions apportées seront irréversibles)."
           title: 'Modifier le produit'
-          fields:
+          fields:       
+            - { property: 'type', label: 'Type' }
             - { property: 'name', label: 'Nom' }
             - { property: 'category', label: 'Catégorie' }
             - { property: 'description', label: 'Description' }
-            - { property: 'imageFile', label: 'Image', type: 'vich_image', base_path: '%app.path.product_images%' }   
             - { property: 'price', label: 'Prix (€)' }
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.product_images%' }   
+            - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.product_images%' } 
+            - { property: 'imageFile3', label: 'Image 3', type: 'vich_image', base_path: '%app.path.product_images%' }   
+            - { property: 'imageFile4', label: 'Image 4', type: 'vich_image', base_path: '%app.path.product_images%' } 
             - { property: 'stock', label: 'Quantité en stock' }
             - { property: 'promo', label: 'En promotion ?'}
             - { property: 'promo_rate', label: 'Taux de réduction' }
             - { property: 'ref', label: 'Référence' }
-            - { property: 'state', label: 'Publié' }
+            - { property: 'state', label: 'Publié sur le site' }  
+            - { property: 'top_product', label: "Produit à la une"}  
         new:
           help: "Vous allez ajouter un produit à votre base de donnée."
           title: 'Ajouter un produit'
-          fields:
+          fields:        
+            - { property: 'type', label: 'Type' }
             - { property: 'name', label: 'Nom' }
             - { property: 'category', label: 'Catégorie' }
             - { property: 'description', label: 'Description' }
-            - { property: 'imageFile', label: 'Image', type: 'vich_image', base_path: '%app.path.product_images%' }   
             - { property: 'price', label: 'Prix (€)' }
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.product_images%' }   
+            - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.product_images%' } 
+            - { property: 'imageFile3', label: 'Image 3', type: 'vich_image', base_path: '%app.path.product_images%' }   
+            - { property: 'imageFile4', label: 'Image 4', type: 'vich_image', base_path: '%app.path.product_images%' } 
             - { property: 'stock', label: 'Quantité en stock' }
             - { property: 'promo', label: 'En promotion ?'}
             - { property: 'promo_rate', label: 'Taux de réduction' }
             - { property: 'ref', label: 'Référence' }
-            - { property: 'state', label: 'Publié' }
+            - { property: 'state', label: 'Publié sur le site' } 
+            - { property: 'top_product', label: "Produit à la une"}  

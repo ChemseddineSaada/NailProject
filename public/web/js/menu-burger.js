@@ -24,7 +24,7 @@ $('.burger').click(function(){
             duration : 50,
             opacity: 0,
             easing: 'linear'
-            }).reverse();
+            });
         
             setTimeout(() => {
                 $('.menu-devise').attr('hidden','hidden');
@@ -45,11 +45,11 @@ $('.burger').click(function(){
 
             setTimeout(() => {
                 $('.menu-list').hide();
-            }, 600);
+            }, 200);
             
         anime({
             targets: '.menu-title',
-            translateX: 650,
+            translateX: 700,
             duration : 300,
             easing: 'linear'
             });

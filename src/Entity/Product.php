@@ -8,9 +8,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ * @Vich\Uploadable
  */
 class Product
 {
@@ -32,19 +34,9 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $images = [];
-
-    /**
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
      */
     private $price;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $published_at;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -98,9 +90,66 @@ class Product
     private $subscriptions;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\PTypes", inversedBy="products")
+     */
+    private $type;
+
+    /**
      * @ORM\Column(type="boolean")
      */
-    private $home_view;
+    private $top_product;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image3;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image4;
+
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image1")
+     * @var File
+     */
+    private $imageFile1;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image2")
+     * @var File
+     */
+    private $imageFile2;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image3")
+     * @var File
+     */
+    private $imageFile3;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image4")
+     * @var File
+     */
+    private $imageFile4;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
+
 
     public function __construct()
     {
@@ -138,18 +187,6 @@ class Product
         return $this;
     }
 
-    public function getImages(): ?array
-    {
-        return $this->images;
-    }
-
-    public function setImages(?array $images): self
-    {
-        $this->images = $images;
-
-        return $this;
-    }
-
     public function getPrice(): ?string
     {
         return $this->price;
@@ -158,19 +195,6 @@ class Product
     public function setPrice(?string $price): self
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    public function getPublishedAt(): ?\DateTimeInterface
-    {
-        return $this->published_at;
-    }
-
-    public function setPublishedAt(\DateTimeInterface $published_at): self
-    {
-        $date_now = new DateTime('now');
-        $this->published_at = $date_now;
 
         return $this;
     }
@@ -351,15 +375,138 @@ class Product
         return $this;
     }
 
-    public function getHomeView(): ?bool
+    public function getType(): ?PTypes
     {
-        return $this->home_view;
+        return $this->type;
     }
 
-    public function setHomeView(bool $home_view): self
+    public function setType(?PTypes $type): self
     {
-        $this->home_view = $home_view;
+        $this->type = $type;
 
         return $this;
     }
+
+    public function getTopProduct(): ?bool
+    {
+        return $this->top_product;
+    }
+
+    public function setTopProduct(bool $top_product): self
+    {
+        $this->top_product = $top_product;
+
+        return $this;
+    }
+
+    public function getImage1(): ?string
+    {
+        return $this->image1;
+    }
+
+    public function setImage1(?string $image1): self
+    {
+        $this->image1 = $image1;
+
+        return $this;
+    }
+
+    public function getImage2(): ?string
+    {
+        return $this->image2;
+    }
+
+    public function setImage2(?string $image2): self
+    {
+        $this->image2 = $image2;
+
+        return $this;
+    }
+
+    public function getImage3(): ?string
+    {
+        return $this->image3;
+    }
+
+    public function setImage3(?string $image3): self
+    {
+        $this->image3 = $image3;
+
+        return $this;
+    }
+
+    public function getImage4(): ?string
+    {
+        return $this->image4;
+    }
+
+    public function setImage4(?string $image4): self
+    {
+        $this->image4 = $image4;
+
+        return $this;
+    }
+
+    public function setImageFile1(File $image1 = null)
+    {
+        $this->imageFile1 = $image1;
+
+        if ($image1) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile1()
+    {
+        return $this->imageFile1;
+    }
+
+    public function setImageFile2(File $image2 = null)
+    {
+        $this->imageFile2 = $image2;
+
+        if ($image2) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile2()
+    {
+        return $this->imageFile2;
+    }
+
+    
+
+    public function setImageFile3(File $image3 = null)
+    {
+        $this->imageFile3 = $image3;
+
+        if ($image3) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile3()
+    {
+        return $this->imageFile3;
+    }
+
+    public function setImageFile4(File $image4 = null)
+    {
+        $this->imageFile4 = $image4;
+
+        if ($image4) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile4()
+    {
+        return $this->imageFile4;
+    }
+
+    public function getUpdatedAt(){
+        return $this->updatedAt;
+    }
+
 }

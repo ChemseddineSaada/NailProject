@@ -16,14 +16,12 @@ class ShopController extends AbstractController
      */
     public function index()
     {
-        $products = $this->getDoctrine()->getRepository(Product::class)->findAllHomeView();
+        $product = $this->getDoctrine()->getRepository(Product::class)->findTopProduct();
         $offers = $this->getDoctrine()->getRepository(PackOffer::class)->findAllHomeView();
-        $subscriptions = $this->getDoctrine()->getRepository(Subscription::class)->findAllHomeView();
 
         return $this->render('shop/index.html.twig', [
-            'products' => $products,
+            'product' => $product[0],
             'offers' => $offers,
-            'subscriptions' => $subscriptions
         ]);
     }
 

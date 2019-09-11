@@ -64,11 +64,11 @@ class ProductRepository extends ServiceEntityRepository
                     ->getResult();
     }
 
-    public function findAllHomeView(){
+    public function findTopProduct(){
         return $this->createQueryBuilder('c')
-                    ->andWhere('c.state = :val AND c.home_view = :home')
+                    ->andWhere('c.state = :val AND c.top_product = :top')
                     ->setParameter('val', 1)
-                    ->setParameter('home', 1)
+                    ->setParameter('top', 1)
                     ->getQUery()
                     ->getResult();
     }

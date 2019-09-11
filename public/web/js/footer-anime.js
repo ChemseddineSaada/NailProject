@@ -1,10 +1,17 @@
-$("section a, ul a").click(function(){
+$(document).ready(function(){
 
-    anime({
-        targets: 'footer',
-        opacity:0,
-        duration: 300,
-        easing: 'linear'
-        });
+$(window).scroll(function(footerHeight){
+    var footerHeight = $(".footer-div").offset().top;
+    var currentHeight = $(window).scroll(function(){}).scrollTop();
+    if(currentHeight + 400 > footerHeight){
+        anime({
+            targets: '.footer-div',
+            opacity: 1,
+            duration: 400,
+            easing: 'linear'
+            });
+        
+    }
 
+});
 });

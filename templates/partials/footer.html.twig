@@ -1,42 +1,48 @@
-<div class="row align-items-center">
-<div class=".col-12 .col-sm-12 .col-md-12 .col-lg-6 .col-xl-6">
-    <h2>Inscrivez-vous à notre NEWSLETTER</h2>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+<link rel="stylesheet" href="{{asset('web/css/footer-style.css')}}">
 
-    {% for message in app.flashes('notice_success') %}
-        <p class="alert-link">{{ message }}</p>
-    {% endfor %}
+<div class="row align-items-center footer-div justify-content-around">
 
-    {% for message in app.flashes('notice_fail') %}
-        <p class="alert-link">{{ message }}</p>
-    {% endfor %}
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 newsletter-div"> <!-- Newsletter-div -->
+        <h2>Inscrivez-vous à notre Newsletter</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
 
-    <form action="{{path('newsletter.subscribe')}}" method="post">
-        <input type="email" name="email" placeholder:"Votre email...">
-        <input type="text" name="last-route" value="{{app.request.attributes.get('_route')}}" hidden>
-        <button type="submit">S'inscrire</button>
-    </form>
-</div>
-<div class=".col-12 .col-sm-12 .col-md-12 .col-lg-6 .col-xl-6 justify-content-center">
-    <h3>NailProject</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-    <div class="row">
-        <div>
-            <p>info@nailproject.com</p>
-            <p>+33 000000000</p>
+        {% for message in app.flashes('notice_success') %} <!-- Affichage des messages de succès et d'échec -->
+            <p class="alert-link">{{ message }}</p>
+        {% endfor %}
+
+        {% for message in app.flashes('notice_fail') %}
+            <p class="alert-link">{{ message }}</p>
+        {% endfor %} <!-- fin de l'affichage des messages de succès et d'échec -->
+
+        <form action="{{path('newsletter.subscribe')}}" method="post"> <!-- Formulaire d'inscription à la Newsletter -->
+            <input type="email" name="email" id="newsletter-email" placeholder="Votre email..."> 
+            <input type="text" name="last-route" value="{{app.request.attributes.get('_route')}}" hidden>
+            <button type="submit" id="newsletter-submit">S'inscrire</button>
+        </form> <!-- Fin du formulaire d'inscription à la Newsletter -->
+    </div> <!-- fin Newsletter-div -->
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 justify-content-center information-div"> <!-- information-div -->
+        <h3>NailProject</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+        <div class="contact-container row justify-content-between">
+            <div class="contact">
+                <p>info@nailproject.com</p>
+                <p>+33 000000000</p>
+            </div>
+            <div class="contact">
+                <p>204 Rue Saint Martin</p>
+                <p>75003 Paris, France</p>
+            </div>
         </div>
-        <div>
-            <p>204 Rue Saint Martin</p>
-            <p>75003 Paris, France</p>
-        </div>
+        <div class="row social-network">
+            <img src="{{asset('web/img/footer/fb.svg')}}" alt="Page Facebook de NailProject">
+            <img src="{{asset('web/img/footer/instagram.svg')}}" alt="Profil Instagram de NailProject">
+            <img src="{{asset('web/img/footer/feed.svg')}}" alt="Flux RSS">
+        </div> <!-- fin information-div -->
+
+        <p class="copyright">© 2019 NAILPROJECT. Mode by TECH5</p>
     </div>
-    <div class="row">
-        <img src="{{asset('web/img/fb.svg')}}" alt="Page Facebook de NailProject">
-        <img src="{{asset('web/img/instagram.svg')}}" alt="Profil Instagram de NailProject">
-        <img src="{{asset('web/img/feed.svg')}}" alt="Flux RSS">
-    </div>
-    <p>© 2019 NAILPROJECT. Mode by TECH5</p>
-</div>
+
 </div>
 
 <script src="{{asset('web/js/footer-anime.js')}}"></script>

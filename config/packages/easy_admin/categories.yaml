@@ -12,11 +12,7 @@ easy_admin:
             - { property: 'name', label: 'Nom de la catégorie' }           
             - { property: 'image', label: 'Image' , type: image, base_path: '%app.path.category_images%'}            
             - { property: 'products', label: 'Nombre de produits associés' }
-          actions:
-            - { name: 'edit', label: 'Modifier'}
-            - { name: 'delete', label: 'Supprimer'} 
-            - {name: 'new', label: 'Ajouter un nouveau'}          
-            - { name: 'search', label: 'Rechercher'}   
+              
         edit:
           help: "Vous allez modifier les informations liés à la catégorie (ATTENTION ! Les modifictions apportées seront irréversibles)."
           title: 'Modifier la catégorie'
@@ -39,10 +35,6 @@ easy_admin:
         show:
           help: "Ceci est une page de consultation."
           title: 'Ajouter une catégorie'
-          actions:                              
-            - { name: 'delete', label: 'Supprimer'} 
-            - { name: 'edit', label: 'Modifier'}
-            - { name: 'list', label: 'Retour à la liste'} 
           fields:          
             - { property: 'name', label: 'Nom de la catégorie' }                
             - { property: 'description', label: 'Description' }         

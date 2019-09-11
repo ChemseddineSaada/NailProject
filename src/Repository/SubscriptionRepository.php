@@ -65,12 +65,4 @@ class SubscriptionRepository extends ServiceEntityRepository
                     ->getResult();
     }
 
-    public function findAllHomeView(){
-        return $this->createQueryBuilder('c')
-                    ->andWhere('c.state = :val AND c.home_view = :home')
-                    ->setParameter('val', 1)
-                    ->setParameter('home', 1)
-                    ->getQUery()
-                    ->getResult();
-    }
 }

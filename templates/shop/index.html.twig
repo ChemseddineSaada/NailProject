@@ -1,38 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}NailProject - Accueil{% endblock %}
+{% block more_style %}<link rel="stylesheet" href="{{asset('web/css/index-style.css')}}"/>{% endblock %}  
 
 {% block headerText %}
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, aut sint commodi</p>
+    <div class="row text-header align-items-center justify-content-center">
+        <p>Le vernis des des femmes qui s'engagent</p>
+    </div>
 {% endblock %}
+
 {% block body %}
-<section> <!-- Our Products -->
+<section class="d-flex flex-wrap column"> <!-- Our Products -->
 
-    <h2 class="title-right">Nos produits</h2>
+    <h2 class="title-left text-left">Notre couleur de la saison</h2>
+    <div class="row">
+        <a class="parallax0 parallax" href="#">
+            <img class="element-image" src="{{asset('web/img/')}}" alt="{{product.description}}">
 
-    {% for product in products %}
+            <div class="element-info column align-items-center">
+                <h4 class="element-title">{{product.name}}</h4>
+                <p class="element-price">{{product.price}} &#128;</p>
+            </div>   
 
-        <a class="{{ loop.index0 % 2 == 0 ? 'left-display' : 'right-display'}}">
-            <img class=".element-image" src="{{asset('web/img/')}}" alt="{{product.description}}">
-            <h3 class=".element-title">{{product.name}}</h3>
-            <p class=".element-price">{{product.price}}</p>
         </a>
-
-        {% set iteration = loop.index0  %}
-
-    {% endfor %}
+        <div>
+            <p class="p-bold">Restez belles et naturelles tout au long de l’automne, avec nos vernis fabriqués avec plus de 80% de matières premières d’origine naturelle et végétale.</p>
+            <p class="p-light">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam</p>
+            <a class="btn-nailproject see-more-products">Voir plus de produits</a>
+        </div>
+    </div>
 
 </section> <!-- Our Products -->
 
 <section> <!-- Our Packs -->
-    <h2 class="title-left">Nos offres</h2>
-    {% for offer in offers %}
+    <h2 class="title-left text-left">Nos Offres</h2>
+    {% for offer in offers %} 
 
-    <a class="{{ loop.index0 + iteration % 2 == 0 ? 'left-display' : 'right-display'}}">
-        <img class=".element-image" src="{{asset('web/img/')}}" alt="{{offer.description}}">
-        <h3 class=".element-title">{{offer.name}}</h3>
-        <p class=".element-price">{{offer.price}}</p>
-    </a>
+        <a class="{{ 'parallax' ~ loop.index0 }} parallax" href="#">
+            
+            <img class="element-image" src="{{asset('web/img/')}}" alt="{{offer.description}}">
+
+            <div class="element-info column align-items-center">
+                <h4 class="element-title">{{offer.name}}</h4>
+                {% for product in offer.products  %}
+                    <p>{{product.name}}</p>
+                {% endfor %}
+                <p class="element-price">{{offer.price}} &#128;</p>
+            </div>
+            
+        </a>
 
     {% endfor %}
 
@@ -40,18 +56,20 @@
 
 <section> <!-- Our Subscription -->
 
-    <h2 class="title-center">Notre abonnement</h2>
-    {% for subscription in subscriptions %}
-        <a class="home-subscription">
-            <img src="{{asset('web/img/')}}" alt="{{subscription.description}}">
-            <h3>{{subscription.name}}</h3>
-            <p class=".element-price">{{subscription.price}}</p>
-        </a>
-    {% endfor %}
+    <h2 class="title-center text-center">Événements</h2>
+    <div class="event-element d-flex d-table-row">
+        <a href="#">Share button</a>
+        <div class="d-flex row">
+            <div class="map"></div>
+            <p>Retrouvez-nous du 20 au 27 septembre 2019 au corner beauté des Galeries Lafayette</p>
+            <a class="btn-nailproject" href="#">s'inscrire</a>
+        </div>
+    </div>
 
 </section> <!-- Our Subscription -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{{asset('web/js/home-anime.js')}}"></script>
+
 
 {% endblock %}

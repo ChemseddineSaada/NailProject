@@ -7,13 +7,16 @@
     {% block stylesheets %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Poppins|Sanchez&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('web/css/basis-style.css')}}"> 
     {% endblock %}
+    {% block more_style %}{% endblock %}  
 </head>
 
 <body>
-    <header class="mb-5">
+    <header>
             {% block menu %}{{render(controller('App\\Controller\\MenuController::mainMenu',{'routeName' : app.request.attributes.get('_route')}))}}{% endblock %}
-            <div class="container text-center">{% block headerText %}{% endblock %}</div>
+            {% block headerText %}{% endblock %}
     </header>
 
 
@@ -26,7 +29,7 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         {% endblock %}
     </div>
-    <footer class="container">
+    <footer class="footerParallax">
         {% include "partials/footer.html.twig" %}
     </footer>
 </body>

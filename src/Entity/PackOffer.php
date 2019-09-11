@@ -2,12 +2,16 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PackOfferRepository")
+ * @Vich\Uploadable
  */
 class PackOffer
 {
@@ -27,11 +31,6 @@ class PackOffer
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $published_at;
 
     /**
      * @ORM\Column(type="decimal", precision=5, scale=2)
@@ -79,6 +78,36 @@ class PackOffer
      */
     private $home_view;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image2;
+
+    /**
+     * @Vich\UploadableField(mapping="packOffer_images", fileNameProperty="image1")
+     * @var File
+     */
+    private $imageFile1;
+
+        /**
+     * @Vich\UploadableField(mapping="packOffer_images", fileNameProperty="image2")
+     * @var File
+     */
+    private $imageFile2;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+ 
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -110,18 +139,6 @@ class PackOffer
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getPublishedAt(): ?\DateTimeInterface
-    {
-        return $this->published_at;
-    }
-
-    public function setPublishedAt(\DateTimeInterface $published_at): self
-    {
-        $this->published_at = $published_at;
 
         return $this;
     }
@@ -260,5 +277,64 @@ class PackOffer
         $this->home_view = $home_view;
 
         return $this;
+    }
+    public function __toString(){
+        return $this->name;
+    }
+
+    public function getImage1(): ?string
+    {
+        return $this->image1;
+    }
+
+    public function setImage1(?string $image1): self
+    {
+        $this->image1 = $image1;
+
+        return $this;
+    }
+
+    public function getImage2(): ?string
+    {
+        return $this->image2;
+    }
+
+    public function setImage2(?string $image2): self
+    {
+        $this->image2 = $image2;
+
+        return $this;
+    }
+
+    public function setImageFile1(File $image1 = null)
+    {
+        $this->imageFile1 = $image1;
+
+        if ($image1) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile1()
+    {
+        return $this->imageFile1;
+    }
+
+    public function setImageFile2(File $image2 = null)
+    {
+        $this->imageFile2 = $image2;
+
+        if ($image2) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile2()
+    {
+        return $this->imageFile2;
+    }
+    
+    public function getUpdatedAt(){
+        return $this->updatedAt;
     }
 }

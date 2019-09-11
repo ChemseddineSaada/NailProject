@@ -1,0 +1,38 @@
+# config/packages/easy_admin/events.yaml
+easy_admin:
+  entities:
+      events:
+        label: "Événements"
+        help: "Vous trouverez ici tous les événements inscrits dans votre base de donnée."
+        class: App\Entity\Event
+
+        list:
+          title: "Liste des événements" 
+          fields:
+            - { property: 'id', label: '#ID' }
+            - { property: 'title', label: 'Titre' }                        
+            - { property: 'image', label: 'Image' , type: image, base_path: '%app.path.event_images%'}  
+            - { property: 'event_date', label: "Date de l'événement" }
+            - { property: 'event_place', label: "Lieu de l'événement" }
+            - { property: 'state', label: 'Publié sur le site',type: toggle }
+
+        edit:
+          help: "Vous allez modifier les informations liés à l'événement (ATTENTION ! Les modifictions apportées seront irréversibles)."
+          title: "Modifier l'événements"
+          fields:       
+            - { property: 'title', label: 'Titre' } 
+            - { property: 'description', label: 'Description'} 
+            - { property: 'event_date', label: "Date de l'événement" }
+            - { property: 'event_place', label: "Lieu de l'événement" }
+            - { property: 'imageFile', label: 'Image', type: 'vich_image', base_path: '%app.path.event_images%' } 
+            - { property: 'state', label: 'Publié sur le site' } 
+        new:
+          help: "Vous allez ajouter un événement à votre base de donnée."
+          title: "Ajouter un événement"
+          fields:        
+            - { property: 'title', label: 'Titre' } 
+            - { property: 'description', label: 'Description'} 
+            - { property: 'event_date', label: "Date de l'événement" }
+            - { property: 'event_place', label: "Lieu de l'événement" }
+            - { property: 'imageFile', label: 'Image', type: 'vich_image', base_path: '%app.path.event_images%' } 
+            - { property: 'state', label: 'Publié sur le site' }

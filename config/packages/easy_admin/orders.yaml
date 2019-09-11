@@ -7,5 +7,3 @@ easy_admin:
         disabled_actions: ['edit','new','delete']
         list:
           title: "Liste des commandes"
-          actions:                      
-            - { name: 'search', label: 'Rechercher'}

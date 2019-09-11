@@ -1,6 +1,18 @@
 easy_admin:
+    translation_domain: 'messages'
     list:
       max_results: 30
+      actions:
+            - { name: 'edit', label: 'Modifier'}
+            - { name: 'delete', label: 'Supprimer'} 
+            - { name: 'new', label: 'Ajouter un nouveau'}          
+            - { name: 'search', label: 'Rechercher'}   
+    show:
+      actions:                              
+            - { name: 'delete', label: 'Supprimer'} 
+            - { name: 'edit', label: 'Modifier'}
+            - { name: 'list', label: 'Retour à la liste'} 
+  
     site_name: '<h6><b>NAIL PROJECT</b> DASHBOARD</h6>'
     formats:
       date:     'd/m/Y'

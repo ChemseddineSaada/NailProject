@@ -1,0 +1,34 @@
+# config/packages/easy_admin/events_passed.yaml
+easy_admin:
+  entities:
+      event_passed:
+        label: "Événements passés"
+        help: "Vous trouverez ici tous les événements inscrits dans votre base de donnée."
+        class: App\Entity\EventPassed
+
+        list:
+          title: "Liste des événements" 
+          fields:
+            - { property: 'id', label: '#ID' }
+            - { property: 'events', label: 'Titre' } 
+            - { property: 'updated_at', label: 'Publié le' }                  
+            - { property: 'image1', label: 'Image' , type: image, base_path: '%app.path.event_passed_images%'}  
+
+        edit:
+          help: "Vous allez modifier les informations liés au produit (ATTENTION ! Les modifictions apportées seront irréversibles)."
+          title: 'Modifier le produit'
+          fields:       
+            - { property: 'events', label: 'Titre' } 
+            - { property: 'article', label: 'Article' }
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.event_passed_images%' }   
+            - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.event_passed_images%' } 
+            - { property: 'imageFile3', label: 'Image 3', type: 'vich_image', base_path: '%app.path.event_passed_images%' }  
+        new:
+          help: "Vous allez ajouter un produit à votre base de donnée."
+          title: 'Ajouter un produit'
+          fields:        
+            - { property: 'events', label: 'Titre' } 
+            - { property: 'article', label: 'Article' }
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.event_passed_images%' }   
+            - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.event_passed_images%' } 
+            - { property: 'imageFile3', label: 'Image 3', type: 'vich_image', base_path: '%app.path.event_passed_images%' }  

@@ -1,0 +1,34 @@
+# config/packages/easy_admin/p_types.yaml
+easy_admin:
+  entities:
+      Types:
+        help: "Vous trouverez ici tous les types de produit inscrits dans votre base de donnée."
+        class: App\Entity\PTypes    
+        list:
+          title: "Liste des types de produit"
+          fields:
+            - { property: 'id', label: '#ID' }             
+            - { property: 'name', label: 'Nom' }                
+            - { property: 'products', label: 'Nombre de produits liés' }      
+        edit:
+          help: "Vous allez modifier les informations liés au type de produit (ATTENTION ! Les modifictions apportées seront irréversibles)."
+          title: 'Modifier la catégorie'
+          fields:           
+            - { property: 'name', label: 'Nom' }      
+            - { property: 'products', label: 'Produits liés' }   
+        new:
+          help: "Vous allez ajouter un nouveau type de produit."
+          title: 'Ajouter une catégorie'
+          fields:            
+            - { property: 'name', label: 'Nom' } 
+            - { property: 'products', label: 'Produits liés' }   
+        
+        show:
+          help: "Ceci est une page de consultation."
+          title: 'Tous les types de produit'
+          fields:  
+            - { property: 'id', label: '#ID' }             
+            - { property: 'name', label: 'Nom' }  
+            - { property: 'products', label: 'Nombre de produits liés' }  
+        
+        
