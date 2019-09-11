@@ -20,7 +20,7 @@ easy_admin:
           fields:       
             - { property: 'events', label: 'Titre' } 
             - { property: 'article', label: 'Article' }
-            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.event_passed_images%' }   
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.event_passed_images%', help: "Image principale" }   
             - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.event_passed_images%' } 
             - { property: 'imageFile3', label: 'Image 3', type: 'vich_image', base_path: '%app.path.event_passed_images%' }  
         new:
@@ -29,6 +29,6 @@ easy_admin:
           fields:        
             - { property: 'events', label: 'Titre' } 
             - { property: 'article', label: 'Article' }
-            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.event_passed_images%' }   
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.event_passed_images%', help: "Image principale" }   
             - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.event_passed_images%' } 
             - { property: 'imageFile3', label: 'Image 3', type: 'vich_image', base_path: '%app.path.event_passed_images%' }  

@@ -6,7 +6,7 @@ use App\Entity\MessageMe;
 use App\Form\MessageMeType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\{Product,PackOffer,Subscription,Article};
+use App\Entity\{Product,PackOffer,Subscription,Event};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ShopController extends AbstractController
@@ -16,12 +16,28 @@ class ShopController extends AbstractController
      */
     public function index()
     {
-        $product = $this->getDoctrine()->getRepository(Product::class)->findTopProduct();
+        $products = $this->getDoctrine()->getRepository(Product::class)->findTopProduct();
         $offers = $this->getDoctrine()->getRepository(PackOffer::class)->findAllHomeView();
+        $events = $this->getDoctrine()->getRepository(Event::class)->findPublished();
 
+        //Pour afficher un seul événement à la fois sur la page d'accueil
+        isset($events[0]) ? $event = $events[0] : $event = null;
+        isset($products[0]) ? $product = $products[0] : $product = null;
+
+        $i = 0;
+
+        //Pour limiter à 2 le nombre d'offres sur la page d'accueil
+        foreach($offers as $offer){
+            if($i < 2){
+                $published_offers[] = $offer;
+            }
+            $i++;          
+        }
+        
         return $this->render('shop/index.html.twig', [
-            'product' => $product[0],
+            'product' => $product,
             'offers' => $offers,
+            'event' => $event,
         ]);
     }
 
@@ -50,15 +66,24 @@ class ShopController extends AbstractController
     }
 
     /**
+     * @Route("/events", name="shop.list.events")
+     */
+    public function listEvents(){
+        $posts = $this->getDoctrine()->getRepository(EventPassed::class)->findAll();
+        $events = $this->getDoctrine()->getRepository(Event::class)->findPublished();
+
+        return $this->render('shop/events.html.twig', [
+            'posts' => $posts,
+            'events' => $events
+        ]);
+    }
+
+    /**
      * @Route("/articles", name="shop.list.articles")
      */
     public function listArticles(){
-        $posts = $this->getDoctrine()->getRepository(Article::class)->findPosts();
-        $events = $this->getDoctrine()->getRepository(Article::class)->findEvents();
 
         return $this->render('shop/articles.html.twig', [
-            'posts' => $posts,
-            'events' => $events
         ]);
     }
 

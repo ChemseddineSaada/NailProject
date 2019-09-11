@@ -12,10 +12,10 @@
 {% block body %}
 <section class="d-flex flex-wrap column"> <!-- Our Products -->
 
-    <h2 class="title-left text-left">Notre couleur de la saison</h2>
-    <div class="row">
+    <h2 class="section-title">Notre couleur de la saison</h2>
+    <div class="row d-flex flex-nowrap">
         <a class="parallax0 parallax" href="#">
-            <img class="element-image" src="{{asset('web/img/')}}" alt="{{product.description}}">
+            <img class="product-element-image element-image" src="{{asset('/uploads/images/products/' ~ product.image1)}}" alt="{{product.description}}">
 
             <div class="element-info column align-items-center">
                 <h4 class="element-title">{{product.name}}</h4>
@@ -23,53 +23,57 @@
             </div>   
 
         </a>
-        <div>
-            <p class="p-bold">Restez belles et naturelles tout au long de l’automne, avec nos vernis fabriqués avec plus de 80% de matières premières d’origine naturelle et végétale.</p>
-            <p class="p-light">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam</p>
-            <a class="btn-nailproject see-more-products">Voir plus de produits</a>
+        <div class="align-self-center">
+            <p class="p-bold product-description-bold">Restez belles et naturelles tout au long de l’automne, avec nos vernis fabriqués avec plus de 80% de matières premières d’origine naturelle et végétale.</p>
+            <p class="product-description-light">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam</p>
+            <a class="btn-bbb see-more-products"><p class="btn-text">Voir plus de produits</p></a>
         </div>
     </div>
 
 </section> <!-- Our Products -->
 
 <section> <!-- Our Packs -->
-    <h2 class="title-left text-left">Nos Offres</h2>
-    {% for offer in offers %} 
+    <h2 class="section-title">Nos Offres</h2>
+    <div class="d-flex row justify-content-between">
+        {% for offer in offers %} 
 
-        <a class="{{ 'parallax' ~ loop.index0 }} parallax" href="#">
-            
-            <img class="element-image" src="{{asset('web/img/')}}" alt="{{offer.description}}">
+            <a class="{{ 'parallax' ~ loop.index0 }} parallax col-lg-5 col-md-12 col-sm-12 col-12" href="#">
+                
+                <img class="element-image img-fluid" src="{{asset('/uploads/images/packOffers/' ~ offer.image1)}}" alt="{{offer.description}}">
 
-            <div class="element-info column align-items-center">
-                <h4 class="element-title">{{offer.name}}</h4>
-                {% for product in offer.products  %}
-                    <p>{{product.name}}</p>
-                {% endfor %}
-                <p class="element-price">{{offer.price}} &#128;</p>
-            </div>
-            
-        </a>
+                <div class="element-info column align-items-center">
+                    <h4 class="element-title">{{offer.name}}</h4>
+                    {% for product in offer.products  %}
+                        <p class="element-price">Notre {{product.name}}</p>
+                    {% endfor %}
+                    <p class="element-price">{{offer.price}} &#128;</p>
+                </div>
+                
+            </a>
 
-    {% endfor %}
-
+        {% endfor %}
+    </div>
 </section> <!-- Our Packs -->
 
 <section> <!-- Our Subscription -->
 
-    <h2 class="title-center text-center">Événements</h2>
+    <h2 class="section-title">Événements</h2>
+    {% if event is null %}
+        <p>Nous n'avons aucun événement futur pour l'instant, abonnez-vous à notre Newsletter pour recevoir les dates dès leurs publications !</p>
+    {% else %}
     <div class="event-element d-flex d-table-row">
         <a href="#">Share button</a>
         <div class="d-flex row">
             <div class="map"></div>
-            <p>Retrouvez-nous du 20 au 27 septembre 2019 au corner beauté des Galeries Lafayette</p>
+            <p>{{ event.annoncement }}</p>
             <a class="btn-nailproject" href="#">s'inscrire</a>
         </div>
     </div>
+    {% endif %}
 
 </section> <!-- Our Subscription -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="{{asset('web/js/home-anime.js')}}"></script>
 
 
 {% endblock %}

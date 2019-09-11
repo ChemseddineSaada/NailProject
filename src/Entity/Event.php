@@ -66,6 +66,12 @@ class Event
      */
     private $state;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $annoncement;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -181,4 +187,17 @@ class Event
     public function getUpdatedAt(){
         return $this->updatedAt;
     }
+
+    public function getAnnoncement(): ?string
+    {
+        return $this->annoncement;
+    }
+
+    public function setAnnoncement(string $annoncement): self
+    {
+        $this->annoncement = $annoncement;
+
+        return $this;
+    }
+
 }

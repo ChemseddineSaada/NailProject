@@ -6,7 +6,7 @@
       }
 
       .cls-1 {
-        stroke: #fff;
+        stroke: #000;
         stroke-width: 1.25px;
       }
 
@@ -19,7 +19,7 @@
       }
 
       .cls-5 {
-        fill: #fff;
+        fill: #000;
       }
     </style>
   </defs>

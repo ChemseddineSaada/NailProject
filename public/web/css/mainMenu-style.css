@@ -1,31 +1,36 @@
-nav{
-    padding-top: 30px;
-}
-.menu-list{
-    margin: 0;
-    padding: 0;
-}
-.menu-devise{
-    display: inline;
+.main-menu{
+    background: linear-gradient(#FFF, rgba(255,255,255,0));
     font-family: 'Lato', sans-serif;
-    font-size: 11px;
-    color: white;
-    margin-left: 20px;
+    font-size: 1.25vw;
+    margin: auto;
+    padding-top: 20px;
 }
-.menu-title{
-    font-size: 18px;
-    font-family: 'Sanchez', serif;
-    color: white;
+
+.user-link{
+    width: 10.41vw;
+}
+.nav-link:hover{
+    color:#FF0000;
+}
+
+.user-item{
+    color: black;
+    margin: 5px 0;
+}
+
+.user-item:hover{
+    color:#FF0000;
+    text-decoration: none;
+}
+
+.active{
+    color:#FF0000 !important;
 }
 
 .nav-link{
-    color:white;
-    font-family: 'Lato', sans-serif;
-    font-size: 24px;
+    color: black;
 }
 
-.nav-link:hover{
-    color:white;
-}
+
 
 

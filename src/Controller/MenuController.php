@@ -16,7 +16,8 @@ class MenuController extends AbstractController
             'home' => ['route'=>'shop.home.index','label'=>'Accueil'],
             'products' => ['route'=>'shop.list.products','label'=>'Nos produits'],
             'offers' => ['route'=>'shop.list.offers','label'=>'Nos offres'],
-            'articles' => ['route'=>'shop.list.articles','label'=>'Événements'],
+            'events' => ['route'=>'shop.list.events','label'=>'Événements'],
+            'blog' => ['route'=>'shop.list.articles', 'label'=> "Notre jour'nail"],
             'whoweare' => ['route'=>'shop.show.whoweare','label'=>'Qui sommes-nous ?'],
             'contact' => ['route'=>'shop.show.messageme','label'=>'Contactez nous'],
         ];

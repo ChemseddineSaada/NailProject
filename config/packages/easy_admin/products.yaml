@@ -28,7 +28,7 @@ easy_admin:
             - { property: 'category', label: 'Catégorie' }
             - { property: 'description', label: 'Description' }
             - { property: 'price', label: 'Prix (€)' }
-            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.product_images%' }   
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.product_images%', help: "Image principale"}   
             - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.product_images%' } 
             - { property: 'imageFile3', label: 'Image 3', type: 'vich_image', base_path: '%app.path.product_images%' }   
             - { property: 'imageFile4', label: 'Image 4', type: 'vich_image', base_path: '%app.path.product_images%' } 
@@ -47,7 +47,7 @@ easy_admin:
             - { property: 'category', label: 'Catégorie' }
             - { property: 'description', label: 'Description' }
             - { property: 'price', label: 'Prix (€)' }
-            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.product_images%' }   
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.product_images%', help: "Image principale" }   
             - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.product_images%' } 
             - { property: 'imageFile3', label: 'Image 3', type: 'vich_image', base_path: '%app.path.product_images%' }   
             - { property: 'imageFile4', label: 'Image 4', type: 'vich_image', base_path: '%app.path.product_images%' } 

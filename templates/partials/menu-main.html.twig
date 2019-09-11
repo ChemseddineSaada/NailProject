@@ -1,8 +1,11 @@
-<nav class="row container-fluid">
+<nav class="row container-fluid justify-content-between align-items-center main-menu">
     <link rel="stylesheet" href="{{asset('web/css/mainMenu-style.css')}}">
-    <span class="menu-devise" hidden>EUR</span>
-    <a class="navbar-brand col-auto mr-auto menu-title" href="#">NailProject</a>
-    <ul class="navbar menu-list">
+
+    <a class="menu-logo" href="{{path('shop.home.index')}}">
+        <img src="{{asset('web/img/menu/logo.png')}}" alt="Logo BBB">
+    </a>
+
+    <ul class="navbar">
         {% for element in menu  %}
             <li class="nav-item menu-item">
                 <a class="nav-link {{ app.request.get('routeName') == element.route ? 'active' }}"
@@ -11,17 +14,25 @@
             </li>
         {% endfor %}
     </ul>
-    <div class="row">
-        <a class="nav-link burger"><img class="burger-btn" src="{{asset('web/img/menu/burger-opened.svg')}}"  alt="Boutton d'ouverture du menu"></a>
+
+    <div class="column user-link">
+        <a class="nav-link burger" hidden><img class="burger-btn" src="{{asset('web/img/menu/burger-opened.svg')}}"  alt="Boutton d'ouverture du menu"></a>
 
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <a class="nav-link" href="{{path('app_logout')}}">
-                    <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">
+                <a class="row justify-content-between user-item" href="{{path('app_logout')}}">
+                    <p  class="mt-auto mb-auto">Mon compte</p> 
+                    <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">                   
                 </a>
         {% else %}
-                <a class="nav-link" href="{{path('login_panel')}}"><img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre"></a>
+                <a class="row justify-content-between user-item" href="{{path('login_panel')}}">
+                    <p  class="mt-auto mb-auto">Mon compte</p> 
+                    <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">
+                </a>
         {% endif %}
-        <a class="nav-link" href="#"><img src="{{ asset('web/img/menu/cart.svg') }}" alt="Panier"></a>
+        <a class="row justify-content-between user-item" href="#">
+            <p class="mt-auto mb-auto">Mon panier</p>
+            <img src="{{ asset('web/img/menu/cart.svg') }}" alt="Panier">
+        </a>
     </div>
 </nav>
 

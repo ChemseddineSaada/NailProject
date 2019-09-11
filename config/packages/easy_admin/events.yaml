@@ -3,7 +3,7 @@ easy_admin:
   entities:
       events:
         label: "Événements"
-        help: "Vous trouverez ici tous les événements inscrits dans votre base de donnée."
+        help: "Vous trouverez ici tous les événements inscrits dans votre base de donnée. </br> <b>Attention ! Seul l'événement le plus proche en date sera afficher sur la page d'accueil.</b>"
         class: App\Entity\Event
 
         list:
@@ -24,7 +24,8 @@ easy_admin:
             - { property: 'description', label: 'Description'} 
             - { property: 'event_date', label: "Date de l'événement" }
             - { property: 'event_place', label: "Lieu de l'événement" }
-            - { property: 'imageFile', label: 'Image', type: 'vich_image', base_path: '%app.path.event_images%' } 
+            - { property: 'imageFile', label: 'Image', type: 'vich_image', base_path: '%app.path.event_images%' }             
+            - { property: 'annoncement', label: "Phrase d'annoncement sur la page d'accueil", help: "Cette phrase sera afficher sur la page d'accueil." } 
             - { property: 'state', label: 'Publié sur le site' } 
         new:
           help: "Vous allez ajouter un événement à votre base de donnée."
@@ -35,4 +36,5 @@ easy_admin:
             - { property: 'event_date', label: "Date de l'événement" }
             - { property: 'event_place', label: "Lieu de l'événement" }
             - { property: 'imageFile', label: 'Image', type: 'vich_image', base_path: '%app.path.event_images%' } 
+            - { property: 'annoncement', label: "Phrase d'annoncement sur la page d'accueil", help: "Cette phrase sera afficher sur la page d'accueil." } 
             - { property: 'state', label: 'Publié sur le site' }

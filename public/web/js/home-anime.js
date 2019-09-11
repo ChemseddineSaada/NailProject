@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
     $('.parallax img').css('transform','translateY(100px)');
     $('.parallax p').css('transform',' translateY(50px)');
     $('.left-display h4').css('transform','translateX(-200px)');
@@ -7,7 +7,7 @@ $(document).ready(function(){
     $('.title-left').css('transform','translateX(-200px)');
     $('.title-center').css('transform','translateX(-200px)');
     $('.home-subscription p').css('transform','translateX(200px)');
-    $('.home-subscription h4').css('transform','translateX(-200px)');
+    $('.home-subscription h4').css('transform','translateX(-200px)');*/
   
 
     var parallaxNumber = $(".parallax").length;

@@ -1,10 +1,18 @@
+/********************************************************************/
+/*************************** BASIS STYLE ***************************/
+/********************************************************************/
+.container{
+    padding: 0 !important;
+}
 header{ 
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center center;
     background-size: cover;
     height: 100vh;
     margin: 0;
+}
+body{
+    font-family: 'Lato', sans-serif; 
 }
 h2{
     font-family: 'Lato', sans-serif;
@@ -13,19 +21,65 @@ h2{
 }
 
 h3{
-    font-family: 'Sanchez', serif;
     font-size: 28px;
 }
 
 h4{
-    font-family: 'Poppins', sans-serif;
     font-size: 24px;
 }
 
-p{
-    font-family: 'Poppins', sans-serif;
+.text-header{
+    height: 75%;
 }
 
-.text-header{
-    height: 80%;
+.text-header p{
+    margin: auto auto 20px auto;
+    font-size: 1.77vw;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-shadow: 0 3px 6px rgba(255,255,255,0.31);
+    font-weight: bolder;
+}
+
+.p-bold{
+    font-weight: bold;
+}
+
+
+/******* NAVIGATION ARROW *******/
+.nav-arrow{
+    position: fixed;
+    top: 84vh;
+    left: 91vw;
+}
+
+/********************************************************************/
+/*************************** TITLES STYLE ***************************/
+/********************************************************************/
+
+.section-title{
+    margin-top: 6.77vw;
+    margin-bottom: 6.77vw;
+    font-size: 1.875vw;
+    font-weight: bolder;
+}
+
+/********************************************************************/
+/************************** BUTTONS STYLE ***************************/
+/********************************************************************/
+
+.btn-bbb{
+    display: flex;
+    border: 0.3125vw solid black;
+    height: 3.8542vw;
+    border-radius: 1.927vw;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.btn-text{
+    margin: auto;
+    text-transform: uppercase;
+    font-size: 1.458vw;
+    font-weight: bold;
 }

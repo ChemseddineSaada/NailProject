@@ -5,44 +5,64 @@ header{
     background-image: url('../img/index/Header-home.jpg');
 }
 
-section h2{
-    opacity: 0;
-}
 
-.text-header{
-    font-family: 'Lato', sans-serif;    
-    font-size: 24px;
-    color: white;
-}
+
+
 
 /********************************************************************/
 /*************************** ELEMENT STYLE **************************/
 /********************************************************************/
 
-/**** PARALLAX START ****/
+/**** DESCRIPTION TEXTS ****/
 
-.parallax img, .parallax p, .parallax h4{
-    opacity: 0;
+.product-description-bold{
+    font-size: 2.08vw;
 }
 
+.product-description-light{
+    font-size: 1.458vw;
+}
 
 /**** COMPONENTS ELEMENTS ****/
+.parallax0{
+    margin: auto 5.2vw auto 1.77vw;
+}
+
 
 /** IMAGES **/
 
+.product-element-image{
+    width: 370px;
+    height: auto;
+    margin-bottom: 48px;
+}
+
+.element-image{
+    box-shadow: 6.5px 11.26px 27px rgba(150,176,203,0.16);
+    margin-bottom: 48px;
+}
 
 /** ELEMENT TITLES AND PRICES **/
-.first-element h4{
-    color: #F21417;
-}
-.element-title{
-    margin: auto 0 0 0;
+
+.parallax:hover{
+    text-decoration: none;
 }
 
 .element-price{
     font-size: 18px;
     color: #555555;
-    margin: 27px 0 auto 0;
+    text-decoration: none;
+}
+
+.element-title{
+    font-size: 24px;
+    color: black;
+}
+
+/** SEE MORE PRODUCT BUTTON **/
+.see-more-products{
+    width: 28.65vw;
+    margin: 40px auto;
 }
 
 

@@ -23,7 +23,7 @@ easy_admin:
             - { property: 'name', label: 'Nom' }
             - { property: 'category', label: 'Catégorie' }
             - { property: 'description', label: 'Description' }
-            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.subscription_images%' }   
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.subscription_images%', help: "Image principale" }   
             - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.subscription_images%' }    
             - { property: 'price', label: 'Prix (€)' }
             - { property: 'stock', label: 'Quantité en stock' }
@@ -38,7 +38,7 @@ easy_admin:
             - { property: 'name', label: 'Nom' }
             - { property: 'category', label: 'Catégorie' }
             - { property: 'description', label: 'Description' }
-            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.subscription_images%' }   
+            - { property: 'imageFile1', label: 'Image 1', type: 'vich_image', base_path: '%app.path.subscription_images%', help: "Image principale" }   
             - { property: 'imageFile2', label: 'Image 2', type: 'vich_image', base_path: '%app.path.subscription_images%' }    
             - { property: 'price', label: 'Prix (€)' }
             - { property: 'stock', label: 'Quantité en stock' }

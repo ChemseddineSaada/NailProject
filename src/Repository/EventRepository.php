@@ -47,4 +47,21 @@ class EventRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findPublished(){
+        return $this->createQueryBuilder('c')
+                    ->andWhere('c.state = :val ORDER BY c.event_date ASC')
+                    ->setParameter('val', 1)
+                    ->getQUery()
+                    ->getResult();
+    }
+
+    public function findById($id){
+        return $this->createQueryBuilder('c')
+                    ->andWhere('c.state = :val AND c.id = :id')
+                    ->setParameter('val', 1)
+                    ->setParameter('id', $id)
+                    ->getQUery()
+                    ->getResult();
+    }
 }

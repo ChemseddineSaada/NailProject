@@ -47,4 +47,12 @@ class EventPassedRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findById($id){
+        return $this->createQueryBuilder('c')
+                    ->andWhere('c.id = :id')
+                    ->setParameter('id', $id)
+                    ->getQUery()
+                    ->getResult();
+    }
 }
