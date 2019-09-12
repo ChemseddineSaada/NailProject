@@ -5,9 +5,11 @@ header{
     background-image: url('../img/index/Header-home.jpg');
 }
 
-
-
-
+.hashtag-bbb{
+    margin: 25vh 0 auto 68vw !important;
+    width: 30.1vw;
+    height: auto;
+}
 
 /********************************************************************/
 /*************************** ELEMENT STYLE **************************/
@@ -57,6 +59,11 @@ header{
 .element-title{
     font-size: 24px;
     color: black;
+}
+
+.offer-products{
+    line-height: 10px;
+    margin: 20px 0;
 }
 
 /** SEE MORE PRODUCT BUTTON **/

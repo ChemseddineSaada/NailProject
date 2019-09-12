@@ -1,143 +1,41 @@
-/*$(document).ready(function(){
-    $('.parallax img').css('transform','translateY(100px)');
-    $('.parallax p').css('transform',' translateY(50px)');
-    $('.left-display h4').css('transform','translateX(-200px)');
-    $('.right-display h4').css('transform','translateX(200px)');
-    $('.title-right').css('transform','translateX(200px)');
-    $('.title-left').css('transform','translateX(-200px)');
-    $('.title-center').css('transform','translateX(-200px)');
-    $('.home-subscription p').css('transform','translateX(200px)');
-    $('.home-subscription h4').css('transform','translateX(-200px)');*/
-  
+$(document).ready(function(){
 
-    var parallaxNumber = $(".parallax").length;
-    var parallaxParameters = [];
-
-    for(let i = 0; i < parallaxNumber; i++){
-   
-        var imgOffset = $('.parallax'+i+' img').offset().top;
-
-        var img ={
-            targets: '.parallax'+i+' img',
-            translateY: 0,
-            opacity:1,
-            duration: 300,
-            easing: 'linear',
-            };
-
-        var price = {
-            targets: '.parallax'+i+' p',
-            translateY: 0,
-            opacity:1,
-            duration: 300,
-            easing: 'linear',
-            };
-
-        if( i % 2 == 0){               
-
-           var title = {
-                targets: '.parallax'+i+' h4',
-                translateX: 0,
-                opacity:1,
-                duration: 300,
-                easing: 'linear',
-                };
-            }
-
-        else{
-            var title = {
-                targets: '.parallax'+i+' h4',
-                translateX: 0,
-                opacity:1,
-                duration: 300,
-                easing: 'linear',
-                };  
-            }
-
-        parallaxParameters[i] = {'img': img, 'price': price, 'title': title , 'imgOffset': imgOffset};
-        let k = i;
-        }       
-
-        var subscriptions = $(".home-subscription").length;
-
-
-        for(let i = 0; i < subscriptions; i++){
-        
-            var imgOffset = $('.home-subscription'+i+' img').offset().top;
-
-            var title = {
-                targets: '.home-subscription h4',
-                translateX: 0,
-                opacity:1,
-                duration: 300,
-                easing: 'linear'
-                };
-        
-            var price = {
-                targets: '.home-subscription p',
-                translateX: 0,
-                opacity:1,
-                duration: 300,
-                easing: 'linear'
-                };
-
-            parallaxParameters[ i + k ] = {'img': img, 'price': price, 'title': title , 'imgOffset': imgOffset};
-        }
-    
-        var titleRight = {
-            targets: '.title-right',
-            translateX: 0,
-            opacity:1,
-            duration: 300,
-            easing: 'linear'
-            };  
-
-        var imgOffset = $('.title-right').offset().top;
-        parallaxParameters.push({'title': titleRight , 'imgOffset': imgOffset });
-
-        var titleLeft = {
-            targets: '.title-left',
-            translateX: 0,
-            opacity:1,
-            duration: 300,
-            easing: 'linear'
-            }; 
-
-        var imgOffset = $('.title-left').offset().top;
-        parallaxParameters.push({'title': titleLeft , 'imgOffset': imgOffset});
-
-        var titleCenter = {
-            targets: '.title-center',
-            translateX: 0,
-            opacity:1,
-            duration: 300,
-            easing: 'linear'
-            }; 
-
-        var imgOffset = $('.title-center').offset().top;
-        parallaxParameters.push({'title': titleCenter , 'imgOffset': imgOffset});
-
-    function parallaxAnime(parallaxParameters,$w){
-        parallaxParameters.forEach(element =>{
-            if($w > element.imgOffset){
-
-                anime(element.img);
-                anime(element.title);
-                anime(element.price);
-
-            }
-        });
-    }
-    
-    
     $(window).scroll(function(){
         var currentHeight = $(window).scroll(function(){}).scrollTop();
-        parallaxAnime(parallaxParameters,currentHeight + 400);
+
+        //HEADER 
+        
+        $('.hashtag-bbb').css({'transform':'translateX('+ currentHeight * 0.9 +'px)','opacity': 1 - 0.003 * currentHeight});
+
+        $('.text-header p').css({'transform':'translateY(-'+ currentHeight * 0.3 +'px)','opacity': 1 - 0.004 * currentHeight});
+
+        $('header').css('background-size',100 + currentHeight*0.1 +'% auto');
+
+        //TITLES
+
+        if(!((currentHeight * 0.7 - 400 ) >= 0) ){
+                $('#ancre1').css({'transform':'translateX('+ (currentHeight * 0.7 - 400 ) + 'px)','opacity': 0.002 * currentHeight});
+        }
+        else{
+                $('#ancre1').css({'transform':'translateX(0px)','opacity': '1'});
+        }
+
+        if(!((currentHeight * 0.7 - 900 ) >= 0) ){
+                $('#ancre2').css({'transform':'translateX('+ (currentHeight * 0.7 - 900 ) + 'px)','opacity': 0.0005 * currentHeight});
+        }
+        else{
+                $('#ancre2').css({'transform':'translateX(0px)','opacity': '1'});
+        }
+
+        if(!((currentHeight * 0.7 - 1700 ) >= 0) ){
+                $('#ancre3').css({'transform':'translateX('+ (currentHeight * 0.7 - 1700 ) + 'px)','opacity': 0.0002 * currentHeight});
+        }
+        else{
+                $('#ancre3').css({'transform':'translateX(0px)','opacity': '1'});
+        }
+
+        
+
     });
+
 });
-
-
-
-
-
-

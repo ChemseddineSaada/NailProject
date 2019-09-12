@@ -1,6 +1,10 @@
 /********************************************************************/
 /*************************** BASIS STYLE ***************************/
 /********************************************************************/
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 .container{
     padding: 0 !important;
 }
@@ -28,15 +32,12 @@ h4{
     font-size: 24px;
 }
 
-.text-header{
-    height: 75%;
-}
 
 .text-header p{
-    margin: auto auto 20px auto;
+    margin: 250px auto 20px auto;
     font-size: 1.77vw;
     text-transform: uppercase;
-    letter-spacing: 10px;
+    letter-spacing: 15px;
     text-shadow: 0 3px 6px rgba(255,255,255,0.31);
     font-weight: bolder;
 }

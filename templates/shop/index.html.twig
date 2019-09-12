@@ -4,15 +4,19 @@
 {% block more_style %}<link rel="stylesheet" href="{{asset('web/css/index-style.css')}}"/>{% endblock %}  
 
 {% block headerText %}
+
+<img class="hashtag-bbb img-fluid" src="{{asset('web/img/index/hashtag.png')}}" alt="Hashtag Bon Beau Bien">
+
     <div class="row text-header align-items-center justify-content-center">
         <p>Le vernis des des femmes qui s'engagent</p>
     </div>
+
 {% endblock %}
 
 {% block body %}
-<section class="d-flex flex-wrap column"> <!-- Our Products -->
+<section class="d-flex flex-wrap column" > <!-- Our Products -->
 
-    <h2 class="section-title">Notre couleur de la saison</h2>
+    <h2 class="section-title ancre" id="ancre1">Notre couleur de la saison</h2>
     <div class="row d-flex flex-nowrap">
         <a class="parallax0 parallax" href="#">
             <img class="product-element-image element-image" src="{{asset('/uploads/images/products/' ~ product.image1)}}" alt="{{product.description}}">
@@ -33,7 +37,7 @@
 </section> <!-- Our Products -->
 
 <section> <!-- Our Packs -->
-    <h2 class="section-title">Nos Offres</h2>
+    <h2 class="section-title ancre" id="ancre2">Nos Offres</h2>
     <div class="d-flex row justify-content-between">
         {% for offer in offers %} 
 
@@ -44,7 +48,7 @@
                 <div class="element-info column align-items-center">
                     <h4 class="element-title">{{offer.name}}</h4>
                     {% for product in offer.products  %}
-                        <p class="element-price">Notre {{product.name}}</p>
+                        <a class="element-price offer-products">Notre {{product.name}}</a>
                     {% endfor %}
                     <p class="element-price">{{offer.price}} &#128;</p>
                 </div>
@@ -57,7 +61,7 @@
 
 <section> <!-- Our Subscription -->
 
-    <h2 class="section-title">Événements</h2>
+    <h2 class="section-title ancre" id="ancre3">Événements</h2>
     {% if event is null %}
         <p>Nous n'avons aucun événement futur pour l'instant, abonnez-vous à notre Newsletter pour recevoir les dates dès leurs publications !</p>
     {% else %}
@@ -74,6 +78,7 @@
 </section> <!-- Our Subscription -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{{asset('web/js/home-anime.js')}}"></script>
 
 
 {% endblock %}

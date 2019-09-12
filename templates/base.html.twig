@@ -25,8 +25,9 @@
         {% block info %}{% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}
-            <script src="{{asset('web/js/anime.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('web/js/anime.min.js')}}"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script type="text/javascript" src="{{asset('web/js/scroll.js')}}"></script>
         {% endblock %}
     </div>
     <footer class="footerParallax">
