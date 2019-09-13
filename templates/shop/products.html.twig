@@ -4,28 +4,71 @@
 {% block more_style %}<link rel="stylesheet" href="{{asset('web/css/product-style.css')}}"/>{% endblock %}  
 
 {% block headerText %}
-    <div class="d-flex text-header justify-content-center align-items-center">
-        <p>Nos produits</p>
-    </div>
+    <div class="d-flex text-header justify-content-center row text-center">
+        <p class="header-title">Nos produits</p>
+        <p class="base-line">la beauté au bout des doigts</p>
+    </div> 
 {% endblock %}
 
 {% block body %}
-    <p class="product-number-displayer"><span class="product-number">6</span> PRODUITS</p>
+    <div class="row justify-content-between ancre"  id="ancre1">
+        <p class="product-number-displayer"><span class="product-number">6</span> produits</p>
 
-    <form action="" method="GET" class="product-filter">
-        <select id="product-list-filter">
-            <option value="polish">Vernis</option>
-            <option value="coat">Coat</option>
-        </select>
-    </form>
+        <form action="" method="GET" class="product-filter">
+            <select id="product-list-filter">
+                <option value="all" selected>Tous</option>
+                <option value="polish">Vernis</option>
+                <option value="coat">Coat</option>
+            </select>
+        </form>
+    </div>
+
     <div class="d-flex row justify-content-between">
     {% for product in products  %}
-        <div class="product-element">
-            <div class="product-image-container"><img class="mx-auto img-fluid" src="" alt="{{product.description}}"></div>
-            <p class="product-type">{{product.id}}</p>
-            <p class="product-name">{{product.name}}</p>
-            <p class="product-price">{{product.price}} &#128;</p>
+
+
+        <div class="product-element col-12  col-xs-12 col-sm-12 col-md-6 col-lg-3">
+ 
+            <div class="product-image-container">
+                <div class="hover-effect d-flex text-center align-items-center"><a class="add-to-cart" href="#">Ajouter au panier</a></div>
+                <img class="mx-auto img-fluid product-image" src="{{asset('/uploads/images/products/' ~ product.image1)}}" alt="{{product.description}}">
+            </div>
+            
+            <div class="product-info column">
+                <div class="justify-content-between d-flex">
+                    <p class="product-type">{{product.type}}</p>
+                    <p class="product-category text-right">{{product.category}}</p>                                 
+                </div>
+                <div class="justify-content-between d-flex">                
+                    <p class="product-name">{{product.name}}</p> 
+                    <p class="product-price text-right">{{product.price}} &#128;</p>
+                </div>        
+            </div>
+
         </div>
     {% endfor %}
     </div>
+
+    <script>
+        $(document).ready(function(){
+            $('.hover-effect').mouseenter(function (e) { 
+                $(e.target).css('opacity','1');
+            });
+
+            $('.hover-effect').mouseleave(function (e) { 
+                $('.hover-effect').css('opacity','0');
+            });
+
+
+            
+            $('.product-image-container').mouseleave(function (e) { 
+                $('.hover-effect').css('opacity','0');
+            });
+
+            $('.product-image').mouseleave(function (e) { 
+                $('.hover-effect').css('opacity','0');
+            });
+
+        });
+    </script>
 {% endblock %}

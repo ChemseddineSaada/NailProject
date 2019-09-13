@@ -20,7 +20,7 @@ class EventPassed
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\event", inversedBy="eventPassed", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Event", inversedBy="eventPassed", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $events;

@@ -1,0 +1,73 @@
+/********************************************************************/
+/*************************** HEADER STYLE ***************************/
+/********************************************************************/
+
+header{
+    background-image: url('../img/event/header-event.png');
+}
+
+.header-title{  
+    font-size: 2.29vw !important;
+    margin-top: 60vh !important;
+    font-weight: bolder !important;
+}
+
+.base-line{
+    width: 100%;
+    font-size: 1.77vw;
+    font-weight: bold !important;
+    margin: 0 !important;
+}
+
+/********************************************************************/
+/*************************** EVENTS STYLE ***************************/
+/********************************************************************/
+
+.event-map .annoncement{
+    font-size: 34px;
+    font-weight: bolder;
+    padding: 40px 20vw;
+}
+
+.event-description{
+    margin: 30px 0;
+    font-size: 34px;
+}
+
+.event-date{
+    margin: 30px 0;
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+/********************************************************************/
+/*********************** EVENTS PASSED STYLE ************************/
+/********************************************************************/
+
+.event-passed-element{
+    width: 100%;
+    border: 4px solid black;
+    height: 380px;
+    margin: 30px auto;
+}
+
+.event-passed-image{
+    width: 380px;
+    height: 376px;
+    border-right: 4px solid black;
+}
+
+.event-passed-info{
+    width: 70vw;
+    font-size: 36px;
+    padding: 60px;
+}
+
+.event-passed-title{
+    font-weight: bolder;
+}
+
+.event-passed-date{
+    color: #707070;
+}
+

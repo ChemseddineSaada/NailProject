@@ -6,6 +6,30 @@
     padding-top: 20px;
 }
 
+.second-menu{
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: white ;
+    padding: 0;
+    padding-left: 30px;
+    opacity: 0;
+    z-index: 99;
+}
+
+.second-menu .menu-logo img{
+    width: 30%;
+    height: auto;
+}
+
+.second-menu .user-box{
+    margin: auto 15px; 
+}
+
+.second-menu .user-box a{
+    margin: auto 15px;
+}
+
 .user-link{
     width: 10.41vw;
 }

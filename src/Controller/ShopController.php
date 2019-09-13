@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\MessageMe;
+use App\Entity\EventSubs;
+use App\Form\EventSubsType;
 use App\Form\MessageMeType;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\{Product,PackOffer,Subscription,Event};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\{Product,PackOffer,Subscription,Event,MessageMe,EventPassed};
 
 class ShopController extends AbstractController
 {
@@ -68,13 +70,44 @@ class ShopController extends AbstractController
     /**
      * @Route("/events", name="shop.list.events")
      */
-    public function listEvents(){
+    public function listEvents(Request $request, ObjectManager $manager){
+        //Récupération des informations depuis la base de donnée
         $posts = $this->getDoctrine()->getRepository(EventPassed::class)->findAll();
         $events = $this->getDoctrine()->getRepository(Event::class)->findPublished();
+        
+        //Création et traitement du formulaire d'inscription aux événements
+
+        $subscriber = new EventSubs();
+        
+        $form = $this->createForm(EventSubsType::class,$subscriber);
+     
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid() ){
+
+            //Vérifier que l'utilisateur a bien choisi au moins un événement
+            
+            if(count($subscriber->getEvent()) !== 0)
+            {
+                $manager->persist($subscriber);
+                $manager->flush();
+
+                return $this->redirectToRoute('shop.list.events');
+            }
+            else{          
+                $this->addFlash(
+                    'notice_bad',
+                    'Vous devez choisir au moins un événement.'
+                );
+            }
+
+        }
+
 
         return $this->render('shop/events.html.twig', [
-            'posts' => $posts,
-            'events' => $events
+            'events_passed' => $posts,
+            'events' => $events,
+            'form'=>$form->createView(),
         ]);
     }
 

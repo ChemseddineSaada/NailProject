@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -70,6 +72,16 @@ class Event
      * @ORM\Column(type="text")
      */
     private $annoncement;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\EventSubs", mappedBy="event")
+     */
+    private $eventSubs;
+
+    public function __construct()
+    {
+        $this->eventSubs = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -168,10 +180,6 @@ class Event
         return $this;
     }
 
-    public function __toString(){
-        return $this->title;
-    }
-
     public function getState(): ?bool
     {
         return $this->state;
@@ -196,6 +204,38 @@ class Event
     public function setAnnoncement(string $annoncement): self
     {
         $this->annoncement = $annoncement;
+
+        return $this;
+    }
+
+    public function __toString(){
+        return $this->title;
+    }
+
+    /**
+     * @return Collection|EventSubs[]
+     */
+    public function getEventSubs(): Collection
+    {
+        return $this->eventSubs;
+    }
+
+    public function addEventSub(EventSubs $eventSub): self
+    {
+        if (!$this->eventSubs->contains($eventSub)) {
+            $this->eventSubs[] = $eventSub;
+            $eventSub->addEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventSub(EventSubs $eventSub): self
+    {
+        if ($this->eventSubs->contains($eventSub)) {
+            $this->eventSubs->removeElement($eventSub);
+            $eventSub->removeEvent($this);
+        }
 
         return $this;
     }

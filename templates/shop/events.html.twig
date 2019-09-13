@@ -1,22 +1,106 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{% endblock %}
+{% block more_style %} 
+    <link rel="stylesheet" href="{{asset('web/css/event-style.css')}}"> 
+    <link rel="stylesheet" href="{{asset('web/css/body-menu.css')}}">
+    <link rel="stylesheet" href="{{asset('web/css/form-style.css')}}">
+    <link rel="stylesheet" href="{{asset('web/css/event-sub.css')}}">
+{% endblock %}  
+
+{% block headerText %}
+    <div class="d-flex text-header justify-content-center row text-center">
+        <p class="header-title">événements</p>
+        <p class="base-line">prends ta beauté en mains</p>
+    </div> 
+{% endblock %}
 
 {% block body %}
 
-{% for post in posts  %}
-    <li>{{post.name}}</li>
-    <li>{{post.content}}</li>
-    <li>{{post.published_at}}</li>
+<!-- POP-UP START -->
+<div class="pop-up-container">
+    <div class="event-sub mx-auto pop-up">
+        <span class="pop-up-closing">x</span>
+        <p class="event-sub-title text-center">Inscription à l'événement</p>
 
-{% endfor %}
+            {% for message in app.flashes('notice_nice') %}
+                <div class="alert alert-primary  mx-auto col-6">
+                <p class="alert-link text-center">{{ message }}</p>
+                </div>
+            {% endfor %}
+            
+            {% for message in app.flashes('notice_bad') %}
+                <div class="alert alert-danger mx-auto col-6">
+                <p class="alert-link text-center">{{ message }}</p>
+                </div>
+            {% endfor %}
+            {{ form_start(form) }}
+            <div class="d-flex row">
+                {{form_widget(form.name, {'attr': {'class': 'bbb-form-field mx-auto'}})}}
 
-{% for event in events  %}
-    <li>{{event.title}}</li>
-    <li>{{event.content}}</li>
-    <li>{{event.event_date}}</li>
-    <li>{{event.category}}</li>
+                {{form_widget(form.first_name, {'attr': {'class': 'bbb-form-field mx-auto'}})}}
 
-{% endfor %}
+                {{form_widget(form.email.first, {'attr': {'class': 'bbb-form-field mx-auto'}})}}
+
+                {{form_widget(form.email.second, {'attr': {'class': 'bbb-form-field mx-auto'}})}}
+
+                {{form_help(form.event,{'help_attr': {'class': 'bbb-form-field-help text-right'}})}}
+                {{form_widget(form.event, {'attr': {'class': 'bbb-form-field-checkbox mx-auto'}})}}
+
+                {{form_widget(form.save, {'attr': {'class': 'btn-bbb btn-text btn-form-submit'}})}}
+            </div>
+
+        {{ form_end(form) }}
+    </div>
+</div>
+<!-- POP-UP END-->
+
+<ul class="body-menu ancre" id="ancre1">
+    <li class="activated" data-display="to-display-1">Événements à venir</li>
+    <li data-display="to-display-2">Historique des événements</li>
+</ul>
+
+<div class="to-display-1">
+    {% for event in events  %}
+
+        <h2>{{event.title}}</h2>
+        <p class="event-description">{{event.description}}</p>
+        <p class="event-date">Prévu pour le : {{event.eventDate | date('Y-m-d à H:i')}}</p>
+
+        <div class="event-map d-flex column flex-wrap justify-content-center">
+
+            <img class="img-fluid" src="{{asset('web/img/event/map.png')}}" alt="Carte montrant le point de rendez-vous">
+
+            <p class="text-center annoncement">{{event.annoncement}}</p>
+
+            <a class="btn-bbb btn-subscribe mx-auto">
+                <span class="btn-text text-center">s'inscrire</span>
+            </a>
+
+        </div>
+
+    {% endfor %} 
+</div>
+
+<div class="to-display-2 d-flex column flex-nowrap">
+
+   {% for event_passed in events_passed  %}
+   <div class="event-passed-element d-flex row flex-nowrap">
+        <div class="event-passed-image">
+            <img class="img-fluid" src="{{'uploads/images/eventsPassed/' ~ event_passed.image1}}" alt="Photo prise lors de l'événement passé">
+        </div>
+        <div class="event-passed-info">
+            <p class="event-passed-title">{{event_passed.events}}</p>
+            <span class="event-passed-date">{{event_passed.events.eventDate |  date('d-m-Y')}}</span>
+            <p class="event-passed-extract">{{event_passed.article | easyadmin_truncate(150)}}</p>
+        </div>
+   </div>
+ 
+    {% endfor %} 
+    
+</div>
+
+<script src="{{asset('web/js/body-menu.js')}}"></script>
+<script src="{{asset('web/js/pop-up.js')}}"></script>
 
 {% endblock %}

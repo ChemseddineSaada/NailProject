@@ -1,0 +1,11 @@
+.event-sub{
+    width: 776px;
+    height: 866px;
+    background-color: white;
+    z-index: 101;
+}
+
+.event-sub-title{
+    font-size: 34px;
+    font-weight: bolder;
+}

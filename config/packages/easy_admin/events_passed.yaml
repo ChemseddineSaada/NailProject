@@ -10,8 +10,7 @@ easy_admin:
           title: "Liste des événements" 
           fields:
             - { property: 'id', label: '#ID' }
-            - { property: 'events', label: 'Titre' } 
-            - { property: 'updated_at', label: 'Publié le' }                  
+            - { property: 'events',label: "Titre de l'événement"}                 
             - { property: 'image1', label: 'Image' , type: image, base_path: '%app.path.event_passed_images%'}  
 
         edit:

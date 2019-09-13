@@ -22,8 +22,8 @@
             <img class="product-element-image element-image" src="{{asset('/uploads/images/products/' ~ product.image1)}}" alt="{{product.description}}">
 
             <div class="element-info column align-items-center">
-                <h4 class="element-title">{{product.name}}</h4>
-                <p class="element-price">{{product.price}} &#128;</p>
+                <h4 class="element-title product-element-title">{{product.name}}</h4>
+                <p class="element-price product-element-price">{{product.price}} &#128;</p>
             </div>   
 
         </a>
@@ -41,16 +41,16 @@
     <div class="d-flex row justify-content-between">
         {% for offer in offers %} 
 
-            <a class="{{ 'parallax' ~ loop.index0 }} parallax col-lg-5 col-md-12 col-sm-12 col-12" href="#">
+            <a class="{{ 'parallax' ~ loop.index }} parallax col-lg-5 col-md-12 col-sm-12 col-12" href="#">
                 
-                <img class="element-image img-fluid" src="{{asset('/uploads/images/packOffers/' ~ offer.image1)}}" alt="{{offer.description}}">
+                <img class="element-image img-fluid offer-element-image" src="{{asset('/uploads/images/packOffers/' ~ offer.image1)}}" alt="{{offer.description}}">
 
                 <div class="element-info column align-items-center">
-                    <h4 class="element-title">{{offer.name}}</h4>
+                    <h4 class="element-title offer-element-title">{{offer.name}}</h4>
                     {% for product in offer.products  %}
-                        <a class="element-price offer-products">Notre {{product.name}}</a>
+                        <p class="element-price offer-products offer-element-price">Notre {{product.name}}</p>
                     {% endfor %}
-                    <p class="element-price">{{offer.price}} &#128;</p>
+                    <p class="element-price offer-element-price">{{offer.price}} &#128;</p>
                 </div>
                 
             </a>
@@ -70,7 +70,9 @@
         <div class="d-flex row">
             <div class="map"></div>
             <p>{{ event.annoncement }}</p>
-            <a class="btn-nailproject" href="#">s'inscrire</a>
+            <a class="btn-bbb btn-subscribe">
+                    <p class="btn-text">s'inscrire</p>
+            </a>
         </div>
     </div>
     {% endif %}
@@ -79,6 +81,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{{asset('web/js/home-anime.js')}}"></script>
+<script src="{{asset('web/js/footer-anime.js')}}"></script>
 
 
 {% endblock %}
