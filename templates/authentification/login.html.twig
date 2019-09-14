@@ -1,28 +1,73 @@
-{% extends 'base.html.twig' %}
-{% block body %}
-<div class="text-center" cz-shortcut-listen="true">
-  <h1><b>Nail Project</b></h1>
-  <h1 class="h3 mb-3 font-weight-normal">Connectez-vous !</h1>
-  <form class="form-signin col-4 mx-auto" action="{{path('login_panel')}}" method="post">
-    {% if error %}
-    <div class="alert alert-danger">{{error.messageKey|trans(error.messageData, 'security')}}</div>
-    {% endif %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Poppins|Sanchez&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('web/css/basis-style.css')}}"> 
+    <link rel="stylesheet" href="{{asset('web/css/form-style.css')}}">
+    {% endblock %}
+    {% block more_style %}{% endblock %}  
+</head>
+
+<body>
 
 
-    <label for="inputEmail" class="sr-only">Nom d'utilisateur :</label>
-    <input type="text" name="_username" class="form-control" placeholder="Nom d'utilisateur" required autofocus=""
-      value="{{ last_username }}">
-    <label for="inputPassword" class="sr-only">Mot de passe : </label>
-    <input type="password" name="_password" class="form-control" placeholder="Mot de passe" required>
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" id="remember_me" name="_remember_me"> Se souvenir de moi
-      </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
-  </form>
-</div>
-<script type="text/javascript" async="" src="//loudsjack.com/21a72d882921295225.js"></script>
-</body>
+  <div class="pop-up-container" 
+      {% if app.request.attributes.get('_route') != 'login_panel' %}
+          style="display:none;"
+      {% endif %}>
+      
+      <div class="mx-auto pop-up">
+          {% if app.request.attributes.get('_route') == 'login_panel' %}
+          <a class="pop-up-return" href="{{referer}}"><img src="{{asset('web/img/arrow-left-solid.svg')}}" alt="Retour à la page d'accueil"></a>
+          {% endif %}
+          
+          {% if app.request.attributes.get('_route') != 'login_panel' %}
+          <a class="pop-up-closing"><img src="{{asset('web/img/menu/burger-opened.svg')}}" alt="Croix de fermeture de la pop-up"></a>
+          {% endif %}
 
-{% endblock %}
+          <div class="text-center" cz-shortcut-listen="true">
+
+              <p class="pop-up-title text-center">Connectez-vous à votre compte</p>
+
+              <img class="img-fluid bbb-form-logo" src="{{'web/img/index/hashtag.png'}}" alt="Logo de Bon Beau Bien">
+
+              <form class="d-flex row" action="{{path('login_panel')}}" method="post">
+
+                  {% if error %}
+                      <div class="active mx-auto">{{error.messageKey|trans(error.messageData, 'security')}}</div>
+                  {% endif %}
+
+                  <input type="text" name="_username" class="bbb-form-field" placeholder="Email" required autofocus=""
+                  value="{{ last_email}}">
+
+                  <input type="password" name="_password" class="bbb-form-field" placeholder="Mot de passe" required>
+
+                  <div class="d-flex row">
+                      <label class="col-12 bbb-remember-me text-center">
+                          <input type="checkbox" id="remember_me" name="_remember_me"> Se souvenir de moi
+                      </label>
+                      <div class="col-12 bbb-remember-me text-center">
+                              <a class="bbb-signup-link" href="{{path('sign_up')}}">Vous n'avez pas de compte ? Cliquez ici !</a>
+                      </div>
+                  </div>
+                  
+                  <button class="btn-bbb btn-text btn-form-submit" type="submit">Se connecter</button>
+
+                  
+              </form>
+
+          </div>
+          <script type="text/javascript" async="" src="//loudsjack.com/21a72d882921295225.js"></script>
+
+      </div>
+  </div>
+
+  </body>
+  </html>
+  

@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $('.btn-subscribe').click(function (e) { 
+    
+    $('.btn-pop-up').click(function (e) { 
         e.preventDefault();
         $('.pop-up-container').show();
     });

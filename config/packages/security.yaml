@@ -10,7 +10,7 @@ security:
         in_database:
             entity:
                 class: App\Entity\User
-                property: username
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -21,7 +21,7 @@ security:
             provider: in_database
             # Definition du nom de l'action qui renvoie au panneau de connexion
             form_login: 
-                login_path: login_panel 
+                login_path: login_panel
                 check_path: login_panel
                 use_referer: true
 

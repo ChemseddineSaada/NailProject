@@ -4,8 +4,6 @@
 {% block more_style %} 
     <link rel="stylesheet" href="{{asset('web/css/event-style.css')}}"> 
     <link rel="stylesheet" href="{{asset('web/css/body-menu.css')}}">
-    <link rel="stylesheet" href="{{asset('web/css/form-style.css')}}">
-    <link rel="stylesheet" href="{{asset('web/css/event-sub.css')}}">
 {% endblock %}  
 
 {% block headerText %}
@@ -18,10 +16,11 @@
 {% block body %}
 
 <!-- POP-UP START -->
-<div class="pop-up-container">
-    <div class="event-sub mx-auto pop-up">
-        <span class="pop-up-closing">x</span>
-        <p class="event-sub-title text-center">Inscription à l'événement</p>
+
+<div class="pop-up-container" style="display:none;">
+    <div class="mx-auto pop-up">
+        <span class="pop-up-closing"><img src="{{asset('web/img/menu/burger-opened.svg')}}" alt="Croix de fermeture de la pop-up"></span>
+        <p class="pop-up-title text-center">Inscription à l'événement</p>
 
             {% for message in app.flashes('notice_nice') %}
                 <div class="alert alert-primary  mx-auto col-6">
@@ -53,6 +52,7 @@
         {{ form_end(form) }}
     </div>
 </div>
+
 <!-- POP-UP END-->
 
 <ul class="body-menu ancre" id="ancre1">
@@ -73,7 +73,7 @@
 
             <p class="text-center annoncement">{{event.annoncement}}</p>
 
-            <a class="btn-bbb btn-subscribe mx-auto">
+            <a class="btn-bbb btn-pop-up btn-subscribe mx-auto">
                 <span class="btn-text text-center">s'inscrire</span>
             </a>
 
@@ -82,7 +82,7 @@
     {% endfor %} 
 </div>
 
-<div class="to-display-2 d-flex column flex-nowrap">
+<div class="to-display-2">
 
    {% for event_passed in events_passed  %}
    <div class="event-passed-element d-flex row flex-nowrap">
@@ -99,8 +99,6 @@
     {% endfor %} 
     
 </div>
-
 <script src="{{asset('web/js/body-menu.js')}}"></script>
-<script src="{{asset('web/js/pop-up.js')}}"></script>
 
 {% endblock %}

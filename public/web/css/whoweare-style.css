@@ -1,0 +1,65 @@
+/********************************************************************/
+/*************************** HEADER STYLE ***************************/
+/********************************************************************/
+
+header{
+    background-image: url('../img/whoweare/header-whoweare.png');
+}
+
+.header-title{  
+    font-size: 2.29vw !important;
+    margin-top: 60vh !important;
+    font-weight: bolder !important;
+}
+
+.base-line{
+    width: 100%;
+    font-size: 1.77vw;
+    font-weight: bold !important;
+    margin: 0 !important;
+}
+
+/********************************************************************/
+/************************* VIDEO RESPONSIVE *************************/
+/********************************************************************/
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe,  
+.video-container object,  
+.video-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+    height: 100%;
+}
+
+.slider-video{
+    margin: 50px auto;
+}
+
+.slider-video video{
+    padding: 15px;
+}
+
+.slick-slide{
+    opacity: 0.5;
+}
+
+.slick-active{
+    opacity: 1;
+}
+.slick-active video{
+    width: 110%;
+    height: auto;
+    box-shadow: 3px 3px 15px;
+}
+
+

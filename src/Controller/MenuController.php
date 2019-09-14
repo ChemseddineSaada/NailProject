@@ -2,16 +2,25 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MenuController extends AbstractController
 {
     /**
      * @Route("/mainMenu", name="partial.menu.main")
+     *
+     * 
+     * La fonction mainMenu retourne les données relatives au menu principal.
+     * 
+     * @param void
+     * 
+     * @return array $menu
      */
+
     public function mainMenu()
     {
+
         $menu = [
             'home' => ['route'=>'shop.home.index','label'=>'Accueil'],
             'products' => ['route'=>'shop.list.products','label'=>'Nos produits'],

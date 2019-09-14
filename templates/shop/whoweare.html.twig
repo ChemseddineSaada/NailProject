@@ -1,7 +1,104 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{% endblock %}
+{% block more_style %} 
+    <link rel="stylesheet" href="{{asset('web/css/whoweare-style.css')}}"> 
+    <link rel="stylesheet" href="{{asset('web/css/body-menu.css')}}">
+    <link rel="stylesheet" href="{{asset('web/css/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('web/css/slick-theme.css')}}">
+{% endblock %}  
+
+{% block headerText %}
+    <div class="d-flex text-header justify-content-center row text-center">
+        <p class="header-title">qui sommes-nous ?</p>
+        <p class="base-line">je choisis une beauté engagée</p>
+    </div> 
+{% endblock %}
 
 {% block body %}
+
+<!-- BODY MENU START -->
+<ul class="body-menu ancre" id="ancre1">
+
+    <li class="activated" data-display="to-display-1">Pourquoi BBB ?</li>
+    <li data-display="to-display-2">Nos valeurs</li>
+    <li data-display="to-display-3">Nos engagements</li>
+
+</ul>
+<!-- BODY MENU END -->
+
+<!-- FIRST ELEMENT TO DISPLAY -->
+<div class="to-display-1">
+
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/rxB-m3VWYZM"
+                frameborder="0" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" 
+                allowfullscreen></iframe>
+    </div>
+
+    <p class="paragraph">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    <h2 class="text-center">Nos ambassadrices</h2>
+
+    <!-- VIDEO SLIDER START -->
+
+    <div class="slider-video">
+        <div>
+            <video preload='auto' data-setup='{}' play>
+                <source src="{{asset('web/video/vid1.mp4')}}"
+                type="video/mp4">
+             </video>
+        </div>
+        <div>
+            <video preload='auto' data-setup='{}'>
+                <source  src="{{asset('web/video/vid2.mp4')}}"
+                type="video/mp4">
+            </video>
+        </div>
+        <div>
+            <video preload='auto' data-setup='{}'>
+                <source src="{{asset('web/video/vid3.mp4')}}"
+                type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- VIDEO SLIDER END -->
+
+    <!-- SHARE BUTTON START -->
+    <div class="div-share d-flex justify-content-center">
+
+        <a class="text-center text-share" href="#">
+        <img src="{{asset('web/img/whoweare/share.svg')}}" alt="Boutton de partage sur les réseaux sociaux">
+        Partagez</a>
+
+    </div>
+    <!-- SHARE BUTTON END -->
+
+</div>
+<!-- FIRST ELEMENT TO DISPLAY END -->
+
+
+<!-- SECOND ELEMENT TO DISPLAY -->
+<div class="to-display-2">
+
+    <h2>Nos valeurs</h2>
+    <p class="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. A dolorem, esse doloribus perferendis enim magni amet officia dolores ipsa voluptatum? Ad illo beatae culpa ipsa officia cum iure minima nam.</p>
+
+</div>
+<!-- SECOND ELEMENT TO DISPLAY END-->
+
+<!-- THIRD ELEMENT TO DISPLAY -->
+<div class="to-display-3">
+
+    <h2>Nos engagements</h2>
+    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus hic et laborum voluptatem voluptatum odit voluptates officiis accusantium. Dolor officia labore cupiditate aspernatur quidem ut nam molestiae asperiores voluptatibus omnis.</p>
+
+</div>
+<!-- THIRD ELEMENT TO DISPLAY END-->
+
+<script src="{{asset('web/js/body-menu.js')}}"></script>
+<script src="{{asset('web/js/slick.min.js')}}"></script>
+<script src="{{asset('web/js/slider-video.js')}}"></script>
 
 {% endblock %}

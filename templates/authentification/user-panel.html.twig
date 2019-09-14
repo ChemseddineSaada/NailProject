@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block more_style %} 
+    <link rel="stylesheet" href="{{asset('web/css/body-menu.css')}}">
+{% endblock %} 
+{% block body %}
+
+<!-- BODY MENU START -->
+<ul class="body-menu ancre" id="ancre1">
+
+        <li class="activated" data-display="to-display-1">
+            <img src="{{asset('web/img/userpanel/gear.svg')}}" alt="Mes informations personnelles">
+            <p>Mes informations personnelles</p>
+        </li>
+
+        <li data-display="to-display-2">
+            <img src="{{asset('web/img/userpanel/delivery.svg')}}" alt="Mes commandes">
+            <p>Mes commandes</p>
+        </li>
+
+        <li data-display="to-display-3">
+            <img src="{{asset('web/img/userpanel/map.svg')}}" alt="Mes adresses">
+            <p>Mes adresses</p>
+        </li>
+
+    
+</ul>
+<!-- BODY MENU END -->
+
+<div class="to-display-1">
+
+{{ form_start(form)}}
+{{ form_widget(form)}}
+{{ form_end(form)}}
+
+</div>
+<div class="to-display-2">
+
+
+</div>
+<div class="to-display-3">
+
+
+</div>
+
+
+<script src="{{asset('web/js/body-menu.js')}}"></script>
+{% endblock %}

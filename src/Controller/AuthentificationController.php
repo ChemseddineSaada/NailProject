@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * La classe permettant de gérer les méthodes d'inscription et d'authentification
@@ -46,6 +47,9 @@ class AuthentificationController extends AbstractController
 
             $hash = $encoder->encodePassword($user,$user->getPassword());
 
+            $profile = $encoder->encodePassword($user,$user->getUsername());
+
+            $user->setProfile($profile);
             $user->setPassword($hash);
 
             $manager->persist($user);
@@ -59,7 +63,7 @@ class AuthentificationController extends AbstractController
         ]);
     }
 
-     /**
+    /**
      * @Route("/login", name="login_panel")
      * 
      * La fonction loginPanel récupère et traite les saisies d'authentification
@@ -70,15 +74,44 @@ class AuthentificationController extends AbstractController
      * @return array  $error
      */
 
-    public function loginPanel(AuthenticationUtils $authenticationUtils)
+    public function loginPanel(Request $request, AuthenticationUtils $authenticationUtils)
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         
-        $lastUsername = $authenticationUtils->getLastUsername();
+        //Récupère le dernier identifiant utilisé
+        $lastEmail = $authenticationUtils->getLastUsername();
+
+        //Retourne le dernier URL visité.
+        $referer = $request->headers->get('referer');
         
-        return $this->render('Authentification/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error
+        return $this->render('authentification/login.html.twig', [
+            'last_email' => $lastEmail,
+            'error' => $error,
+            'referer' => $referer,
+        ]);
+    }
+
+    /**
+     * @Route("/userPanel", name="user_panel")
+     * 
+     * La fonction userPanel récupère les informations concernant l'utilisateur
+     * et les renvoie en vue
+     * 
+     * @param void
+     * 
+     * @return string  $lastUsername
+     * @return array  $error
+     */
+
+     public function userPanel(Security $security){
+
+        $user = $security->getUser();
+
+        $form = $this->createForm(UserType::class,$user);
+
+        return $this->render('Authentification/user-panel.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
         ]);
     }
 }

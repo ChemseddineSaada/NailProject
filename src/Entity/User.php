@@ -15,7 +15,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @Vich\Uploadable
  * @UniqueEntity("email")
- * @UniqueEntity("username")
  */
 class User implements UserInterface
 {
@@ -38,12 +37,6 @@ class User implements UserInterface
     private $last_name;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank(message="Veuillez entrer un nom d'utilisateur")
-     */
-    private $username;
-
-    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Email(message="L'email soumis n'est pas valide.")
@@ -58,42 +51,10 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $address;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @var string
-     */
-    private $avatar;
-
-    /**
-     * @Vich\UploadableField(mapping="category_images", fileNameProperty="image")
-     * @var File
-     */
-    private $imageFile;
-
-    /**
-     * @ORM\Column(type="datetime")
-     * @var \DateTime
-     */
-    private $updatedAt;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\OrderedProducts", mappedBy="client")
      */
     private $orderedProducts;
 
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $country;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $zipcode;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\DeliveryAddress", mappedBy="user")
@@ -136,17 +97,10 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
+    public function getUsername(){}
 
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
-    }
+    public function setUsername(string $username){}
+    
 
     public function getEmail(): ?string
     {
@@ -168,44 +122,6 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    public function getAddress(): ?string
-    {
-        return $this->address;
-    }
-
-    public function setAddress(?string $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    public function setImageFile(File $avatar = null)
-    {
-        $this->imageFile = $avatar;
-
-        if ($avatar) {
-            $this->updatedAt = new \DateTime('now');
-        }
-    }
-
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    public function getAvatar(): ?string
-    {
-        return $this->avatar;
-    }
-
-    public function setAvatar(?string $avatar): self
-    {
-        $this->avatar = $avatar;
 
         return $this;
     }
@@ -237,30 +153,6 @@ class User implements UserInterface
                 $orderedProduct->setClient(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(?string $country): self
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    public function getZipcode(): ?int
-    {
-        return $this->zipcode;
-    }
-
-    public function setZipcode(?int $zipcode): self
-    {
-        $this->zipcode = $zipcode;
 
         return $this;
     }

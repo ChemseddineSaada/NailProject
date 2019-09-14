@@ -22,42 +22,6 @@ body{
 .website-content{
     margin: 0 5.2vw;
 }
-h2{
-    font-family: 'Lato', sans-serif;
-    font-size: 36px;
-    font-weight: bold;
-}
-
-h3{
-    font-size: 28px;
-}
-
-h4{
-    font-size: 24px;
-}
-
-
-.text-header p{
-    margin: 250px auto 20px auto;
-    font-size: 1.77vw;
-    text-transform: uppercase;
-    letter-spacing: 15px;
-    text-shadow: 0 3px 6px rgba(255,255,255,0.31);
-    font-weight: bolder;
-}
-
-.p-bold{
-    font-weight: bold;
-}
-
-
-/******* NAVIGATION ARROW *******/
-.nav-arrow{
-    position: fixed;
-    top: 84vh;
-    left: 91vw;
-    z-index: 99;
-}
 
 /********************************************************************/
 /*************************** TITLES STYLE ***************************/
@@ -69,6 +33,63 @@ h4{
     font-size: 1.875vw;
     font-weight: bolder;
 }
+
+h2, .text-share{
+    font-family: 'Lato', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+h3{
+    font-size: 28px;
+}
+
+h4{
+    font-size: 24px;
+}
+
+.text-header p{
+    margin: 250px auto 20px auto;
+    font-size: 1.77vw;
+    text-transform: uppercase;
+    letter-spacing: 15px;
+    text-shadow: 0 3px 6px rgba(255,255,255,0.31);
+    font-weight: bolder;
+}
+
+
+/******* SHARE BUTTON ***********/
+.div-share{
+    width: 100%;
+    margin: 60px auto;
+}
+
+
+.text-share:hover{
+    text-decoration: none;
+    color: black;
+}
+
+/********* PARAGRAPHS ************/
+
+.p-bold{
+    font-weight: bold;
+}
+
+.paragraph{
+    font-size: 30px;
+    margin: 60px auto 100px auto;
+}
+
+/******* NAVIGATION ARROW *******/
+.nav-arrow{
+    position: fixed;
+    top: 84vh;
+    left: 91vw;
+    z-index: 99;
+}
+
 
 /********************************************************************/
 /************************** BUTTONS STYLE ***************************/
@@ -102,11 +123,44 @@ h4{
 /********************************************************************/
 
 .pop-up-container{
-    position: relative;
+    display: flex;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 100;
+    align-items: center;
+}
+
+.pop-up-closing{
+    position: relative;
+    top: 0;
+    left: 34vw;
+}
+
+.pop-up-return{
+    position: relative;
+    top: 0;
+    left: 0vw;
+}
+
+.pop-up{
+    align-self: center;
+    height: auto;
+    background-color: white;
+    z-index: 101;
+    border: 1px solid black;
+    padding: 20px;
+    width: 40.41vw;
+}
+
+.pop-up-title{
+    font-size: 34px;
+    font-weight: bolder;
+}
+
+.active{
+    color: red;
 }

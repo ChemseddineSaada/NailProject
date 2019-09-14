@@ -7,7 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -18,18 +19,26 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('email')
+            ->add('name',TextType::class,['label'=>'Prénom'])
+            ->add('last_name',TextType::class,['label'=>'Nom'])
+            ->add('email', RepeatedType::class, [
+                'type' => EmailType::class,
+                'invalid_message' => 'Les adresses email saisies sont différentes.',
+                'required' => true,
+                'first_options'  => ['label' => 'Email', 'attr'=>['placeholder'=>'Email']],
+                'second_options' => ['label' => 'Confirmation email','attr'=>['placeholder'=>'Confirmation email']],
+            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'Les mots de passes entrés sont différents.',
-                'required' => true
+                'invalid_message' => 'Les mots de passes saisis sont différents.',
+                'required' => true,
+                'first_options'  => ['label' => 'Mot de passe', 'attr'=>['placeholder'=>'Mot de passe']],
+                'second_options' => ['label' => 'Confirmation mot de passe','attr'=>['placeholder'=>'Confirmation mot de passe']],
             ])
             ->add('termsAccepted', CheckboxType::class, array(
                 'mapped' => false,
                 'constraints' => new IsTrue(),
             ))
-            ->add('save',SubmitType::class)
         ;
     }
 

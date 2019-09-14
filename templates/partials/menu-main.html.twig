@@ -1,5 +1,6 @@
 <nav class="row container-fluid justify-content-between align-items-center main-menu">
-    <link rel="stylesheet" href="{{asset('web/css/mainMenu-style.css')}}">
+    <link rel="stylesheet" href="{{asset('web/css/mainMenu-style.css')}}"> 
+
 
     <a class="menu-logo" href="{{path('shop.home.index')}}">
         <img src="{{asset('web/img/menu/logo.png')}}" alt="Logo BBB">
@@ -19,13 +20,13 @@
         <a class="nav-link burger" hidden><img class="burger-btn" src="{{asset('web/img/menu/burger-opened.svg')}}"  alt="Boutton d'ouverture du menu"></a>
 
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <a class="row justify-content-between user-item" href="{{path('app_logout')}}">
+                <a class="row justify-content-between user-item" href="{{path('user_panel')}}">
                     <p  class="mt-auto mb-auto user-text">Mon compte</p> 
                     <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">                   
                 </a>
         {% else %}
-                <a class="row justify-content-between user-item" href="{{path('login_panel')}}">
-                    <p  class="mt-auto mb-auto user-text">Mon compte</p> 
+                <a class="row justify-content-between user-item btn-pop-up" href="#">
+                    <p  class="mt-auto mb-auto user-text">Se connecter</p> 
                     <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">
                 </a>
         {% endif %}
@@ -59,11 +60,11 @@
         <a class="nav-link burger" hidden><img class="burger-btn" src="{{asset('web/img/menu/burger-opened.svg')}}"  alt="Boutton d'ouverture du menu"></a>
 
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <a class="row justify-content-between user-item" href="{{path('app_logout')}}">
+                <a class="row justify-content-between user-item" href="{{path('user_panel')}}">
                     <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">                   
                 </a>
         {% else %}
-                <a class="row justify-content-between user-item" href="{{path('login_panel')}}">
+                <a class="row justify-content-between user-item btn-pop-up">
                     <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">
                 </a>
         {% endif %}
@@ -81,6 +82,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{{asset('web/js/menu-burger.js')}}"></script>
+
 <script>
     $(document).ready(function(){
 
