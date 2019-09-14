@@ -21,11 +21,20 @@ $(document).ready(function(){
         for(let i = 1; i <= menuElementNumber ; i++){
             $('.to-display-'+i).hide();
             $('.body-menu li').removeClass('activated');
+            $('.body-menu li').children().removeClass('activated');
         }
+        
 
         //Afficher l'élément ciblé
         $('.'+$(e.target).attr('data-display')).show();
         $(e.target).addClass('activated');
-        
+        $(e.target).children().addClass('activated');
+
+        if(!($(e.target).is('li'))){
+            $(e.target).next().addClass('activated');
+            $(e.target).prev().addClass('activated');
+        }
+
     });
+
 });

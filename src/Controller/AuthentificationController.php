@@ -103,11 +103,27 @@ class AuthentificationController extends AbstractController
      * @return array  $error
      */
 
-     public function userPanel(Security $security){
+     public function userPanel(Security $security, Request $request){
 
         $user = $security->getUser();
 
         $form = $this->createForm(UserType::class,$user);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $manager->persist($user);
+            $manager->flush();
+
+            
+            $this->addFlash(
+                'notice_success',
+                'Vos modifications ont bien été enregistrées.'
+                );
+
+            return $this->redirectToRoute('user_panel');
+        }
 
         return $this->render('Authentification/user-panel.html.twig', [
             'user' => $user,
