@@ -35,6 +35,29 @@ $(document).ready(function(){
             $(e.target).prev().addClass('activated');
         }
 
+        if($('.delivery').hasClass('activated')){
+            $('.delivery').attr('src',"web/img/userpanel/delivery2.svg");
+        }
+        else{
+            $('.delivery').attr('src',"web/img/userpanel/delivery1.svg");
+        }
+
+        
+        if($('.map').hasClass('activated')){
+            $('.map').attr('src',"web/img/userpanel/map2.svg");
+        }
+        else{
+            $('.map').attr('src',"web/img/userpanel/map1.svg");
+        }
+
+        
+        if($('.gear').hasClass('activated')){
+            $('.gear').attr('src',"web/img/userpanel/gear2.svg");
+        }
+        else{
+            $('.gear').attr('src',"web/img/userpanel/gear1.svg");
+        }
+
     });
 
 });

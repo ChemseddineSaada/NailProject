@@ -45,6 +45,7 @@
 
 .bbb-signup-link{
     color: black;
+    cursor: pointer;
 }
 
 .bbb-signup-link:hover{

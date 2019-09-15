@@ -20,14 +20,23 @@
         <a class="nav-link burger" hidden><img class="burger-btn" src="{{asset('web/img/menu/burger-opened.svg')}}"  alt="Boutton d'ouverture du menu"></a>
 
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            
+            {% if app.request.get('routeName') == 'user_panel' %}
+                <a class="row justify-content-between user-item" href="{{path('app_logout')}}">
+                    <p  class="mt-auto mb-auto user-text">Se deconnecter</p> 
+                    <img src="{{ asset('web/img/menu/user.svg') }}" alt="Se deconnecter">                   
+                </a>
+            {% else %}
                 <a class="row justify-content-between user-item" href="{{path('user_panel')}}">
                     <p  class="mt-auto mb-auto user-text">Mon compte</p> 
                     <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">                   
                 </a>
+            {% endif %}
+            
         {% else %}
                 <a class="row justify-content-between user-item btn-pop-up" href="#">
                     <p  class="mt-auto mb-auto user-text">Se connecter</p> 
-                    <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">
+                    <img src="{{ asset('web/img/menu/user.svg') }}" alt="Se connecter">
                 </a>
         {% endif %}
         <a class="row justify-content-between user-item" href="#">

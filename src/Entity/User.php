@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Serializable;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -220,12 +221,38 @@ class User implements UserInterface
     }
  
 
+/*     public function getSalt(){
+        return null;
+    }
+    public function eraseCredentials(){
+        $this->password = null;
+    }
+
+    public function unserialize($serialized){
+        list(
+            $this->id,
+            $this->email,
+            $this->password
+        ) = unserialize($serialized);
+    }
+
+    public function serialize(){
+        return serialize([
+            $this->id,
+            $this->email,
+            $this->password,
+        ]);
+    } */
+
     public function getSalt(){}
     public function eraseCredentials(){}
-
+    public function serialize(){}
+    public function unserialize($serialized){}
     public function __toString(){
     
         return $this->username;
     }
+
+
     
 }

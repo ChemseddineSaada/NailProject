@@ -2,7 +2,7 @@
     background: linear-gradient(#FFF, rgba(255,255,255,0));
     font-family: 'Lato', sans-serif;
     font-size: 1.25vw;
-    margin: auto;
+    margin: 0 !important;
     padding-top: 20px;
 }
 
@@ -39,7 +39,11 @@
 
 .user-item{
     color: black;
-    margin: 5px 0;
+    margin: 5px 5px 5px 0 !important;
+}
+
+.user-item img{
+    margin: 5px;
 }
 
 .user-item:hover{

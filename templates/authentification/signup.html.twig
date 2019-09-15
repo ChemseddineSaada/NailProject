@@ -7,6 +7,13 @@
 <h2 class="text-center">Ouvrir un compte</h2>
     <div class="d-flex row justify-content-center">
 
+        <div class="active col-12">
+            {{form_errors(form.name)}}
+            {{form_errors(form.last_name)}}
+            {{form_errors(form.email)}}
+            {{form_errors(form.password)}}
+        </div>
+
         <div class="col-12">{{form_label(form.name, 'Prénom',{'label_attr':{'class':'bbb-form-label'}})}}</div>
         <div class="col-12">{{form_widget(form.name, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Prénom'}})}}</div>
 

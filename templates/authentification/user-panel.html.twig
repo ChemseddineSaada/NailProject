@@ -11,17 +11,17 @@
 <ul class="body-menu ancre" id="ancre1">
 
         <li class="activated text-center" data-display="to-display-1">
-            <img src="{{asset('web/img/userpanel/gear.svg')}}" alt="Mes informations personnelles"  data-display="to-display-1">
+            <img class="gear activated" src="{{asset('web/img/userpanel/gear2.svg')}}" alt="Mes informations personnelles"  data-display="to-display-1">
             <p  data-display="to-display-1">Mes informations </br> personnelles</p>
         </li>
 
         <li class="text-center" data-display="to-display-2">
-            <img src="{{asset('web/img/userpanel/delivery.svg')}}" alt="Mes commandes"  data-display="to-display-2">
+            <img class="delivery" src="{{asset('web/img/userpanel/delivery1.svg')}}" alt="Mes commandes"  data-display="to-display-2">
             <p  data-display="to-display-2">Mes commandes</p>
         </li>
 
         <li class="text-center" data-display="to-display-3">
-            <img src="{{asset('web/img/userpanel/map.svg')}}" alt="Mes adresses"  data-display="to-display-3">
+            <img class="map" src="{{asset('web/img/userpanel/map1.svg')}}" alt="Mes adresses"  data-display="to-display-3">
             <p  data-display="to-display-3">Mes adresses</p>
         </li>
 
@@ -32,6 +32,7 @@
 
     {{ form_start(form) }}
     <div class="d-flex row justify-content-center">
+        <div class="col-12">{{ form_errors(form)}}</div>
 
         <div class="col-12">{{form_label(form.name, 'Prénom',{'label_attr':{'class':'bbb-form-label'}})}}</div>
         <div class="col-12">{{form_widget(form.name, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Prénom'}})}}</div>
@@ -45,20 +46,29 @@
         <div class="col-12">{{form_label(form.email.second, 'Confirmation email',{'label_attr':{'class':'bbb-form-label'}})}}</div>
         <div class="col-12">{{form_widget(form.email.second, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Confirmation Email'}})}}</div>
         
-        <div class="col-12">{{form_label(form.password.first, 'Mot de passe',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
-        <div class="col-12">{{form_widget(form.password.first, {'attr': {'class': 'bbb-form-field mx-auto', 'readonly' : true, 'hidden' : 'hidden' }})}}</div>
-
-        <div class="col-12">{{form_label(form.password.second, 'Confirmation mot de passe',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
-        <div class="col-12">{{form_widget(form.password.second, {'attr': {'class': 'bbb-form-field mx-auto', 'readonly' : true, 'hidden' : 'hidden' }})}}</div>
-
         <div class="col-12">{{form_label(form.termsAccepted, 'Termes et confidentialité',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
         <div class="col-12">{{form_widget(form.termsAccepted, {'attr': {'class': 'bbb-remember-me', 'readonly' : true, 'hidden' : 'hidden' }})}}</div>
 
         <div class="col-6 mt-4">{{form_widget(form.save, {'label':'valider','attr': {'class': 'btn-bbb btn-text btn-form-submit'}})}}</div>
     </div>
 
-{{ form_end(form) }}
+    {{ form_end(form) }}
 
+    <form action="{{path('password_change')}}" method="post">
+
+        <div class="bbb-remember-me bbb-signup-link text-center"><a class="change-password bbb-signup-link closed">Modifier mon mot de passe</a></div>
+        <div class="panel-password">
+            <div class="col-12">{{ form_errors(password_form)}}</div>
+            <div class="col-12">{{form_label(password_form.password.first, 'Mot de passe',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
+            <div class="col-12">{{form_widget(password_form.password.first, {'attr': {'class': 'bbb-form-field mx-auto', 'hidden' : 'hidden', 'name':'password' , 'required':false}})}}</div>
+
+            <div class="col-12">{{form_label(password_form.password.second, 'Confirmation mot de passe',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
+            <div class="col-12">{{form_widget(password_form.password.second, {'attr': {'class': 'bbb-form-field mx-auto', 'hidden' : 'hidden', 'name':'password', 'required':false}})}}</div>
+
+            <div class="col-6 mx-auto">{{form_widget(password_form.save, {'label':'Modifier','attr': {'class': 'btn-bbb btn-text btn-form-submit','hidden':'hidden'}})}}</div>
+        </div>
+
+    </form>
 </div>
 
 <div class="to-display-2">
@@ -106,4 +116,30 @@
 
 
 <script src="{{asset('web/js/body-menu.js')}}"></script>
+
+<script>
+    $('.change-password').click(function(){
+        if($('.change-password').hasClass('closed')){
+            $('.panel-password label').removeAttr("hidden");
+            $('.panel-password input').removeAttr("hidden");
+            $('.change-password').removeClass('closed');            
+            $('#user_password_first').attr('name',"user[password][first]");
+            $('#user_password_second').attr('name',"user[password][second]");
+            $('.panel-password button').removeAttr("hidden");
+        }
+
+        else{
+            $('.panel-password button').attr("hidden","hidden");
+            $('.panel-password label').attr("hidden","hidden");
+            $('.panel-password input').attr("hidden","hidden");
+            $('.change-password').addClass('closed');
+            $('.panel-password input').removeAttr("name");       
+            $('.panel-password input').removeAttr("required");
+
+        }
+
+    });
+
+
+</script>
 {% endblock %}
