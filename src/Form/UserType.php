@@ -29,10 +29,6 @@ class UserType extends AbstractType
                 'first_options'  => ['label' => 'Email', 'attr'=>['placeholder'=>'Email']],
                 'second_options' => ['label' => 'Confirmation email','attr'=>['placeholder'=>'Confirmation email']],
             ])
-            ->add('termsAccepted', CheckboxType::class, array(
-                'mapped' => false,
-                'constraints' => new IsTrue()
-            ))
             ->add('save',SubmitType::class)
         ;
     }

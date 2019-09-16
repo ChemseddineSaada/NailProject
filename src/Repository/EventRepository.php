@@ -58,10 +58,9 @@ class EventRepository extends ServiceEntityRepository
 
     public function findById($id){
         return $this->createQueryBuilder('c')
-                    ->andWhere('c.state = :val AND c.id = :id')
-                    ->setParameter('val', 1)
+                    ->andWhere('c.id = :id')
                     ->setParameter('id', $id)
                     ->getQUery()
-                    ->getResult();
+                    ->getOneOrNullResult();
     }
 }

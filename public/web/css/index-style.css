@@ -2,7 +2,7 @@
 /*************************** HEADER STYLE ***************************/
 /********************************************************************/
 header{
-    background-image: url('../img/index/Header-home.jpg');
+    background-image: url('../img/index/Header-home.jpg') !important;
 }
 
 .hashtag-bbb{

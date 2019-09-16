@@ -4,6 +4,7 @@
 {% block more_style %} 
     <link rel="stylesheet" href="{{asset('web/css/body-menu.css')}}">
     <link rel="stylesheet" href="{{asset('web/css/event-style.css')}}">
+    <link rel="stylesheet" href="{{asset('web/css/userPanel-style.css')}}">
 {% endblock %} 
 {% block body %}
 
@@ -28,6 +29,18 @@
 </ul>
 <!-- BODY MENU END -->
 
+{% for message in app.flashes('notice_success') %}
+    <div class="alert alert-success mx-auto col-6">
+        <p class="alert-link text-center">{{ message }}</p>
+    </div>
+{% endfor %}
+
+{% for message in app.flashes('notice_bad') %}
+    <div class="alert alert-danger mx-auto col-6">
+        <p class="alert-link text-center">{{ message }}</p>
+    </div>
+{% endfor %}
+
 <div class="to-display-1">
 
     {{ form_start(form) }}
@@ -45,16 +58,13 @@
 
         <div class="col-12">{{form_label(form.email.second, 'Confirmation email',{'label_attr':{'class':'bbb-form-label'}})}}</div>
         <div class="col-12">{{form_widget(form.email.second, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Confirmation Email'}})}}</div>
-        
-        <div class="col-12">{{form_label(form.termsAccepted, 'Termes et confidentialité',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
-        <div class="col-12">{{form_widget(form.termsAccepted, {'attr': {'class': 'bbb-remember-me', 'readonly' : true, 'hidden' : 'hidden' }})}}</div>
 
         <div class="col-6 mt-4">{{form_widget(form.save, {'label':'valider','attr': {'class': 'btn-bbb btn-text btn-form-submit'}})}}</div>
     </div>
 
     {{ form_end(form) }}
 
-    <form action="{{path('password_change')}}" method="post">
+    <form action="{{path('password_change',{'slug':user.email})}}" method="post">
 
         <div class="bbb-remember-me bbb-signup-link text-center"><a class="change-password bbb-signup-link closed">Modifier mon mot de passe</a></div>
         <div class="panel-password">
@@ -96,21 +106,59 @@
     <h2>Toutes mes adresses de livraison</h2>
 
     {% for address in user.deliveryAddresses  %}
+    <div class="d-flex row">
+        <div class="address-element d-flex column flex-wrap">
 
-    <div class="event-passed-element d-flex row flex-nowrap">
-
-            <div class="event-passed-info">
-                <p class="event-passed-title">{{address.surname}}</p>
-                <p class="event-passed-extract">{{address.address}}</p>
-                <a class="event-passed-extract">{{address.additionnalAddress}}</a>
-                <p class="event-passed-extract">{{address.zipcode}}</p>
-                <p class="event-passed-extract">{{address.country}}</p>
-                <p class="event-passed-extract">{{address.email}}</p>
-                <p class="event-passed-extract">{{address.phone}}</p>
-            </div>
-    </div>
-
+                <p class="col-3 address-text"><b>Intitulé :</b></p><p class="address-text col-9"><b>{{address.surname}}</b></p>
+                <p class="col-3 address-text"><b>Adresse :</b></p><p class="address-text col-9">{{address.address}}</p>
+                <p class="col-3 address-text"><b>Complément d'adresse :</b></p><a class="address-text col-9">{{address.additionalAddress}}</a>
+                <p class="col-3 address-text"><b>Code postal :</b></p><p class="address-text col-9">{{address.zipcode}}</p>
+                <p class="col-3 address-text"><b>Pays :</b></p><p class="address-text col-9">{{address.country}}</p>
+                <p class="col-3 address-text"><b>Destinataire :</b></p><p class="address-text col-9">{{address.forname}}</p>
+                <p class="col-3 address-text"><b>Email :</b></p><p class="address-text col-9">{{address.email}}</p>
+                <p class="col-3 address-text"><b>N° Téléphone :</b></p><p class="address-text col-9">{{address.phone}}</p>
+                <a class="btn-bbb btn-text text-center btn-delete-address" href="{{path('user.address.delete',{'id': address.id })}}">Supprimer</a>
+        
+        </div>
+    </div>    
     {% endfor %}
+
+    <form action="{{path('user.address.add')}}" method="post">
+
+        <div class="bbb-remember-me bbb-signup-link text-center"><a class="add-address bbb-signup-link closed">Ajouter une nouvelle addresse</a></div>
+        <div class="panel-address">
+            <div class="col-12">{{ form_errors(address_form)}}</div>
+
+            <div class="col-12">{{form_label(address_form.surname, 'Intitulé',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
+            <div class="col-12">{{form_widget(address_form.surname, {'attr': {'class': 'bbb-form-field mx-auto', 'hidden' : 'hidden'}})}}</div>
+
+            <div class="col-12">{{form_label(address_form.address, 'Adresse',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
+            <div class="col-12">{{form_widget(address_form.address, {'attr': {'class': 'bbb-form-field mx-auto', 'hidden' : 'hidden'}})}}</div>
+
+            <div class="col-12">{{form_label(address_form.additional_address, 'Complément d\'adresse',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
+            <div class="col-12">{{form_widget(address_form.additional_address, {'attr': {'class': 'bbb-form-field mx-auto', 'hidden' : 'hidden'}})}}</div>
+
+            <div class="col-12">{{form_label(address_form.zipcode, 'Code postal',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
+            <div class="col-12">{{form_widget(address_form.zipcode, {'attr': {'class': 'bbb-form-field mx-auto', 'hidden' : 'hidden'}})}}</div>
+
+            <div class="col-12">{{form_label(address_form.country, 'Pays',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
+            <div class="col-12">{{form_widget(address_form.country, {'attr': {'class': 'bbb-form-field mx-auto', 'hidden' : 'hidden'}})}}</div>
+
+            <div class="col-12">{{form_label(address_form.forname, 'Nom et prénom du destinataire',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
+            <div class="col-12">{{form_widget(address_form.forname, {'attr': {'class': 'bbb-form-field mx-auto', 'hidden' : 'hidden'}})}}</div>
+
+            <div class="col-12">{{form_label(address_form.phone, 'N° téléphone',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
+            <div class="col-12">{{form_widget(address_form.phone, {'attr': {'class': 'bbb-form-field mx-auto', 'hidden' : 'hidden'}})}}</div>
+
+            <div class="col-12">{{form_label(address_form.email, 'Email',{'label_attr':{'class':'bbb-form-label', 'hidden' : 'hidden'}})}}</div>
+            <div class="col-12">{{form_widget(address_form.email, {'attr': {'class': 'bbb-form-field mx-auto', 'hidden' : 'hidden'}})}}</div>
+
+            <div class="col-6 mx-auto">{{form_widget(address_form.save, {'label':'Ajouter','attr': {'class': 'btn-bbb btn-text btn-form-submit','hidden':'hidden'}})}}</div>
+        </div>
+    
+    </form>
+
+
 
 </div>
 
@@ -135,6 +183,28 @@
             $('.change-password').addClass('closed');
             $('.panel-password input').removeAttr("name");       
             $('.panel-password input').removeAttr("required");
+
+        }
+
+    });
+
+    $('.add-address').click(function(){
+        if($('.add-address').hasClass('closed')){
+            $('.panel-address label').removeAttr("hidden");
+            $('.panel-address input').removeAttr("hidden");
+            $('.panel-address select').removeAttr("hidden");
+            $('.add-address').removeClass('closed');            
+            $('.panel-address button').removeAttr("hidden");
+        }
+
+        else{
+            $('.panel-address button').attr("hidden","hidden");
+            $('.panel-address label').attr("hidden","hidden");
+            $('.panel-address input').attr("hidden","hidden");
+            $('.panel-address select').attr("hidden","hidden");
+            $('.add-address').addClass('closed');
+            $('.panel-address input').removeAttr("name");       
+            $('.panel-address input').removeAttr("required");
 
         }
 

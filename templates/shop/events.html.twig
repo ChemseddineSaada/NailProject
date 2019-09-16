@@ -17,28 +17,20 @@
 
 <!-- POP-UP START -->
 
-<div class="pop-up-container" style="display:none;">
+<div class="pop-up-container-2 pop-up-container" style="display:none;">
     <div class="mx-auto pop-up">
         <span class="pop-up-closing"><img src="{{asset('web/img/menu/burger-opened.svg')}}" alt="Croix de fermeture de la pop-up"></span>
         <p class="pop-up-title text-center">Inscription à l'événement</p>
 
-            {% for message in app.flashes('notice_nice') %}
-                <div class="alert alert-primary  mx-auto col-6">
-                <p class="alert-link text-center">{{ message }}</p>
-                </div>
-            {% endfor %}
-            
-            {% for message in app.flashes('notice_bad') %}
-                <div class="alert alert-danger mx-auto col-6">
-                <p class="alert-link text-center">{{ message }}</p>
-                </div>
-            {% endfor %}
             {{ form_start(form) }}
             <div class="d-flex row">
+                {{form_errors(form.name)}}
                 {{form_widget(form.name, {'attr': {'class': 'bbb-form-field mx-auto'}})}}
 
+                {{form_errors(form.first_name)}}
                 {{form_widget(form.first_name, {'attr': {'class': 'bbb-form-field mx-auto'}})}}
 
+                {{form_errors(form.email)}}
                 {{form_widget(form.email.first, {'attr': {'class': 'bbb-form-field mx-auto'}})}}
 
                 {{form_widget(form.email.second, {'attr': {'class': 'bbb-form-field mx-auto'}})}}
@@ -73,7 +65,7 @@
 
             <p class="text-center annoncement">{{event.annoncement}}</p>
 
-            <a class="btn-bbb btn-pop-up btn-subscribe mx-auto">
+            <a class="btn-bbb btn-pop-up-2 btn-subscribe mx-auto">
                 <span class="btn-text text-center">s'inscrire</span>
             </a>
 

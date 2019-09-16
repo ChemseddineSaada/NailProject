@@ -17,14 +17,30 @@
 <body>
 
 
-  <div class="pop-up-container" 
+  <div class="pop-up-container-1  pop-up-container" 
       {% if app.request.attributes.get('_route') != 'login_panel' %}
           style="display:none;"
       {% endif %}>
       
       <div class="mx-auto pop-up">
+
           {% if app.request.attributes.get('_route') == 'login_panel' %}
-          <a class="pop-up-return" href="{{referer}}"><img src="{{asset('web/img/arrow-left-solid.svg')}}" alt="Retour à la page d'accueil"></a>
+
+            <a class="pop-up-return" 
+            
+                {% if 'userPanel' in referer %}
+
+                    href="{{path('shop.home.index')}}"
+
+                {% else %}    
+
+                    href="{{referer}}"
+
+              {% endif %}>
+
+            <img src="{{asset('web/img/arrow-left-solid.svg')}}" alt="Retour à la page d'accueil">
+            </a>
+
           {% endif %}
           
           {% if app.request.attributes.get('_route') != 'login_panel' %}

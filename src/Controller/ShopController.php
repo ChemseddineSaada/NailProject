@@ -22,6 +22,11 @@ class ShopController extends AbstractController
         $offers = $this->getDoctrine()->getRepository(PackOffer::class)->findAllHomeView();
         $events = $this->getDoctrine()->getRepository(Event::class)->findPublished();
 
+        
+        $subscriber = new EventSubs();
+        
+        $form = $this->createForm(EventSubsType::class,$subscriber);
+
         //Pour afficher un seul événement à la fois sur la page d'accueil
         isset($events[0]) ? $event = $events[0] : $event = null;
         isset($products[0]) ? $product = $products[0] : $product = null;
@@ -40,6 +45,7 @@ class ShopController extends AbstractController
             'product' => $product,
             'offers' => $offers,
             'event' => $event,
+            'form'=> $form->createView()
         ]);
     }
 
@@ -71,6 +77,7 @@ class ShopController extends AbstractController
      * @Route("/events", name="shop.list.events")
      */
     public function listEvents(Request $request, ObjectManager $manager){
+        
         //Récupération des informations depuis la base de donnée
         $posts = $this->getDoctrine()->getRepository(EventPassed::class)->findAll();
         $events = $this->getDoctrine()->getRepository(Event::class)->findPublished();
@@ -78,8 +85,12 @@ class ShopController extends AbstractController
         //Création et traitement du formulaire d'inscription aux événements
 
         $subscriber = new EventSubs();
+        $data = $request->get('event_subs');
         
         $form = $this->createForm(EventSubsType::class,$subscriber);
+
+        //récupération de l'url précédent
+        $referer = $request->headers->get('referer');
      
         $form->handleRequest($request);
 
@@ -92,7 +103,8 @@ class ShopController extends AbstractController
                 $manager->persist($subscriber);
                 $manager->flush();
 
-                return $this->redirectToRoute('shop.list.events');
+                //redirection vers l'url précédent
+                return $this->redirect($referer);
             }
             else{          
                 $this->addFlash(
@@ -101,6 +113,37 @@ class ShopController extends AbstractController
                 );
             }
 
+        }
+
+        else if(isset($data)){
+
+            $subscriber->setName($data['name']);
+            $subscriber->setFirstName($data['first_name']);
+            $subscriber->setEmail($data['email']['first']);
+
+            if(isset($data['event'])){
+                $i =0;
+                foreach($data['event'] as $eventId){
+                    $event = $this->getDoctrine()->getRepository(Event::Class)->findById($data['event'][$i]);
+                    $subscriber->addEvent($event);
+                    $i++;
+                } 
+            }
+
+            try{
+                
+                $manager->persist($subscriber);
+                $manager->flush();
+            }
+            catch(\Exception $e){
+                $this->addFlash(
+                    'notice_bad',
+                    'Vous êtes déjà inscris à un événement.'
+                );
+            }
+
+            //redirection vers l'url précédent
+            return $this->redirect($referer);
         }
 
 

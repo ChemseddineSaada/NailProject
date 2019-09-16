@@ -47,4 +47,24 @@ class DeliveryAddressRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByUser($value): ?DeliveryAddress
+    {
+        return $this->createQueryBuilder('d')
+            ->andWhere('d.user = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    public function findById($value): ?DeliveryAddress
+    {
+        return $this->createQueryBuilder('d')
+            ->andWhere('d.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

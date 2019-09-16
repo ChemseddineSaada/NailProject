@@ -62,6 +62,11 @@ class User implements UserInterface
      */
     private $deliveryAddresses;
 
+   /**
+     * @ORM\Column(type="json_array")
+     */
+    private $roles = array();
+
 
     public function __construct()
     {
@@ -206,43 +211,19 @@ class User implements UserInterface
 
         return $this;
     }
+
     public function setRoles(array $roles)
     {
         $this->roles = $roles;
-
         return $this;
     }
-
+    
     public function getRoles()
     {
+        $roles = $this->roles;
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
- 
-
-/*     public function getSalt(){
-        return null;
-    }
-    public function eraseCredentials(){
-        $this->password = null;
-    }
-
-    public function unserialize($serialized){
-        list(
-            $this->id,
-            $this->email,
-            $this->password
-        ) = unserialize($serialized);
-    }
-
-    public function serialize(){
-        return serialize([
-            $this->id,
-            $this->email,
-            $this->password,
-        ]);
-    } */
 
     public function getSalt(){}
     public function eraseCredentials(){}
@@ -250,7 +231,7 @@ class User implements UserInterface
     public function unserialize($serialized){}
     public function __toString(){
     
-        return $this->username;
+        return $this->name;
     }
 
 

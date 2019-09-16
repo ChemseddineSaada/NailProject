@@ -4,17 +4,33 @@ easy_admin:
       Utilisateurs:
         help: "Vous trouverez ici tous les utilisateurs inscrits dans votre base de donnée."
         class: App\Entity\User
-        disabled_actions: ['edit','new']
+        disabled_actions: ['new']
         list:
           title: "Liste des utilisateurs"
           fields:
             - { property: 'id', label: '#ID' }
-            - { property: 'avatar', label: 'Avatar' , type: image, base_path: '%app.path.user_images%'}  
-            - { property: 'username', label: "Nom d'utilisateur" }
+            - { property: 'name', label: "Prénom" }
+            - { property: 'last_name', label: "Nom" }
             - { property: 'email', label: 'Adresse email' }
-            - { property: 'country', label: 'Pays', type: 'country' }
           actions:
             - { name: 'show', label: "Plus d'informations"}
+            - { name: 'edit', label: 'Modifier les permissions'} 
             - { name: 'delete', label: 'Bannir'}          
             - { name: 'search', label: 'Rechercher'} 
+        edit:
+          fields:
+            - { property: 'roles', label: 'Roles', type: 'choice', type_options: {choices: {'Utilisateur (Utilisateur standard)': 'ROLE_USER', 'Rédacteur (Accès à événements, articles)': 'ROLE_REDACT','Intégrateur (Accès aux produits, catégories, coffrets, abonnements, commandes, stock)': 'ROLE_INTEGER', 'Administrateur (Tous les accès)': 'ROLE_ADMIN'}, expanded: true, multiple: true } }
         
+        show:
+          title: "Liste des utilisateurs"
+          fields:
+            - { property: 'id', label: '#ID' }
+            - { property: 'roles', label: "Rôle" }
+            - { property: 'name', label: "Prénom" }
+            - { property: 'last_name', label: "Nom" }
+            - { property: 'email', label: 'Adresse email' }
+            - { property: 'orderedProducts', label: 'Produits commandés'}
+            - { property: 'deliveryAddresses', label: 'Adresses de livraisons'}
+          actions: 
+            - { name: 'edit', label: 'Modifier les permissions'} 
+            - { name: 'delete', label: 'Bannir'}      

@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Form\SignUpType;
+use App\Entity\DeliveryAddress;
 use App\Form\ChangePasswordType;
+use App\Form\DeliveryAddressType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -58,15 +60,17 @@ class AuthentificationController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-/*             $token = new UsernamePasswordToken(
+            //Récupération du Token utilisateur
+            $token = new UsernamePasswordToken(
                 $user,
                 $password,
                 'main',
                 $user->getRoles()
             );
 
+            //Mise en place d'un token pour permettre à l'utilisateur incris de se connecter directement après l'inscription.
             $this->get('security.token_storage')->setToken($token);
-            $this->get('session')->set('_security_main', serialize($token)); */
+            $this->get('session')->set('_security_main', serialize($token));
 
             return $this->redirectToRoute('shop.home.index');
         }
@@ -119,10 +123,16 @@ class AuthentificationController extends AbstractController
 
      public function userPanel(Security $security, Request $request, ObjectManager $manager){
 
+        
+        $address = new DeliveryAddress();
+
+        $addressId = $address->getId();
+
         $user = $security->getUser();
 
         $form = $this->createForm(UserType::class,$user);
         $passwordForm = $this->createForm(ChangePasswordType::Class,$user);
+        $addressForm = $this->createForm(DeliveryAddressType::class,$address);
 
         $form->handleRequest($request);
 
@@ -137,19 +147,21 @@ class AuthentificationController extends AbstractController
                 'Vos modifications ont bien été enregistrées.'
                 );
 
-            return $this->redirectToRoute('login_panel');
+            return $this->redirectToRoute('user_panel');
         }
 
         return $this->render('Authentification/user-panel.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
             'password_form' => $passwordForm->createView(),
+            'address_form'=> $addressForm->createView(),
+            'new_address' => $addressId
         ]);
     }
 
 
      /**
-     * @Route("/passwordChange", name="password_change")
+     * @Route("/passwordChange/{slug}", name="password_change")
      * 
      * La fonction passwordChange récupère les données saisies dans 
      * le champ de modification du mot de passe, vérifie leur validité
@@ -161,14 +173,13 @@ class AuthentificationController extends AbstractController
      * @return void
      */
 
-    public function passwordChange(Security $security, Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder){
+    public function passwordChange(Security $security, Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder, $slug){
 
-        $user = $security->getUser();
+        $user = $this->getDoctrine()->getRepository(User::class)->findByEmail($slug);
 
         $passwordForm = $this->createForm(ChangePasswordType::Class,$user);
 
         $passwordForm->handleRequest($request);
-
         
         if($passwordForm->isSubmitted() && $passwordForm->isValid()){
 
@@ -185,6 +196,9 @@ class AuthentificationController extends AbstractController
                 'Votre mot de passe a bien été modifié.'
                 );
 
+            $this->get('security.token_storage')->setToken(null);
+            $this->get('session')->invalidate();
+
             return $this->redirectToRoute('login_panel');
         }
 
@@ -194,7 +208,7 @@ class AuthentificationController extends AbstractController
                 'Votre mot de passe n\' pas été modifié.'
                 );
 
-            return $this->redirectToRoute('user_panel');
+                return $this->redirectToRoute('user_panel');
         }
     }
 }
