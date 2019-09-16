@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -18,8 +20,16 @@ class MenuController extends AbstractController
      * @return array $menu
      */
 
-    public function mainMenu()
+    public function mainMenu(Security $security)
     {
+
+        $user = $security->getUser();
+
+        if($user !== null)
+        {
+            $userId = $user->getId();
+            $user = $this->getDoctrine()->getRepository(User::Class)->findById($userId);
+        } 
 
         $menu = [
             'home' => ['route'=>'shop.home.index','label'=>'Accueil'],
@@ -28,10 +38,10 @@ class MenuController extends AbstractController
             'events' => ['route'=>'shop.list.events','label'=>'Événements'],
             'blog' => ['route'=>'shop.list.articles', 'label'=> "Notre jour'nail"],
             'whoweare' => ['route'=>'shop.show.whoweare','label'=>'Qui sommes-nous ?'],
-            'contact' => ['route'=>'shop.show.messageme','label'=>'Contactez nous'],
         ];
         return $this->render('partials/menu-main.html.twig', [
             'menu' => $menu,
+            'user'=>$user
         ]);
     }
 }

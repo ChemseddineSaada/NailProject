@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Form\SignUpType;
@@ -57,6 +58,12 @@ class AuthentificationController extends AbstractController
 
             $user->setPassword($password);
 
+            $cart = new Cart();
+            $cart->setQuantity(0);
+
+            $user->setCart($cart);
+
+            $manager->persist($cart);
             $manager->persist($user);
             $manager->flush();
 
@@ -74,6 +81,12 @@ class AuthentificationController extends AbstractController
 
             return $this->redirectToRoute('shop.home.index');
         }
+
+                    
+        $this->addFlash(
+            'notice_signup',
+            'Un problème est survenu lors de votre inscription, veuillez réessayez plutard ou contacter nos équipes.'
+            );
 
         return $this->render('Authentification/signup.html.twig', [
             'form'=>$form->createView(),

@@ -69,9 +69,12 @@
         <p>Nous n'avons aucun événement futur pour l'instant, abonnez-vous à notre Newsletter pour recevoir les dates dès leurs publications !</p>
     {% else %}
     <div class="event-element d-flex d-table-row">
-        <a class="align-self-center" href="#"><img src="{{asset('/web/img/whoweare/share.svg')}}" alt="Boutton de partage sur les réseaux sociaux"></a>
+
         <div class="event-map d-flex column flex-wrap justify-content-center">
-            <div class="map"><img src="{{asset('web/img/event/map.png')}}" href="Carte montrant le lieu de l'événement"></div>
+            <div class="map mr-5">
+                <a class="align-self-center mr-3" href="#"><img src="{{asset('/web/img/whoweare/share.svg')}}" alt="Boutton de partage sur les réseaux sociaux"></a>
+                <img src="{{asset('web/img/event/map.png')}}" href="Carte montrant le lieu de l'événement">
+            </div>
             <p class="text-center annoncement">{{ event.annoncement }}</p>
 
             <a class="btn-bbb btn-pop-up-2 btn-subscribe mx-auto">

@@ -8,35 +8,43 @@
     <div class="d-flex row justify-content-center">
 
         <div class="active col-12">
-            {{form_errors(form.name)}}
-            {{form_errors(form.last_name)}}
-            {{form_errors(form.email)}}
-            {{form_errors(form.password)}}
+            {% for message in app.flashes('notice_signup') %}
+                <div class="alert alert-danger mx-auto col-6">
+                    <p class="alert-link text-center">{{ message }}</p>
+                </div>
+            {% endfor %}
         </div>
 
-        <div class="col-12">{{form_label(form.name, 'Prénom',{'label_attr':{'class':'bbb-form-label'}})}}</div>
-        <div class="col-12">{{form_widget(form.name, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Prénom'}})}}</div>
+        <div class="col-4">{{form_label(form.name, 'Prénom',{'label_attr':{'class':'bbb-form-label'}})}}</div>
+        <div class="col-8">{{form_widget(form.name, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Prénom'}})}}</div>
 
-        <div class="col-12">{{form_label(form.last_name, 'Nom',{'label_attr':{'class':'bbb-form-label'}})}}</div>
-        <div class="col-12">{{form_widget(form.last_name, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Nom'}})}}</div>
+        <div class="col-4">{{form_label(form.last_name, 'Nom',{'label_attr':{'class':'bbb-form-label'}})}}</div>
+        <div class="col-8">{{form_widget(form.last_name, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Nom'}})}}</div>
         
-        <div class="col-12">{{form_label(form.email.first, 'Email',{'label_attr':{'class':'bbb-form-label'}})}}</div>
-        <div class="col-12">{{form_widget(form.email.first, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Email'}})}}</div>
+        <div class="col-4">{{form_label(form.email.first, 'Email',{'label_attr':{'class':'bbb-form-label'}})}}</div>
+        <div class="col-8">{{form_widget(form.email.first, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Email'}})}}</div>
 
-        <div class="col-12">{{form_label(form.email.second, 'Confirmation email',{'label_attr':{'class':'bbb-form-label'}})}}</div>
-        <div class="col-12">{{form_widget(form.email.second, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Confirmation Email'}})}}</div>
+        <div class="col-4">{{form_label(form.email.second, 'Confirmation email',{'label_attr':{'class':'bbb-form-label'}})}}</div>
+        <div class="col-8">{{form_widget(form.email.second, {'attr': {'class': 'bbb-form-field mx-auto','placeholder':'Confirmation Email'}})}}</div>
         
-        <div class="col-12">{{form_label(form.password.first, 'Mot de passe',{'label_attr':{'class':'bbb-form-label'}})}}</div>
-        <div class="col-12">{{form_widget(form.password.first, {'attr': {'class': 'bbb-form-field mx-auto'}})}}</div>
+        <div class="col-4">{{form_label(form.password.first, 'Mot de passe',{'label_attr':{'class':'bbb-form-label'}})}}</div>
+        <div class="col-8">{{form_widget(form.password.first, {'attr': {'class': 'bbb-form-field mx-auto'}})}}</div>
 
-        <div class="col-12">{{form_label(form.password.second, 'Confirmation mot de passe',{'label_attr':{'class':'bbb-form-label'}})}}</div>
-        <div class="col-12">{{form_widget(form.password.second, {'attr': {'class': 'bbb-form-field mx-auto' }})}}</div>
+        <div class="col-4">{{form_label(form.password.second, 'Confirmation mot de passe',{'label_attr':{'class':'bbb-form-label'}})}}</div>
+        <div class="col-8">{{form_widget(form.password.second, {'attr': {'class': 'bbb-form-field mx-auto' }})}}</div>
 
-        <div class="col-12">{{form_label(form.termsAccepted, 'Termes et confidentialité',{'label_attr':{'class':'bbb-form-label'}})}}
+        <div class="col-12">{{form_label(form.termsAccepted, 'Termes et confidentialité',{'label_attr':{'class':'bbb-form-label col-4'}})}}
                             {{form_widget(form.termsAccepted, {'attr': {'class': 'bbb-checkbox' }})}}</div>
 
         <div class="col-6 mt-4">{{form_widget(form.save, {'label':'valider','attr': {'class': 'btn-bbb btn-text btn-form-submit'}})}}
     </div>
 
 {{ form_end(form) }}
+
+<style>
+    header{
+        background-image: url();
+        height: 25vh !important;
+    }
+</style>
 {% endblock %}
