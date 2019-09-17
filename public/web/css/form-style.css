@@ -21,7 +21,7 @@
 }
 
 .bbb-form-field-checkbox{
-    font-size: 24px;
+    font-size: 1rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -39,7 +39,7 @@
 }
 
 .bbb-remember-me{
-    font-size: 24px;
+    font-size: 1rem;
     margin: 15px auto;
 }
 
@@ -60,9 +60,24 @@
 }
 
 .bbb-form-label{
-    font-size: 36px;
+    font-size: 1.2rem;
     font-weight: bold;
     user-select: none;
+}
+
+.bbb-btn-comment{
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 22.5px;
+    background: white;
+}
+
+.bbb-btn-comment:hover{
+    color: white;
+    background: black;
 }
 
 .bbb-checkbox{

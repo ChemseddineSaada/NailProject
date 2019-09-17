@@ -14,7 +14,7 @@ use App\Entity\{Product,PackOffer,Subscription,Event,MessageMe,EventPassed};
 class ShopController extends AbstractController
 {
     /**
-     * @Route("/index", name="shop.home.index")
+     * @Route("/", name="shop.home.index")
      */
     public function index()
     {

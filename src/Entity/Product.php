@@ -150,12 +150,29 @@ class Product
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="product")
+     */
+    private $comments;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $composition;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $technique;
+
 
     public function __construct()
     {
         $this->orderedProducts = new ArrayCollection();
         $this->packOffers = new ArrayCollection();
         $this->subscriptions = new ArrayCollection();
+        $this->cartToProducts = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -507,6 +524,61 @@ class Product
 
     public function getUpdatedAt(){
         return $this->updatedAt;
+    }
+
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getProduct() === $this) {
+                $comment->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getComposition(): ?string
+    {
+        return $this->composition;
+    }
+
+    public function setComposition(?string $composition): self
+    {
+        $this->composition = $composition;
+
+        return $this;
+    }
+
+    public function getTechnique(): ?string
+    {
+        return $this->technique;
+    }
+
+    public function setTechnique(?string $technique): self
+    {
+        $this->technique = $technique;
+
+        return $this;
     }
 
 }

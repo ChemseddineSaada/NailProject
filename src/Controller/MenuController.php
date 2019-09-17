@@ -37,8 +37,9 @@ class MenuController extends AbstractController
             'offers' => ['route'=>'shop.list.offers','label'=>'Nos offres'],
             'events' => ['route'=>'shop.list.events','label'=>'Événements'],
             'blog' => ['route'=>'shop.list.articles', 'label'=> "Notre jour'nail"],
-            'whoweare' => ['route'=>'shop.show.whoweare','label'=>'Qui sommes-nous ?'],
+            'whoweare' => ['route'=>'shop.show.whoweare','label'=>'#BonBeauBien'],
         ];
+        
         return $this->render('partials/menu-main.html.twig', [
             'menu' => $menu,
             'user'=>$user

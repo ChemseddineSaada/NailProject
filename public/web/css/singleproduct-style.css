@@ -1,0 +1,179 @@
+/*********************************************/
+/************** GENERAL STYLE ****************/
+/*********************************************/
+
+header{
+    background-image: url() !important;
+    height: 30vh !important;
+}
+
+.btn-add-to-cart{
+    font-size: 14px !important;
+    border: 1px solid black;
+    border-radius: 22.5px;
+    padding: 10px 30px;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn-add-to-cart:hover{
+    background: black;
+    color: white;
+    text-decoration: none;
+}
+
+
+/*********************************************/
+/*************** SLIDER STYLE ****************/
+/*********************************************/
+.slider-product{
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 60px;
+}
+.slider-show{
+    width: 100%;
+    min-height: 120px;
+    max-height: 300px;
+}
+.slider-show img{
+    padding-top: 3em;
+    max-width: 25vw;
+    max-height: 400px;
+    margin: 30px;
+}
+
+.slider-nav{
+    position: absolute !important;
+    top: 5em;
+    left: 0;
+    z-index: 101;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.slider-nav img{
+    width: 7%;
+    opacity: 0.3;
+    margin: 20px 0;
+}
+
+.slide-active{
+    opacity: 1 !important;
+}
+
+.slider-arrows{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    left: 20em;
+    top: 4em;
+    z-index: 102;
+}
+
+
+/*********************************************/
+/*********** INPUT QUANTITY BUTTON ***********/
+/*********************************************/
+
+.plus-minus-input {
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 20% !important;
+    margin-right: 0 !important;
+    margin: 10px 0;
+  }
+  
+.plus-minus-input .input-group-field {
+    text-align: center;
+}
+
+.plus-minus-input .input-group-field::-webkit-inner-spin-button,
+.plus-minus-input .input-group-field ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.input-group-field{
+    border: none;
+    border-top: 1px solid #D7D7D7;
+    border-bottom: 1px solid #D7D7D7;
+    width: 2rem;
+    font-family: 'Lato',sans-serif;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.button-plus{
+    border: none;
+    background-color: white;
+    border-top: 1px solid #D7D7D7;
+    border-bottom: 1px solid #D7D7D7;
+    border-right: 1px solid #D7D7D7;
+    border-top-right-radius: 22.5px;
+    border-bottom-right-radius: 22.5px;
+}
+
+.button-minus{
+    border: none;
+    background-color: white;
+    border-top: 1px solid #D7D7D7;
+    border-bottom: 1px solid #D7D7D7;
+    border-left: 1px solid #D7D7D7;
+    border-top-left-radius: 22.5px;
+    border-bottom-left-radius: 22.5px;
+    padding-left: 3px;
+}
+
+button span{
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    color: #D7D7D7;
+    z-index: 103 !important;
+    text-decoration: none;
+    padding: 10px;
+}
+  
+button span:hover{
+    color:black;
+}
+  
+/*********************************************/
+/*********** PRODUCT INFO ELEMENT ************/
+/*********************************************/
+
+.product-name{
+    font-size: 33px;
+    font-weight: bolder;
+}
+
+.product-rate{
+    font-size: 14px;
+    color: #898989;
+}
+
+.product-price{
+    font-size: 24px;
+    color: #898989;
+}
+
+.product-description{
+    font-size: 14px;
+    color: #898989;
+}
+
+.btn-add-to-cart{
+    margin: auto 12px auto 0;
+}
+
+.social-icons{
+    margin: auto 3px;
+    cursor: pointer;
+}

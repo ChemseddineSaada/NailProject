@@ -1,9 +1,14 @@
 .main-menu{
-    background: linear-gradient(#FFF, rgba(255,255,255,0));
+    background: rgb(255,252,252);
+    background: -moz-linear-gradient(top,  rgba(255,252,252,1) 0%, rgba(255,255,255,1) 51%, rgba(255,255,255,0.77) 80%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(top,  rgba(255,252,252,1) 0%,rgba(255,255,255,1) 51%,rgba(255,255,255,0.77) 80%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom,  rgba(255,252,252,1) 0%,rgba(255,255,255,1) 51%,rgba(255,255,255,0.77) 80%,rgba(255,255,255,0) 100%);
+
     font-family: 'Lato', sans-serif;
     font-size: 1.25vw;
+    font-weight: bold;
     margin: 0 !important;
-    padding-top: 20px;
+    padding-top: 5px;
 }
 
 .second-menu{
@@ -17,6 +22,10 @@
     z-index: 99;
 }
 
+.menu-logo{
+    width: 5.625vw;
+    max-height: 138px;
+}
 .second-menu .menu-logo img{
     width: 30%;
     height: auto;

@@ -2,7 +2,7 @@
 
 <div class="row align-items-center footer-div justify-content-around">
 
-    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 newsletter-div"> <!-- Newsletter-div -->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 newsletter-div"> <!-- Newsletter-div -->
         <h2>Inscrivez-vous à notre Newsletter</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
 
@@ -19,11 +19,35 @@
             <input type="text" name="last-route" value="{{app.request.attributes.get('_route')}}" hidden>
             <button type="submit" id="newsletter-submit">S'inscrire</button>
         </form> <!-- Fin du formulaire d'inscription à la Newsletter -->
+
+        <div class="payment-why d-flex row justify-content-between flex-nowrap">
+            <div>
+                <img src="{{asset('web/img/footer/poste.svg')}}" alt="Payement par La Poste accepté">
+            </div>
+            <div class="d-flex justify-content-around">
+                <img class="mr-3" src="{{asset('web/img/footer/visa.svg')}}" alt="Payement par VISAaccepté">
+                <img class="mr-3" src="{{asset('web/img/footer/master.svg')}}" alt="Payement par MasterCard accepté">
+            </div>
+        </div>
     </div> <!-- fin Newsletter-div -->
 
-    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 justify-content-center information-div"> <!-- information-div -->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 footer-menu"> <!-- Menu footer -->
+        <p class="footer-menu-title">informations</p>
+        <ul>
+            <li class="footer-list" ><a class="footer-link" href="#">Protection des données</a></li>
+            <li class="footer-list" ><a class="footer-link" href="#">Conditions générales</a></li>
+            <li class="footer-list" ><a class="footer-link" href="#">Mentions légales</a></li>
+            <li class="footer-list" ><a class="footer-link" href="#">Avis de rétractation</a></li>
+            <li class="footer-list" ><a class="footer-link" href="#">Images fournies par</a></li>
+            <li class="footer-list" ><a class="footer-link" href="#">Informations consommateurs</a></li>
+            <li class="footer-list" ><a class="footer-link" href="#">Livraison et paiement</a></li>
+            <li class="footer-list" ><a class="footer-link" href="#">Garantie satisfait ou remboursé</a></li>
+        </ul>
+    </div>  <!-- fin Menu footer -->
+
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 justify-content-center information-div"> <!-- information-div -->
         <h3>#BonBeauBien</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+        <p>Le vernis des femmes qui s’engagent</p>
         <div class="contact-container row justify-content-between">
             <div class="contact">
                 <p>info@bonbeaubien.com</p>

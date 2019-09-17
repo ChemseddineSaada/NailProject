@@ -27,11 +27,19 @@ class PurchaseController extends AbstractController
     {
         $user = $security->getUser();
 
-
-
-
         return $this->render('purchase/cart.html.twig', [
             'controller_name' => 'PurchaseController',
         ]);
     }
+
+    /**
+     * @Route("/payment", name="purchase.payment.index")
+     */
+    public function payment()
+    {
+
+        return $this->render('purchase/payment.html.twig', [
+            'controller_name' => 'PurchaseController',
+        ]);
+     }
 }

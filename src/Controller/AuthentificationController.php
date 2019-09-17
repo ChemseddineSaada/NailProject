@@ -58,12 +58,6 @@ class AuthentificationController extends AbstractController
 
             $user->setPassword($password);
 
-            $cart = new Cart();
-            $cart->setQuantity(0);
-
-            $user->setCart($cart);
-
-            $manager->persist($cart);
             $manager->persist($user);
             $manager->flush();
 

@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Product;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SingleController extends AbstractController
 {
@@ -14,7 +15,7 @@ class SingleController extends AbstractController
     {
         $product = $this->getDoctrine()->getRepository(Product::class)->findById($slug);
 
-        return $this->render('single/product.html.twig', [
+        return $this->render('shop/singles/product.html.twig', [
             'product' => $product,
         ]);
     }
@@ -26,7 +27,7 @@ class SingleController extends AbstractController
     {
         $category = $this->getDoctrine()->getRepository(category::class)->findById($slug);
 
-        return $this->render('single/category.html.twig', [
+        return $this->render('singles/category.html.twig', [
             'category' => $category,
         ]);
     }
@@ -38,7 +39,7 @@ class SingleController extends AbstractController
     {
         $article = $this->getDoctrine()->getRepository(Article::class)->findById($slug);
 
-        return $this->render('single/article.html.twig', [
+        return $this->render('singles/article.html.twig', [
             'article' => $article,
         ]);
     }
@@ -50,7 +51,7 @@ class SingleController extends AbstractController
     {
         $subscription = $this->getDoctrine()->getRepository(Subscription::class)->findById($slug);
 
-        return $this->render('single/subscription.html.twig', [
+        return $this->render('singles/subscription.html.twig', [
             'subscription' => $subscription,
         ]);
     }

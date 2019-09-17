@@ -30,7 +30,7 @@
         <div class="product-element col-12  col-xs-12 col-sm-12 col-md-6 col-lg-3">
  
             <div class="product-image-container">
-                <div class="hover-effect d-flex text-center align-items-center"><a class="add-to-cart" product-id="{{product.id}}">Ajouter au panier</a></div>
+                <div class="hover-effect d-flex text-center align-items-center"><a class="add-to-cart add-tocart" product-id="{{product.id}}">Ajouter au panier</a></div>
                 <img class="mx-auto img-fluid product-image" src="{{asset('/uploads/images/products/' ~ product.image1)}}" alt="{{product.description}}">
             </div>
             
@@ -40,7 +40,7 @@
                     <p class="product-category text-right">{{product.category}}</p>                                 
                 </div>
                 <div class="justify-content-between d-flex">                
-                    <p class="product-name">{{product.name}}</p> 
+                    <a href="{{path('single.show.product',{'slug':product.id})}}" class="product-name">{{product.name}}</a> 
                     <p class="product-price text-right">{{product.price}} &#128;</p>
                 </div>        
             </div>

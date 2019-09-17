@@ -57,3 +57,5 @@ easy_admin:
             - { property: 'ref', label: 'Référence' }
             - { property: 'state', label: 'Publié sur le site' } 
             - { property: 'top_product', label: "Produit à la une"}  
+
+

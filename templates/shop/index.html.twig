@@ -33,7 +33,7 @@
         <div class="align-self-center">
             <p class="p-bold product-description-bold">Restez belles et naturelles tout au long de l’automne, avec nos vernis fabriqués avec plus de 80% de matières premières d’origine naturelle et végétale.</p>
             <p class="product-description-light">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam</p>
-            <a class="btn-bbb see-more-products" href="{{path('shop.list.products')}}"><p class="btn-text">Voir plus de produits</p></a>
+            <a class="see-more-products float-right" href="{{path('shop.list.products')}}">Voir plus de produits</a>
         </div>
     </div>
 
@@ -73,7 +73,7 @@
         <div class="event-map d-flex column flex-wrap justify-content-center">
             <div class="map mr-5">
                 <a class="align-self-center mr-3" href="#"><img src="{{asset('/web/img/whoweare/share.svg')}}" alt="Boutton de partage sur les réseaux sociaux"></a>
-                <img src="{{asset('web/img/event/map.png')}}" href="Carte montrant le lieu de l'événement">
+                <img src="{{asset('public/uploads/events/' ~ event.image)}}" href="Carte montrant le lieu de l'événement">
             </div>
             <p class="text-center annoncement">{{ event.annoncement }}</p>
 

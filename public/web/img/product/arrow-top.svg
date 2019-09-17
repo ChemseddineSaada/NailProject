@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="164" height="164" viewBox="0 0 164 164">
+  <defs>
+    <filter id="bg" x="0" y="0" width="164" height="164" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="19" result="blur"/>
+      <feFlood flood-color="#96b0cb" flood-opacity="0.31"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Groupe_53" data-name="Groupe 53" transform="translate(-718 -361)">
+    <g id="Groupe_50" data-name="Groupe 50">
+      <g id="Groupe_49" data-name="Groupe 49" transform="translate(-27 -108)">
+        <g id="Groupe_52" data-name="Groupe 52" transform="translate(-24 -3)">
+          <g id="Groupe_48" data-name="Groupe 48" transform="translate(20 1)">
+            <g transform="matrix(1, 0, 0, 1, 749, 471)" filter="url(#bg)">
+              <path id="bg-2" data-name="bg" d="M25,0A25,25,0,0,1,50,25c0,7.967-9.779,19.834-9.779,19.834S30.84,50,25,50A25,25,0,0,1,25,0Z" transform="translate(57 57)" fill="#fff"/>
+            </g>
+          </g>
+          <g id="Groupe_51" data-name="Groupe 51">
+            <g id="Groupe_47" data-name="Groupe 47" transform="translate(20 1)">
+              <path id="arrow" d="M885.218,437.73a.84.84,0,0,1,0-1.218l1.722-1.654H880.9a.863.863,0,1,1,0-1.724h6.046l-1.724-1.653a.844.844,0,0,1-.263-.611.83.83,0,0,1,.263-.6.919.919,0,0,1,1.268,0l3.254,3.122a.836.836,0,0,1,.263.608v0a.831.831,0,0,1-.171.5.945.945,0,0,1-.092.105l-3.254,3.123a.928.928,0,0,1-1.268,0Z" transform="translate(-54 119)"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

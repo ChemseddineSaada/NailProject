@@ -1,7 +1,168 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{% endblock %}
+{% block more_style %} 
+    <link rel="stylesheet" href="{{asset('web/css/body-menu.css')}}">
+    <link rel="stylesheet" href="{{asset('web/css/singleproduct-style.css')}}">
+    <link rel="stylesheet" href="{{asset('web/css/form-style.css')}}">
+{% endblock %} 
 
 {% block body %}
+
+<!-- PRODUCT ELEMENT START -->
+
+<div class="d-flew row">
+    <!-- SLIDER START-->
+    <div class="d-flex row col-5 slider-product">
+
+        <div class="slider-show col-12 text-center">
+            <img class="img-fluid" src="{{asset('/uploads/images/products/' ~ product.image1)}}" alt="{{product.description}}" id="1">
+        </div>
+
+        <div class="slider-nav">
+            <div><img class="image1 slide-active" src="{{asset('/uploads/images/products/' ~ product.image1)}}" alt="{{product.description}}" id="1"></div>
+            <div><img class="image2" src="{{asset('/uploads/images/products/' ~ product.image2)}}" alt="{{product.description}}" id="2"></div>
+            <div><img class="image3" src="{{asset('/uploads/images/products/' ~ product.image3)}}" alt="{{product.description}}" id="3"></div>
+            <div><img class="image4" src="{{asset('/uploads/images/products/' ~ product.image4)}}" alt="{{product.description}}" id="4"></div>
+        </div>
+        <div class="slider-arrows">
+                <span class="prev-arrow"><img src="{{asset('web/img/product/arrow-top.svg')}}" alt="Flèche haut"></span>
+                <span class="next-arrow"><img src="{{asset('web/img/product/arrow-bottom.svg')}}" alt="Flèche Bas"></span>
+        </div>
+
+    </div>
+    <!-- SLIDER END -->
+
+
+    <div class="col-7 d-flex row align-items-center align-content-center">
+        <p class="col-12 product-name">{{product.name}}</p>
+        <div class="col-12 product-rate"><img src="{{asset('web/img/product/stars.svg')}}" alt="Nombre d'avis"><span> {{product.comments|length}} Avis</span></div>
+        <p class="col-12 product-price">{{product.price}} €</p>
+        <p class="col-12 product-description">{{product.description}}</p>
+
+        <div class="col-12">
+            
+
+        <!-- CUSTOMIZE QUANTITY FIELD START-->
+
+        <div class="input-group plus-minus-input">
+            <div class="input-group-button">
+                <button type="button" class="button-minus" data-quantity="minus" data-field="quantity">
+                <span>-</span>
+                </button>
+            </div>
+            <input class="input-group-field" type="number" name="quantity" value="1">
+            <div class="input-group-button">
+                <button type="button" class="button-plus" data-quantity="plus" data-field="quantity">
+                <span>+</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- CUSTOMIZE QUANTITY FIELD END-->
+
+            <a class="btn-add-to-cart" href="">Ajouter au panier</a>
+            <img class="social-icons" src="{{asset('web/img/product/fb.svg')}}" alt="Page Facebook BBB">
+            <img class="social-icons" src="{{asset('web/img/product/insta.svg')}}" alt="Profil Instagram BBB">
+        </div>
+    </div>
+    <!-- PRODUCT ELEMENT END -->
+</div>
+
+<!-- BODY MENU START -->
+
+
+<ul class="body-menu">
+    <li class="activated" data-display="to-display-1">Description</li>
+    <li data-display="to-display-2">Composition</li>
+    <li data-display="to-display-3">Fiche technique</li>
+    <li data-display="to-display-4">Info livraison</li>
+    <li data-display="to-display-5">Comment recycler vos flacons</li>
+    <li data-display="to-display-6">Avis ({{product.comments|length}})</li>
+</ul>
+
+<!-- FIRST ELEMENT TO SHOW START-->
+<div class="to-display-1">
+
+    <p>{{product.description}}</p>
+
+</div>
+<!-- FIRST ELEMENT TO SHOW START-->
+
+<!-- SECOND ELEMENT TO SHOW START-->
+<div class="to-display-2">
+
+    {% if product.composition is empty %}
+        <p>La composition n'a pas été renseignée pour ce produit.</p>
+    {% else %}
+        <p>{{product.composition}}</p>
+    {% endif %}
+
+</div>
+<!-- SECOND ELEMENT TO SHOW START-->
+
+<!-- THIRD ELEMENT TO SHOW START-->
+<div class="to-display-3">
+
+    {% if product.technique is empty %}
+        <p>La fiche technique n'a pas été renseignée pour ce produit.</p>
+    {% else %}
+        <p>{{product.technique}}</p>
+    {% endif %}
+
+</div>
+<!-- THIRD ELEMENT TO SHOW START-->
+
+<!-- FOURTH ELEMENT TO SHOW START-->
+<div class="to-display-4">
+
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum atque quis ut culpa, mollitia sequi, expedita ipsum numquam officia quo illum laudantium suscipit reprehenderit unde voluptates? Doloremque voluptate pariatur at.</p>
+
+</div>
+<!-- FOURTH ELEMENT TO SHOW START-->
+
+<!-- FIFTH ELEMENT TO SHOW START-->
+<div class="to-display-5">
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis inventore doloremque dolores voluptatum molestias reprehenderit. Omnis autem neque nihil quidem minima debitis! Eaque nihil, incidunt vitae inventore sapiente quaerat libero.</p>
+
+</div>
+<!-- FIFTH ELEMENT TO SHOW START-->
+
+<!-- SIXTH ELEMENT TO SHOW START-->
+<div class="to-display-6">
+
+    {% if product.comments|length > 0 %}
+
+        {% for comment in product.comments %}
+
+            <p>{{comment.user}}</p>
+            <p>{{comment.note}}</p>
+            <p>{{comment.content}}</p>
+            <p>{{comment.publishedAt}}</p>
+
+        {% endfor %}
+
+    {% endif %}
+
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+        <form action="" method="POST">
+            <label class="bbb-form-label" for="comment">Ajouter un commentaire : </label>
+            <input class="bbb-form-field" type="text" name="comment">
+            <button class="bbb-btn-comment">Envoyer</button>
+        </form>
+
+    {% endif %}
+    
+
+</div>
+<!-- SIXTH ELEMENT TO SHOW START-->
+
+<!-- BODY MENU END -->
+
+<script src="{{asset('web/js/body-menu.js')}}"></script>
+<script src="{{asset('web/js/slider-image.js')}}"></script>
+<script src="{{asset('web/js/input-number.js')}}"></script>
 
 {% endblock %}

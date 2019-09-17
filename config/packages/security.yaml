@@ -40,7 +40,8 @@ security:
 
     # Restriction d'accès aux options administrateurs pour un rôle donné
    # access_control:
-       # -  path: ^/admin/user
-        #   allow_if: "is_granted('ROLE_SUPER_ADMIN')"
-        #-  path: ^/admin 
-         #  allow_if: "is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')"
+       # access_control:
+        #    -  path: ^/admin/user
+         #      allow_if: "is_granted('ROLE_ADMIN')"
+          #  -  path: ^/admin 
+           #    allow_if: "is_granted('ROLE_ADMIN') or is_granted('ROLE_INTEGER') or is_granted('ROLE_REDACT')"

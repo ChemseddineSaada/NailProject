@@ -52,7 +52,7 @@ h4{
     margin: 250px auto 20px auto;
     font-size: 1.77vw;
     text-transform: uppercase;
-    letter-spacing: 15px;
+    letter-spacing: 12px;
     text-shadow: 0 3px 6px rgba(255,255,255,0.31);
     font-weight: bolder;
 }
@@ -98,7 +98,7 @@ h4{
 
 .btn-bbb{
     display: flex;
-    border: 0.3125vw solid black;
+    border: 2px solid black;
     height: 3.8542vw;
     border-radius: 22.5px;
     align-items: center;

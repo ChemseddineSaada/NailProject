@@ -58,7 +58,7 @@ class User implements UserInterface
 
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\DeliveryAddress", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\DeliveryAddress", mappedBy="user", orphanRemoval=true, cascade={"persist", "remove"})
      */
     private $deliveryAddresses;
 
@@ -67,11 +67,17 @@ class User implements UserInterface
      */
     private $roles = array();
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="user", orphanRemoval=true)
+     */
+    private $comments;
+
 
     public function __construct()
     {
         $this->orderedProducts = new ArrayCollection();
         $this->deliveryAddresses = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -194,23 +200,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCart(): ?Cart
-    {
-        return $this->cart;
-    }
-
-    public function setCart(?Cart $cart): self
-    {
-        $this->cart = $cart;
-
-        // set (or unset) the owning side of the relation if necessary
-        $newUser = $cart === null ? null : $this;
-        if ($newUser !== $cart->getUser()) {
-            $cart->setUser($newUser);
-        }
-
-        return $this;
-    }
 
     public function setRoles(array $roles)
     {
@@ -232,6 +221,37 @@ class User implements UserInterface
     public function __toString(){
     
         return $this->name;
+    }
+
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
+            }
+        }
+
+        return $this;
     }
 
 

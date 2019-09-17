@@ -68,8 +68,30 @@ header{
 
 /** SEE MORE PRODUCT BUTTON **/
 .see-more-products{
-    width: 28.65vw;
+    display: inline-block;
     margin: 40px auto;
+    color: white;
+    background: black;
+    padding: 17px 3vw;
+    font-size: 1.46vw;
+    text-transform: uppercase;
+    border-radius: 20px;
+    margin: 30px auto; 
+}
+
+.see-more-products:hover{
+    color: black;
+    border: 1px solid black;
+    background: white;
+    text-decoration: none;
+}
+
+.section-title::after{
+    content: "";
+    display: block;
+    width: 62px;
+    border: 6px solid black;
+    margin-top: 20px;
 }
 
 

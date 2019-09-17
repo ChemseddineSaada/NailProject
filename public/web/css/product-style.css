@@ -53,6 +53,13 @@ body{
 }
 .product-name{
     font-size: 12px;
+    text-decoration: none;
+    color: black;
+}
+
+.product-name:hover{
+    text-decoration: none;
+    color: black;
 }
 
 .product-price{
@@ -69,6 +76,12 @@ body{
 
 .product-image-container{
     box-sizing: border-box;
+}
+
+.product-image{
+    max-height: 430px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .hover-effect{
@@ -90,9 +103,13 @@ body{
     padding: 19px;
 }
 
+.add-tocart{
+    color:white !important;
+}
+
 .add-to-cart:hover{
     text-decoration: none;
-    color: black;
+    color: black !important;
     border: 1px solid black;
 }
 

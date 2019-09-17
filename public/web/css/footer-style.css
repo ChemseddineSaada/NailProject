@@ -3,13 +3,39 @@
 }
 
 /***************************************************************************/
+/******************************** FOOTER MENU ******************************/
+/***************************************************************************/
+.footer-menu{
+    font-size: 20px;
+    padding: 0 100px;
+}
+.footer-link{
+    text-decoration: none;
+    color: black;
+}
+
+.footer-link:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.footer-list{
+    list-style: none;
+}
+.footer-menu-title{
+    text-transform: uppercase;
+    padding-left: 40px;
+    font-weight: 550;
+    letter-spacing: 2px
+}
+
+/***************************************************************************/
 /****************************** CONTACT SECTION ****************************/
 /***************************************************************************/
 
 .information-div{
-    padding-right: 300px;
-    padding-left: 100px;
-    padding-bottom: 0;
+    padding: 0 30px;
+   
 }
 
 .information-div p{
@@ -19,7 +45,7 @@
 }
 
 .contact-container{
-    width: 100%;
+    width: 65%;
     margin: 0;
 }
 .contact, .copyright{
@@ -41,7 +67,7 @@
 /***************************************************************************/
 
 footer form{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 11px;
     color: black; 
 }
@@ -49,7 +75,12 @@ footer form{
 .newsletter-div{
     background: black;
     color: white;
-    padding : 100px 0 220px 220px;
+    padding : 100px 30px 10px 50px;
+}
+
+.newsletter-div h2{
+    font-weight: 1.875vw !important;
+    font-weight: bold;
 }
 
 .newsletter-div p{
@@ -58,22 +89,28 @@ footer form{
 }
 
 #newsletter-email{
-    width: 300px;
+    width: 17rem;
     height: 40px; 
     text-transform: uppercase;
-    border-radius: 20px;
+    border-radius: 5px;
     border: none;
     padding-left: 20px;
     margin-right: 20px;
 }
 
 #newsletter-submit{
-    width: 170px;
+    width: 8rem;
     height: 40px;   
     text-transform: uppercase;
-    border-radius: 20px;
+    border-radius: 5px;
     border: none;
     background: white;
     font-weight: bold;
 }
+
+.payment-why{
+    margin-top: 30%;
+}
+
+
 

@@ -61,7 +61,7 @@ class ProductRepository extends ServiceEntityRepository
                     ->setParameter('val', 1)
                     ->setParameter('id', $id)
                     ->getQUery()
-                    ->getResult();
+                    ->getOneOrNullResult();
     }
 
     public function findTopProduct(){
