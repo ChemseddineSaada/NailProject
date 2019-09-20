@@ -1,67 +1,34 @@
-$('.burger').click(function(){
-    if($('.burger').hasClass('closed')){
+$(document).ready(function(){
 
-        $('.burger').removeClass('closed');
-        $('.menu-list').show();
-        anime({
-            targets: '.menu-list',
-            translateY: 0,
-            translateX: 0,
-            opacity:1,
-            duration: 200,
-            easing: 'linear'
-            });
+    if (window.matchMedia("(max-width: 1050px)").matches) {
+        $('.main-menu').attr('hidden','hidden'); 
+        $('.mobile-menu').removeAttr('hidden');
 
-        anime({
-            targets: '.menu-title',
-            translateX: 0,
-            duration : 300,
-            easing: 'linear'
-            });
+        $('.burger').click(function(){
 
-        anime({
-            targets: '.menu-devise',
-            duration : 50,
-            opacity: 0,
-            easing: 'linear'
-            });
-        
-            setTimeout(() => {
-                $('.menu-devise').attr('hidden','hidden');
-            }, 200);
-    }
+                
+            if($('.burger').hasClass('closed')){
+                $('.burger').removeClass('closed');
+                $('.burger').removeClass('burger-margin');
+                $('.user-item').removeAttr('hidden');
+                $('.burger-btn').attr('src','/web/img/menu/burger-opened.svg');
+                $('.navbar-mobile').removeAttr('hidden');
+                $('.third-menu').css('background','rgba(255,255,255,0.7)');        
+                $('.menu-logo img').attr('src','/web/img/menu/hashtag.png');
+                $('.menu-logo img').css('width','155px');
 
-    else{
+            }
+            else{
+                $('.burger').addClass('closed');
+                $('.burger').addClass('burger-margin');
+                $('.user-item').attr('hidden','hidden');
+                $('.burger-btn').attr('src','/web/img/menu/burger-closed.svg');
+                $('.navbar-mobile').attr('hidden','hidden');
+                $('.third-menu').css('background','');
+                $('.menu-logo img').attr('src','/web/img/menu/logo.png');
+                $('.menu-logo img').css('width','50px');
+            }
+        });
 
-        $('.burger').addClass('closed');
-        anime({
-            targets: '.menu-list',
-            translateY: 20,
-            translateX: 5,
-            opacity:0,
-            duration: 200,
-            easing: 'linear'
-            });
-
-            setTimeout(() => {
-                $('.menu-list').hide();
-            }, 200);
-            
-        anime({
-            targets: '.menu-title',
-            translateX: 700,
-            duration : 300,
-            easing: 'linear'
-            });
-
-        $('.menu-devise').removeAttr('hidden');
-        $('.menu-devise').css('opacity',0);
-        anime({
-            targets: '.menu-devise',
-            duration : 50,
-            opacity: 1,
-            easing: 'linear'
-            });
-        
     }
 });

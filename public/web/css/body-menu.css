@@ -23,3 +23,40 @@
 .activated{
     color: black;
 }
+
+
+@media (max-width: 575.98px) {
+    .body-menu{
+        font-size: 32px !important;
+    }
+}
+
+@media (min-width: 576) and (max-width: 767.98px) {
+    .body-menu{
+        font-size: 26px !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .body-menu{
+        font-size: 32px !important;
+    }
+ }
+
+@media (min-width: 992px) and (max-width: 1049.98px) {
+    .body-menu{
+        font-size: 32px !important;
+    }
+}
+
+@media (min-width: 1050px) and (max-width: 1199.98px) {
+    .body-menu{
+        font-size: 32px !important;
+    }
+}
+
+@media (min-width: 1200px){
+    .body-menu{
+        font-size: 32px !important;
+    }
+}

@@ -4,6 +4,7 @@
 {% block more_style %} 
     <link rel="stylesheet" href="{{asset('web/css/event-style.css')}}"> 
     <link rel="stylesheet" href="{{asset('web/css/body-menu.css')}}">
+    <link rel="stylesheet" href="{{asset('web/css/responsive-events.css')}}">
 {% endblock %}  
 
 {% block headerText %}
@@ -47,6 +48,7 @@
 
 <!-- POP-UP END-->
 
+<!-- FIRST DISPLAYED SECTION START-->
 <ul class="body-menu ancre" id="ancre1">
     <li class="activated" data-display="to-display-1">Événements à venir</li>
     <li data-display="to-display-2">Historique des événements</li>
@@ -65,23 +67,25 @@
 
             <p class="text-center annoncement">{{event.annoncement}}</p>
 
-            <a class="btn-bbb btn-pop-up-2 btn-subscribe mx-auto">
-                <span class="btn-text text-center">s'inscrire</span>
+            <a class="btn-pop-up-2 mx-auto">
+                <span class="btn-subscribe">s'inscrire</span>
             </a>
 
         </div>
 
     {% endfor %} 
 </div>
+<!-- FIRST DISPLAYED SECTION END-->
 
+<!-- SECOND DISPLAYED SECTION START-->
 <div class="to-display-2">
 
    {% for event_passed in events_passed  %}
-   <div class="event-passed-element d-flex row flex-nowrap">
-        <div class="event-passed-image">
+   <div class="event-passed-element d-flex row">
+        <div class="event-passed-image col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
             <img class="img-fluid" src="{{'uploads/images/eventsPassed/' ~ event_passed.image1}}" alt="Photo prise lors de l'événement passé">
         </div>
-        <div class="event-passed-info">
+        <div class="event-passed-info col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
             <p class="event-passed-title">{{event_passed.events}}</p>
             <span class="event-passed-date">{{event_passed.events.eventDate |  date('d-m-Y')}}</span>
             <p class="event-passed-extract">{{event_passed.article | easyadmin_truncate(150)}}</p>
@@ -91,6 +95,8 @@
     {% endfor %} 
     
 </div>
+<!-- SECOND DISPLAYED SECTION END-->
+
 <script src="{{asset('web/js/body-menu.js')}}"></script>
 
 {% endblock %}

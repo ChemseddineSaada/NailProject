@@ -1,0 +1,302 @@
+/****************************************************/
+/********************* HEADER ***********************/
+/****************************************************/
+
+@media (max-width: 576px) { 
+    .text-header{
+        position: absolute;
+        top: 45vh;
+        text-align: center;
+        z-index: 5 !important;
+    }
+    .text-header p{
+        font-size: 14px !important;
+        letter-spacing: 5px !important;
+    }
+    header{
+        background-position-y: 55px !important;
+    }
+    .hashtag-bbb{
+        opacity: 0;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .text-header{
+        margin-top: 30vw;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+ }
+
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+    .text-header{
+        margin-top: 22vh;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .text-header{
+        margin-top: 40vw;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+}
+
+@media (max-width: 1200px){
+    .nav-arrow{
+        display: none;
+    }
+}
+
+/****************************************************/
+/********************** HOME ************************/
+/****************************************************/
+@media (max-width: 576px) {
+    .section-content{
+        justify-content: center;
+        text-align: center;
+    }
+    .see-more-products{
+        float: none;
+        width: 100%;
+        text-align: center;
+        font-size: 16px !important;
+    }
+    .description-home{
+        justify-content: center;
+        width: 100%;
+    }
+    .parallax{
+        flex-wrap: wrap;
+    }
+    .section-content div{
+        justify-content: center;
+    }
+    .element-price{
+        font-size: 18px !important;
+    }
+    .element-title{
+        font-size: 24px !important;
+    }
+    .product-description-bold{
+        font-size: 26px !important;
+    }
+    .product-description-light{
+        font-size: 18px !important;
+        color: rgb(85,85,85);
+    }
+    .section-title{
+        font-size: 36px !important;
+    }
+    .map{
+        margin-bottom: 50px;
+    }
+    .event-text{
+        margin: auto !important;
+    }
+    .annoncement{
+        text-align: center;
+        font-size: 25px !important;
+    }
+    .btn-subscribe{
+        height: 45px;
+        width: 220px;
+        border-radius: 5px !important;
+        font-weight: bold;
+        font-size: 16px !important;
+        line-height: 45px; 
+        padding: 0 !important;
+    }
+    .section-title::after{
+        margin: auto !important;
+        margin-top: 30px !important;
+    }
+    
+ }
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .section-content{
+        justify-content: center;
+    }
+    .see-more-products{
+        float: none;
+        width: 100%;
+        text-align: center;
+        font-size: 28px !important;
+    }
+    .description-home{
+        justify-content: center;
+        width: 100%;
+    }
+    .parallax{
+        flex-wrap: wrap;
+    }
+    .section-content div{
+        justify-content: center;
+    }
+    .element-price{
+        font-size: 18px !important;
+    }
+    .element-title{
+        font-size: 24px !important;
+    }
+    .product-description-bold{
+        font-size: 26px !important;
+    }
+    .product-description-light{
+        font-size: 18px !important;
+        color: rgb(85,85,85);
+    }
+    .section-title{
+        font-size: 36px !important;
+    }
+    .map {
+        margin-bottom: 50px;
+    }
+    .annoncement{
+        text-align: center;
+        font-size: 25px !important;
+    }
+    .btn-subscribe{
+        width: 350px;
+        text-align: center;
+        font-size: 28px !important;
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .section-content{
+        justify-content: center;
+    }
+    .see-more-products{
+        float: none;
+        width: 100%;
+        text-align: center;
+        font-size: 28px !important;
+    }
+    .description-home{
+        justify-content: center;
+        width: 100%;
+    }
+    .parallax{
+        flex-wrap: wrap;
+    }
+    .section-content div{
+        justify-content: center;
+    }
+    .element-price{
+        font-size: 18px !important;
+    }
+    .element-title{
+        font-size: 24px !important;
+    }
+    .product-description-bold{
+        font-size: 26px !important;
+    }
+    .product-description-light{
+        font-size: 18px !important;
+        color: rgb(85,85,85);
+    }
+    .section-title{
+        font-size: 36px !important;
+    }
+    .map {
+        margin-bottom: 50px;
+    }
+    .annoncement{
+        text-align: center;
+        font-size: 25px !important;
+    }
+    .btn-subscribe{
+        width: 350px;
+        text-align: center;
+        font-size: 28px !important;
+    }
+    
+}
+
+@media (min-width: 992px) and (max-width: 1049.98px) {
+    .section-content{
+        justify-content: center;
+    }
+    .see-more-products{
+        float: none;
+        width: 100%;
+        text-align: center;
+        font-size: 28px !important;
+    }
+    .description-home{
+        justify-content: center;
+        width: 100%;
+    }
+    .parallax{
+        flex-wrap: wrap;
+    }
+    .section-content div{
+        justify-content: center;
+    }
+    .element-price{
+        font-size: 18px !important;
+    }
+    .element-title{
+        font-size: 24px !important;
+    }
+    .product-description-bold{
+        font-size: 26px !important;
+    }
+    .product-description-light{
+        font-size: 18px !important;
+        color: rgb(85,85,85);
+    }
+    .section-title{
+        font-size: 36px !important;
+    }
+    .map {
+        margin-bottom: 50px;
+    }
+    .annoncement{
+        text-align: center;
+        font-size: 25px !important;
+    }
+    .btn-subscribe{
+        width: 350px;
+        text-align: center;
+        font-size: 28px !important;
+    }
+    
+}
+
+@media (min-width: 1050px) and (max-width: 1199.98px) {
+    .text-header{
+        position: absolute;
+        top: -20vh;
+        left: 10vw;
+        width: 80%;
+    }
+    .section-content{
+        justify-content: center;
+    }
+ }
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+    .description-home{
+        padding: 100px !important;
+    }
+ }
+
+ 
+
+

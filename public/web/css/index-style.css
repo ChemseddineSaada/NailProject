@@ -10,6 +10,15 @@ header{
     width: 30.1vw;
     height: auto;
 }
+.website-content{
+    margin: 0 !important;
+}
+.section-content{
+    margin: 0 5.2vw;
+}
+.text-header p{
+    text-shadow: 0 3px 6px rgba(255,255,255,0.5) !important;
+}
 
 /********************************************************************/
 /*************************** ELEMENT STYLE **************************/
@@ -66,6 +75,10 @@ header{
     margin: 20px 0;
 }
 
+.element-info{
+    padding-bottom: 30px;
+}
+
 /** SEE MORE PRODUCT BUTTON **/
 .see-more-products{
     display: inline-block;
@@ -92,6 +105,27 @@ header{
     width: 62px;
     border: 6px solid black;
     margin-top: 20px;
+}
+
+
+/******* EVENT ***************/
+
+.event-map-index{
+    color: white;
+    padding: 50px 0;
+}
+
+.div-for-background{
+    background: black;
+}
+.event-text{
+    width: 70%;
+    font-size: 2.083vw;
+    margin-left: 10.41vw;
+}
+
+.annoncement{
+    margin-bottom: 5.21vw;
 }
 
 

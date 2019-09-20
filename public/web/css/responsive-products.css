@@ -1,0 +1,166 @@
+/****************************************************/
+/********************* HEADER ***********************/
+/****************************************************/
+
+@media (max-width: 576px) { 
+    .text-header{
+        position: relative !important;
+        top: -80vh;
+        text-align: center;
+        z-index: 5 !important;
+    }
+    .text-header p{
+        font-size: 14px !important;
+        letter-spacing: 5px !important;
+    }
+    .hashtag-bbb{
+        opacity: 0;
+    }
+    .third-menu{
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .text-header{
+        position: absolute !important;
+        top: -20vh !important;
+        margin-top: 30vw;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+    .third-menu{
+        position: relative !important;
+        top: 0 !important;
+    }
+ }
+
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+    .text-header{
+        position: relative !important;
+        top: -100vh;
+        margin-top: 22vh;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+    .third-menu{
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+@media (min-width: 992px) and (max-width: 1029px) { 
+    .text-header{
+        position: absolute !important;
+        top: 20vh ;
+        margin-top: 0 !important;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+    .third-menu{
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+
+@media (min-width: 1028.98px) and (max-width: 1199.98px) { 
+    .text-header{
+        position: absolute !important;
+        top: 20vh !important;
+        margin-top: 0 !important;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+    .third-menu{
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+
+@media (max-width: 1200px){
+    .nav-arrow{
+        display: none;
+    }
+}
+
+/****************************************************/
+/********************* PRODUCTS *********************/
+/****************************************************/
+@media (max-width: 576px) {
+    .section-content{
+        justify-content: center;
+        text-align: center;
+    }
+    .section-content div{
+        justify-content: center;
+    }
+    .element-price{
+        font-size: 18px !important;
+    }
+    .element-title{
+        font-size: 24px !important;
+    }
+    
+ }
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .section-content{
+        justify-content: center;
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .section-content{
+        justify-content: center;
+    }
+    .section-content div{
+        justify-content: center;
+    }
+    .element-price{
+        font-size: 18px !important;
+    }
+    .element-title{
+        font-size: 24px !important;
+    }
+    
+}
+
+@media (min-width: 992px) and (max-width: 1049.98px) {
+    .section-content{
+        justify-content: center;
+    }
+    
+}
+
+@media (min-width: 1050px) and (max-width: 1199.98px) {
+    .text-header{
+        position: absolute;
+        top: -20vh;
+        left: 10vw;
+        width: 80%;
+    }
+    .section-content{
+        justify-content: center;
+    }
+ }
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+
+ }
+
+ 
+
+

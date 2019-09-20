@@ -1,3 +1,4 @@
+<!-- FIRST MENU (DISPLAYED ON HOME) -->
 <nav class="row container-fluid justify-content-between align-items-center main-menu">
     <link rel="stylesheet" href="{{asset('web/css/mainMenu-style.css')}}"> 
 
@@ -12,7 +13,7 @@
                 <a class="nav-link {{ app.request.get('routeName') == element.route ? 'active' }}"
                 href="{{path(element.route)}}">
                     {% if element.route == 'shop.show.whoweare' %}
-                        #Bon<span style="color:red;">B</span>eauBien
+                        #Bon<span class="bonbeaubien-b" style="color:red;">B</span>eauBien
                     {% else %}
                         {{element.label}}  
                     {% endif %}
@@ -22,7 +23,6 @@
     </ul>
 
     <div class="column user-link user-box">
-        <a class="nav-link burger" hidden><img class="burger-btn" src="{{asset('web/img/menu/burger-opened.svg')}}"  alt="Boutton d'ouverture du menu"></a>
 
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             
@@ -53,7 +53,14 @@
         {% endif %}>
 
             <p class="mt-auto mb-auto user-text">Mon panier</p>
-            <img src="{{ asset('web/img/menu/cart.svg') }}" alt="Panier">
+            <div class="cart-display">
+                <img src="{{ asset('web/img/menu/cart.svg') }}" alt="Panier">
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <span class="cart-number" data-quantity="0">0</span>
+                {% endif %}
+                
+            </div>
 
             {% if user.cart is defined %}
                 <span></span>
@@ -61,11 +68,11 @@
         </a>
     </div>
 </nav>
+<!-- FIRST MENU END -->
 
 <!-- SECOND MENU (DISPLAYED ON SCROLLING) -->
 
 <nav class="row container-fluid justify-content-between align-items-center main-menu second-menu" hidden="hidden">
-    <link rel="stylesheet" href="{{asset('web/css/mainMenu-style.css')}}">
 
     <a class="menu-logo" href="{{path('shop.home.index')}}">
         <img src="{{asset('web/img/menu/logo.png')}}" alt="Logo BBB">
@@ -82,8 +89,7 @@
     </ul>
 
     <div class="row user-link user-box">
-        <a class="nav-link burger" hidden><img class="burger-btn" src="{{asset('web/img/menu/burger-opened.svg')}}"  alt="Boutton d'ouverture du menu"></a>
-
+ 
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <a class="row justify-content-between user-item" href="{{path('user_panel')}}">
                     <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">                   
@@ -94,10 +100,68 @@
                 </a>
         {% endif %}
         <a class="row justify-content-between user-item" href="#">
-            <img src="{{ asset('web/img/menu/cart.svg') }}" alt="Panier">
+                <div class="cart-display">
+                        <img src="{{ asset('web/img/menu/cart.svg') }}" alt="Panier">
+
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <span class="cart-number" data-quantity="0">0</span>
+                        {% endif %}
+                </div>
         </a>
     </div>
 </nav>
+
+<!-- SECOND MENU END -->
+
+
+<!-- MOBILE MENU START -->
+
+<div class="third-menu">
+    <nav class="row container-fluid justify-content-between align-items-center mobile-menu" hidden="hidden">
+
+        <a class="menu-logo" href="{{path('shop.home.index')}}">
+            <img src="{{asset('web/img/menu/logo.png')}}" alt="Logo BBB">
+        </a>
+
+        <div class="row user-link user-box">
+    
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <a class="row justify-content-between user-item" href="{{path('user_panel')}}" hidden="hidden">
+                        <img src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">                   
+                    </a>
+            {% else %}
+                    <a class="row justify-content-between user-item btn-pop-up" hidden="hidden" href="{{path('login_panel')}}">
+                        <img class="mx-auto" src="{{ asset('web/img/menu/user.svg') }}" alt="Espace membre">
+                    </a>
+            {% endif %}
+            <a class="row justify-content-between user-item" href="#" hidden="hidden">
+                    <div class="cart-display">
+                            <img src="{{ asset('web/img/menu/cart.svg') }}" alt="Panier">
+
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <span class="cart-number" data-quantity="0">0</span>
+                            {% endif %}
+                    </div>
+            </a>
+            <a class="burger burger-margin closed"><img class="burger-btn" src="{{asset('web/img/menu/burger-closed.svg')}}"  alt="Boutton d'ouverture du menu"></a>
+        </div>
+        
+    </nav>
+    <div class="navbar-mobile" hidden="hidden">
+        <ul>
+            {% for element in menu  %}
+                <li class="text-center">
+                    <a class="nav-link {{ app.request.get('routeName') == element.route ? 'active' }}"
+                    href="{{path(element.route)}}"
+                    >{{element.label}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+<!-- MOBILE MENU END -->
 
 <style>
     .menu-item{
@@ -107,42 +171,35 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{{asset('web/js/menu-burger.js')}}"></script>
+<script src="{{asset('web/js/cart.js')}}"></script>
 
 <script>
+    //Apparition du second menu au scroll
     $(document).ready(function(){
-
-        $(window).scroll(function(){
-            var currentHeight = $(window).scroll(function(){}).scrollTop();
-
-            if(currentHeight == 0){
-                $('.second-menu').attr('hidden','hidden');
-            }
-            else{
-                $('.second-menu').removeAttr('hidden');
-            }
+        if (window.matchMedia("(min-width: 1200px)").matches) {
             
-            $('.main-menu').css({'opacity': 1 - currentHeight * 0.015});
-            
-            $('.second-menu').css('opacity',currentHeight * 0.005);
+            $(window).scroll(function(){
+                var currentHeight = $(window).scroll(function(){}).scrollTop();
+
+                if(currentHeight == 0){
+                    $('.second-menu').attr('hidden','hidden');
+                }
+                else{
+                    $('.second-menu').removeAttr('hidden');
+                }
+                
+                $('.main-menu').css({'opacity': 1 - currentHeight * 0.015});
+                
+                $('.second-menu').css('opacity',currentHeight * 0.005);
 
 
-        });
+            });
+    }
+        if($('.bonbeaubien-b').parent().hasClass('active')){
+            $('.bonbeaubien-b').css('color','black');
+        }
     });
-    
-
-        $('.burger').click(function(){
-
-            if($('.burger').hasClass('closed')){
-
-                $('.burger-btn').attr('src',"{{asset('web/img/menu/burger-closed.svg')}}");
-
-            }
-            else{
-
-                $('.burger-btn').attr('src',"{{asset('web/img/menu/burger-opened.svg')}}");
-
-            }
-        });
 
     
 </script>
+

@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{% endblock %}
-{% block more_style %}<link rel="stylesheet" href="{{asset('web/css/product-style.css')}}"/>{% endblock %}  
+{% block more_style %}
+    <link rel="stylesheet" href="{{asset('web/css/product-style.css')}}"/>
+    <link rel="stylesheet" href="{{asset('web/css/responsive-products.css')}}">
+{% endblock %}  
 
 {% block headerText %}
-    <div class="d-flex text-header justify-content-center row text-center">
+    <div class="d-flex text-header-products text-header justify-content-center row text-center">
         <p class="header-title">Nos produits</p>
         <p class="base-line">la beauté au bout des doigts</p>
     </div> 
@@ -12,7 +15,7 @@
 
 {% block body %}
     <div class="row justify-content-between ancre"  id="ancre1">
-        <p class="product-number-displayer"><span class="product-number">6</span> produits</p>
+        <p class="product-number-displayer"><span class="product-number">{{products|length}}</span> produits</p>
 
         <form action="" method="GET" class="product-filter">
             <select id="product-list-filter">
@@ -27,10 +30,19 @@
     {% for product in products  %}
 
 
-        <div class="product-element col-12  col-xs-12 col-sm-12 col-md-6 col-lg-3">
+        <div class="product-element col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-3   ">
  
             <div class="product-image-container">
-                <div class="hover-effect d-flex text-center align-items-center"><a class="add-to-cart add-tocart" product-id="{{product.id}}">Ajouter au panier</a></div>
+                <div class="hover-effect d-flex text-center align-items-center">
+                    <a {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            class="add-to-cart add-tocart  add-to-cart-btn"
+                        {% else %}            
+                            class="add-to-cart add-tocart btn-pop-up-1" 
+                        {% endif %}
+
+                        product-id="{{product.id}}"
+                        >Ajouter au panier</a>
+                </div>
                 <img class="mx-auto img-fluid product-image" src="{{asset('/uploads/images/products/' ~ product.image1)}}" alt="{{product.description}}">
             </div>
             

@@ -117,6 +117,7 @@ body{
     position: relative;
     transform: translateZ(0); 
     transition: color 1000ms;
+    cursor: pointer;
 }
 .add-to-cart:before {
     content: "";

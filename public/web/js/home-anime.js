@@ -3,6 +3,8 @@ $(document).ready(function(){
     $(window).scroll(function(){
         var currentHeight = $(window).scroll(function(){}).scrollTop();
 
+        if (window.matchMedia("(min-width: 1300px)").matches) {
+
 
         //HEADER 
         
@@ -115,7 +117,19 @@ $(document).ready(function(){
                 $('.offer-element-price').css({'transform':'translateX(0px)','opacity': '1'});
         }
 
+        var footerHeight = $('.footer-div').scroll(function(){}).scrollTop();
+    
+        if(currentHeight > 2406){
+            $('.nav-arrow img').css('transform','rotate(180deg)');
+            $('.nav-arrow').addClass('top-scroll');
+        }
 
+        else{
+                $('.nav-arrow img').css('transform','rotate(0)');
+                $('.nav-arrow').removeClass('top-scroll');
+            }
+
+        }
 
     });
 

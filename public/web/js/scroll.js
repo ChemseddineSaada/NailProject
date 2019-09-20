@@ -11,6 +11,7 @@ for(let i = 1; i <= linksNumber; i++){
 
 $('.nav-arrow').click(function(){
     var currentHeight = $(window).scroll(function(){}).scrollTop();
+    var footerHeight = $('.footer-div').scroll(function(){}).scrollTop();
 
         let j = 0;
         navParameters.forEach(element => {
@@ -28,6 +29,14 @@ $('.nav-arrow').click(function(){
             }
 
            j++;
+           if( currentHeight > 2000){
+            $('.nav-arrow').attr('href','#footer-ancre');
+           }
+
         });
+
+        if($('.nav-arrow').hasClass('top-scroll')){
+            $('.nav-arrow').attr('href','#ancre0');
+        }
 
 });

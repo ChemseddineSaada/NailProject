@@ -1,0 +1,167 @@
+/****************************************************/
+/********************* HEADER ***********************/
+/****************************************************/
+
+@media (max-width: 576px) { 
+    .text-header{
+        position: relative !important;
+        top: -80vh;
+        text-align: center;
+        z-index: 5 !important;
+    }
+    .text-header p{
+        font-size: 14px !important;
+        letter-spacing: 5px !important;
+    }
+    .hashtag-bbb{
+        opacity: 0;
+    }
+    .third-menu{
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .text-header{
+        position: absolute !important;
+        top: -20vh !important;
+        margin-top: 30vw;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+    .third-menu{
+        position: relative !important;
+        top: 0 !important;
+    }
+ }
+
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+    .text-header{
+        position: relative !important;
+        top: -100vh;
+        margin-top: 22vh;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+    .third-menu{
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+@media (min-width: 992px) and (max-width: 1029px) { 
+    .text-header{
+        position: absolute !important;
+        top: 20vh ;
+        margin-top: 0 !important;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+    .third-menu{
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+
+@media (min-width: 1028.98px) and (max-width: 1199.98px) { 
+    .text-header{
+        position: absolute !important;
+        top: 20vh !important;
+        margin-top: 0 !important;
+        text-align: center;
+    }
+    .text-header p{
+        font-size: 33px !important;
+        letter-spacing: 17px;
+    }
+    .third-menu{
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+
+@media (max-width: 1200px){
+    .nav-arrow{
+        display: none;
+    }
+}
+
+/****************************************************/
+/********************** EVENTS **********************/
+/****************************************************/
+@media (max-width: 576px) {
+    .website-content{
+        justify-content: center;
+        text-align: center;
+    }
+
+    .event-passed-element{margin: auto !important;}
+    .event-passed-info{ padding:0 !important;}
+    .event-passed-extract{ font-size: 24px ;}
+    .event-passed-title{ font-size: 16px ;}
+    .event-passed-date{ font-size: 16px;}
+    .event-description{ font-size: 16px;}
+    .body-menu{ font-size: 16px !important;}
+    .annoncement{
+         font-size: 20px !important;
+         padding: 20px 0 !important;
+        }
+    .btn-subscribe{
+        font-size: 20px !important;
+    }
+ }
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .website-content{
+        justify-content: center;
+        text-align: center;
+    }
+    .event-passed-extract{ font-size: ;}
+    .event-passed-title{ font-size: ;}
+    .event-passed-date{ font-size: ;}
+    .event-description{ font-size: 24px;}
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+    .event-passed-extract{ font-size: 24px ;}
+    .event-passed-title{ font-size: 30px ;}
+    .event-passed-date{ font-size: 24px ;}
+    .event-description{ font-size: 24px;}
+    
+}
+
+@media (min-width: 992px) and (max-width: 1049.98px) {
+
+    .event-passed-extract{ font-size: 24px ;}
+    .event-passed-title{ font-size: 30px ;}
+    .event-passed-date{ font-size: 24px ;}
+    .event-description{ font-size: 24px;}
+    
+}
+
+@media (min-width: 1050px) and (max-width: 1199.98px) {
+    .text-header{
+        position: absolute;
+        top: -20vh;
+        left: 10vw;
+        width: 80%;
+    }
+
+    .event-passed-extract{ font-size: 24px ;}
+    .event-passed-title{ font-size: 30px ;}
+    .event-passed-date{ font-size: 24px ;}
+    .event-description{ font-size: 24px;}
+ }
+
+
+ 

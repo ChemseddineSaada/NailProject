@@ -7,7 +7,7 @@
     {% block stylesheets %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Poppins|Sanchez&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('web/css/basis-style.css')}}"> 
     <link rel="stylesheet" href="{{asset('web/css/form-style.css')}}">
     {% endblock %}
@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <header>
+    <header id='ancre0'>
             {% block menu %}{{render(controller('App\\Controller\\MenuController::mainMenu',{'routeName' : app.request.attributes.get('_route')}))}}{% endblock %}
             {% block headerText %}{% endblock %}
     </header>
@@ -42,5 +42,8 @@
         {% include "partials/footer.html.twig" %}
     </footer>
 </body>
+<script>
+
+</script>
 
 </html>

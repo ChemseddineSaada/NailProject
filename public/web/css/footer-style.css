@@ -6,8 +6,8 @@
 /******************************** FOOTER MENU ******************************/
 /***************************************************************************/
 .footer-menu{
-    font-size: 20px;
-    padding: 0 100px;
+    font-size: 1.41vw;
+    padding: 0 5.2vw;
 }
 .footer-link{
     text-decoration: none;
@@ -42,6 +42,7 @@
     font-size: 12px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .contact-container{
@@ -79,13 +80,13 @@ footer form{
 }
 
 .newsletter-div h2{
-    font-weight: 1.875vw !important;
+    font-size: 1.875vw !important;
     font-weight: bold;
 }
 
 .newsletter-div p{
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 0.833vw;
 }
 
 #newsletter-email{
@@ -112,5 +113,131 @@ footer form{
     margin-top: 30%;
 }
 
+
+/****************************************************/
+/******************* RESPONSIVE *********************/
+/****************************************************/
+
+@media (max-width: 1200px) { 
+    .newsletter-div{
+        padding: 60px 10.41vw 30px 10.41vw;
+    }
+    .footer-menu{
+        font-size: 20px;
+        margin-top: 100px;
+        padding-bottom: 50px;
+    }
+    .information-div{
+        margin-top: 100px;
+        padding-bottom: 50px;
+    }
+    #newsletter-submit{
+        margin: 0 !important;
+        font-size: 11px;
+        margin-left: 50px;
+    }
+    #newsletter-email{
+        width: 300px;
+    }
+    .newsletter-div h2{
+        font-size: 36px !important;
+    }
+    .newsletter-div p{
+        font-size: 16px;
+    }
+    .payment-why{
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 991px) { 
+    .newsletter-div{
+        padding: 60px 10.41vw 30px 10.41vw;
+    }
+    .footer-menu{
+        font-size: 20px;
+        margin-top: 100px;
+        padding-bottom: 50px;
+    }
+    .information-div{
+        margin-top: 100px;
+        padding-bottom: 50px;
+    }
+    #newsletter-submit{
+        margin: 0 !important;
+        font-size: 11px;
+        margin-left: 50px;
+    }
+    #newsletter-email{
+        width: 300px;
+    }
+    .newsletter-div h2{
+        font-size: 36px !important;
+    }
+    .newsletter-div p{
+        font-size: 16px;
+    }
+    .payment-why{
+        margin-top: 50px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .information-div{
+        text-align: center;
+    }
+    .contact-container{
+        margin: auto !important;
+    }
+    .bbb-signup-link{
+        font-size: 15px;
+    }
+    .social-network{
+        justify-content: center;
+    }
+    .footer-list{
+        text-align: center;
+    }
+    .footer-menu-title{
+        text-align: center;
+    }
+    .newsletter-div{
+        text-align: center;
+    }
+    #newsletter-submit{
+        margin-left: 0 !important;
+    }
+ }
+
+
+ @media (max-width: 576px) {
+    #newsletter-submit{
+        margin-top: 30px !important;
+    }
+    .footer-menu{
+        justify-content: center;
+    }
+    .footer-menu p{
+        padding: 0 !important;
+    }
+    .footer-menu ul{
+        padding: 0 !important;
+    }
+    .contact-container{
+        justify-content: center !important;
+        text-align: center;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    #newsletter-email{
+        margin-top: 30px;
+    }
+    #newsletter-submit{
+        margin-top: 30px;
+    }
+}
 
 

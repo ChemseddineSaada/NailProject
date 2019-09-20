@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="{{asset('web/css/footer-style.css')}}">
 
-<div class="row align-items-center footer-div justify-content-around">
+<div class="row align-items-center footer-div justify-content-around" id="footer-ancre">
 
-    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 newsletter-div"> <!-- Newsletter-div -->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 newsletter-div"> <!-- Newsletter-div -->
         <h2>Inscrivez-vous à notre Newsletter</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        <p>Ne manquez plus les informations en avant-première !</p>
 
         {% for message in app.flashes('notice_success') %} <!-- Affichage des messages de succès et d'échec -->
             <p class="alert-link">{{ message }}</p>
@@ -14,10 +14,10 @@
             <p class="alert-link">{{ message }}</p>
         {% endfor %} <!-- fin de l'affichage des messages de succès et d'échec -->
 
-        <form action="{{path('newsletter.subscribe')}}" method="post"> <!-- Formulaire d'inscription à la Newsletter -->
+        <form action="{{path('newsletter.subscribe')}}" method="post" class="d-flex justify-content-center flex-wrap"> <!-- Formulaire d'inscription à la Newsletter -->
             <input type="email" name="email" id="newsletter-email" placeholder="Votre email..."> 
             <input type="text" name="last-route" value="{{app.request.attributes.get('_route')}}" hidden>
-            <button type="submit" id="newsletter-submit">S'inscrire</button>
+            <button type="submit" id="newsletter-submit" class="mx-auto">S'inscrire</button>
         </form> <!-- Fin du formulaire d'inscription à la Newsletter -->
 
         <div class="payment-why d-flex row justify-content-between flex-nowrap">
@@ -31,7 +31,7 @@
         </div>
     </div> <!-- fin Newsletter-div -->
 
-    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 footer-menu"> <!-- Menu footer -->
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 footer-menu"> <!-- Menu footer -->
         <p class="footer-menu-title">informations</p>
         <ul>
             <li class="footer-list" ><a class="footer-link" href="#">Protection des données</a></li>
@@ -45,7 +45,7 @@
         </ul>
     </div>  <!-- fin Menu footer -->
 
-    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 justify-content-center information-div"> <!-- information-div -->
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 justify-content-center information-div"> <!-- information-div -->
         <h3>#BonBeauBien</h3>
         <p>Le vernis des femmes qui s’engagent</p>
         <div class="contact-container row justify-content-between">

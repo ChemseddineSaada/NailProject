@@ -80,6 +80,10 @@
     background: black;
 }
 
+.bbb-remember-me{
+    font-size: 1.4vw;
+}
+
 .bbb-checkbox{
     width: 25px;
     height: 25px;
@@ -105,5 +109,6 @@ input[type=checkbox] {
 input[type="checkbox"]:checked {
     background: red;
   }
+
 
 

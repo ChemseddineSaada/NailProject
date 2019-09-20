@@ -12,6 +12,10 @@ header{
     font-weight: bolder !important;
 }
 
+.text-header{
+    z-index: 1 !important;
+}
+
 .base-line{
     width: 100%;
     font-size: 1.77vw;
@@ -31,12 +35,12 @@ header{
 
 .event-description{
     margin: 30px 0;
-    font-size: 34px;
+    font-size: 1.77vw;
 }
 
 .event-date{
     margin: 30px 0;
-    font-size: 24px;
+    font-size: 1.25vw;
     font-weight: bolder;
 }
 
@@ -46,21 +50,28 @@ header{
 
 .event-passed-element{
     width: 100%;
-    border: 4px solid black;
-    height: 380px;
-    margin: 30px auto;
+    height: auto;
+    margin: 60px auto;
 }
 
 .event-passed-image{
     width: 380px;
-    height: 376px;
-    border-right: 4px solid black;
+    border: 4px solid black;
+    min-width: 300px;
+    max-width: 380px;
+    max-height: 380px;
+    overflow: hidden;
+}
+
+.event-passed-image img{
+    max-width: initial;
 }
 
 .event-passed-info{
     width: 70vw;
-    font-size: 36px;
-    padding: 60px;
+    font-size: 1.77vw;
+    padding-left: 60px !important;
+    align-self: center;
 }
 
 .event-passed-title{

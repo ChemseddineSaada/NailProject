@@ -3,7 +3,7 @@
 {% block title %}NailProject - Accueil{% endblock %}
 {% block more_style %}
     <link rel="stylesheet" href="{{asset('web/css/index-style.css')}}"/>
-    <link rel="stylesheet" href="{{asset('web/css/event-style.css')}}"/>
+    <link rel="stylesheet" href="{{asset('web/css/responsive-home.css')}}">
 {% endblock %}  
 
 {% block headerText %}
@@ -11,44 +11,45 @@
 <img class="hashtag-bbb img-fluid" src="{{asset('web/img/index/hashtag.png')}}" alt="Hashtag Bon Beau Bien">
 
     <div class="row text-header align-items-center justify-content-center">
-        <p>Le vernis des des femmes qui s'engagent</p>
+        <p>Le vernis des femmes qui s'engagent</p>
     </div>
 
 {% endblock %}
 
 {% block body %}
-<section class="d-flex flex-wrap column" > <!-- Our Products -->
 
-    <h2 class="section-title ancre" id="ancre1">Notre couleur de la saison</h2>
-    <div class="row d-flex flex-nowrap">
-        <a class="parallax0 parallax" href="#">
-            <img class="product-element-image element-image" src="{{asset('/uploads/images/products/' ~ product.image1)}}" alt="{{product.description}}">
+<h2 class="section-title ancre section-content" id="ancre1">Notre couleur de la saison</h2>
+<section class="d-flex flex-wrap column section-content" > <!-- Our Products -->
 
-            <div class="element-info column align-items-center">
+    <div class="row d-flex flex-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
+        <a class="parallax0 parallax d-flex column justify-content-center align-items-end" href="{{path('single.show.product',{'slug':product.id})}}">
+            <img class="product-element-image element-image mr-4 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8" src="{{asset('/uploads/images/products/' ~ product.image1)}}" alt="{{product.description}}">
+
+            <div class="element-info column align-items-center col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
                 <h4 class="element-title product-element-title">{{product.name}}</h4>
                 <p class="element-price product-element-price">{{product.price}} &#128;</p>
             </div>   
 
         </a>
-        <div class="align-self-center">
-            <p class="p-bold product-description-bold">Restez belles et naturelles tout au long de l’automne, avec nos vernis fabriqués avec plus de 80% de matières premières d’origine naturelle et végétale.</p>
-            <p class="product-description-light">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam</p>
-            <a class="see-more-products float-right" href="{{path('shop.list.products')}}">Voir plus de produits</a>
-        </div>
+    </div>
+    <div class="align-self-center col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 description-home">
+        <p class="p-bold product-description-bold">Restez belles et naturelles tout au long de l’automne, avec nos vernis fabriqués avec plus de 80% de matières premières d’origine naturelle et végétale.</p>
+        <p class="product-description-light">POURQUOI ON AIME ? </br> La toute nouvelle formule de ce vernis couleur assure une application facile et rapide. Le capuchon du vernis couleur se retire pour accéder à un pinceau pratique et ergonomique.</p>
+        <a class="see-more-products float-right" href="{{path('shop.list.products')}}">Voir plus de produits</a>
     </div>
 
 </section> <!-- Our Products -->
 
-<section> <!-- Our Packs -->
+<section class="section-content"> <!-- Our Packs -->
     <h2 class="section-title ancre" id="ancre2">Nos Offres</h2>
     <div class="d-flex row justify-content-between">
         {% for offer in offers %} 
 
-            <a class="{{ 'parallax' ~ loop.index }} parallax col-lg-5 col-md-12 col-sm-12 col-12" href="#">
+            <a class="{{ 'parallax' ~ loop.index }} parallax col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 d-flex column justify-content-center align-items-end" href="#">
                 
-                <img class="element-image img-fluid offer-element-image" src="{{asset('/uploads/images/packOffers/' ~ offer.image1)}}" alt="{{offer.description}}">
+                <img class="element-image img-fluid offer-element-image col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 mr-4" src="{{asset('/uploads/images/packOffers/' ~ offer.image1)}}" alt="{{offer.description}}">
 
-                <div class="element-info column align-items-center">
+                <div class="element-info column align-items-center col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
                     <h4 class="element-title offer-element-title">{{offer.name}}</h4>
                     {% for product in offer.products  %}
                         <p class="element-price offer-products offer-element-price">Notre {{product.name}}</p>
@@ -64,22 +65,29 @@
 
 <section> <!-- Our Subscription -->
 
-    <h2 class="section-title ancre" id="ancre3">Événements</h2>
-    {% if event is null %}
-        <p>Nous n'avons aucun événement futur pour l'instant, abonnez-vous à notre Newsletter pour recevoir les dates dès leurs publications !</p>
-    {% else %}
-    <div class="event-element d-flex d-table-row">
+    <h2 class="section-title ancre section-content" id="ancre3">Événements</h2>
+    <div class="div-for-background">
+        <div class="event-element d-flex d-table-row section-content">
 
-        <div class="event-map d-flex column flex-wrap justify-content-center">
-            <div class="map mr-5">
-                <a class="align-self-center mr-3" href="#"><img src="{{asset('/web/img/whoweare/share.svg')}}" alt="Boutton de partage sur les réseaux sociaux"></a>
-                <img src="{{asset('public/uploads/events/' ~ event.image)}}" href="Carte montrant le lieu de l'événement">
+            {% if event is null %}
+                <p>Nous n'avons aucun événement futur pour l'instant, abonnez-vous à notre Newsletter pour recevoir les dates dès leurs publications !</p>
+            {% else %}
+
+            <div class="event-map-index d-flex row flex-wrap justify-content-between align-items-center">
+                <div class="map col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 ">
+                    <img class="img-fluid" src="{{asset('web/img/event/map.png')}}" href="Carte montrant le lieu de l'événement">
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+                    <div class="event-text">
+                        <p class="annoncement">{{ event.annoncement }}</p>
+                        <div class="d-flex justify-content-between align-content-center align-items-center">
+                            <a class="align-self-center mr-3" href="#"><img src="{{asset('/web/img/whoweare/share.svg')}}" alt="Boutton de partage sur les réseaux sociaux"></a>
+                            <a class="btn-pop-up-2 btn-subscribe" href="#">s'inscrire</a>
+                        </div>                     
+                    </div>                    
+                </div>
             </div>
-            <p class="text-center annoncement">{{ event.annoncement }}</p>
-
-            <a class="btn-bbb btn-pop-up-2 btn-subscribe mx-auto">
-                <span class="btn-text text-center">s'inscrire</span>
-            </a>
         </div>
     </div>
     {% endif %}

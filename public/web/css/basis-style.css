@@ -9,6 +9,9 @@ html, body {
     padding: 0 !important;
 }
 header{ 
+    position: relative;
+    top: 0;
+    left: 0;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -79,7 +82,7 @@ h4{
 }
 
 .paragraph{
-    font-size: 30px;
+    font-size: 1.5625vw;
     margin: 60px auto 100px auto;
 }
 
@@ -122,7 +125,21 @@ h4{
 }
 
 .btn-subscribe{
-    width: 350px;
+    font-size: 1.46vw;
+    text-transform: uppercase;
+    color: black;
+    background: white;
+    padding: 20px 3.4rem;
+    border-radius: 22.5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.btn-subscribe:hover{
+    color: white;
+    background: black;
+    border: 1px solid white;
+    text-decoration: none;
 }
 
 
@@ -132,7 +149,7 @@ h4{
 
 .pop-up-container{
     display: flex;
-    position: fixed;
+    position: fixed !important;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -173,3 +190,35 @@ h4{
     color: red;
 }
 
+/********************************************************************/
+/************************* POP-UP RESPONSIVE ************************/
+/********************************************************************/
+
+@media (max-width: 576px) { 
+    .pop-up{
+        width: 60vw !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .pop-up{
+        width: 60vw !important;
+    }
+ }
+
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+    .pop-up{
+        width: 65vw !important;
+    }
+}
+@media (min-width: 992px) and (max-width: 1029px) { 
+    .pop-up{
+        width: 70vw !important;
+    }
+}
+
+@media (min-width: 1028.98px) and (max-width: 1199.98px) { 
+    .pop-up{
+        width: 50vw !important;
+    }
+}
